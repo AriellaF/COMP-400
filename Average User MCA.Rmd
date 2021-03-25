@@ -1,0 +1,443 @@
+---
+title: "Agerage User"
+author: "Ariella Fuzaylov"
+date: "3/23/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+library(ggplot2)
+library(tidyverse)
+library(tm)
+library(SnowballC)
+library(textclean)
+library(FactoMineR)
+library(factoextra)
+library("gplots")
+library(corrplot)
+library(dummy)
+library(missMDA)
+library(splitstackshape)
+
+```
+
+## Loading Data and Update Header
+
+```{r load data}
+my.data=read.csv("Online Recipe Sharing.csv", header=TRUE)
+colnames(my.data)
+colnames(my.data)<-c("Timestamp", "Age", "Primary.Meal.Prepper", "Household.Dietary.Restriction",
+"Home.Cooking.Rate", 
+"Primary.Recipe.Format", 
+"Primary.Search.Website",
+"Enjoyed.Website.Searching", "Comments.Enjoyed.Website.Searching", "NOT.Enjoyed.Website.Searching", "Comments.NOT.Enjoyed.Website.Searching", "Recipe.Search.Bar.Frequency", 
+"Previous.Recipe.Search.Frequency",
+"Browsing.While.Searching.Frequecny", 
+"Click.Rate", 
+"Search.Browse.Same.Websites",
+"Primary.Browsing.Website", 
+"Enjoyed.Website.Browsing", 
+"Comments.Enjoyed.Website.Browsing", "NOT.Enjoyed.Website.Browsing", "Comments.NOT.Enjoyed.Website.Browsing", "Primary.Source.of.Reviews",
+"Source.of.Influential.Reviews", "Frequency.Reviews.Effect.Behavior", 
+"Frequency.Seek.Out.Review", 
+"Frequency.of.Review", 
+"Frequency.of.Recipe.Saving", 
+"Method.of.Recipe.Saving", 
+"Modification.Frequency", 
+"Modification.Influence.Factors",
+"Modification.Record.Frequency", 
+"Modification.Record.Method", 
+"Satisfaction.with.Available.Record.Methods", 
+"Interest.in.Improved.Record.Method",
+"Frequency.of.Recipe.Discussion", "Frequency.of.Reading.Discussion",
+"Primary.Discussion.Medium", "Enjoyed.Features.of.Discussion.Mediums", "Ingredients.L.V.Above", 
+"Ingredients.L.Comments.Inline.V.Below", "Ingredients.Above.Comments.Below.V.Inline", "Ingredients.By.Step.V.Above", 
+"Ingredients.By.Step.V.Scroll.L", 
+"Ingredients.Above.V.Scroll.L")
+```
+
+### Re-Factor Data
+
+If Respondent indicated that they search and browse on the same websites, populate the empty cells with the same data. This assumes that the user's searching behavior is exactly the same as the browsing behavior if the user selected yes for searching and browsing on the same websites.
+
+```{r}
+for (i in 1:nrow(my.data)){
+  if (my.data$Search.Browse.Same.Websites[i]=="No"){
+    my.data$Primary.Browsing.Website[i]<-my.data$Primary.Search.Website[i]
+    my.data$Enjoyed.Website.Browsing[i]<-my.data$Enjoyed.Website.Searching[i]
+    my.data$NOT.Enjoyed.Website.Browsing[i]<-my.data$NOT.Enjoyed.Website.Searching[i]
+  }
+}
+```
+Since the data set is small, I am consolidating some of the categories.
+
+- Primary Meal Prepper will be Respondent if the individual taking the survey indicated that they are the primary meal prepper in their household or if they cook for themselves, and other in all other cases.
+
+- Dietary restriction will become a yes or no question
+
+- Home Cooking Rate will become Daily if the respondents cooks at home most days, weekly if the respondent cooks several times a week, and monthly is the respondent cooks a couple times a month.
+```{r factoring}
+my.data.factored<-my.data
+my.data.factored$Age<-as.factor(my.data$Age)
+
+my.data.factored$Primary.Meal.Prepper<-as.factor(my.data.factored$Primary.Meal.Prepper)
+
+my.data.factored$Household.Dietary.Restriction<-as.factor(my.data.factored$Household.Dietary.Restriction)
+
+my.data.factored$Home.Cooking.Rate<-as.factor(my.data.factored$Home.Cooking.Rate)
+my.data.factored<- mutate(my.data.factored,Primary.Meal.Prepper = fct_collapse(Primary.Meal.Prepper,
+                                                              Respondent = c("You", "I cook for myself"),
+                                                              other_level = "Other"),
+                  Household.Dietary.Restriction=fct_collapse(Household.Dietary.Restriction,
+                                                             No="None",
+                                                              other_level = "Yes"),
+                  Home.Cooking.Rate=fct_collapse(Home.Cooking.Rate,Daily=c("Almost every meal","Daily","Every meal"),
+                                                      Weekly=c("Several times a week","Once or twice a week"),
+                                                      Monthly=c("Once or twice a month")))
+
+```
+### Website Recoding:
+
+For the sake of this analysis any website that has a test kitchen that creates editorial content or is able to curate content from professional sources is a magazine, a a website with one or two people testing recipes is a blog, and a website that allows users to contribute their own recipes is community based. The information for this classification is found on the website's about page. Additionally, media such as cookbooks and podcasts are classified under Influencers due to their personality driven nature.
+
+### Discussion Method Recoding:
+
+Any type of online chatting be it texting, discord, etc. has been grouped together into Digital Chat. Any type of interpersonal communication where a chat method was not specified is grouped into verbal. 
+
+Note saving methods that mention remembering or memory are grouped into memory, while respondents that indicate that they do not take any type of notes and do not try to remember are group are grouped into None.
+
+### Modification Recoding:
+
+Modification influence factors pertaining to diet, or nutrition are grouped together under the umbrella of "Diet".
+
+Modification influence factors pertaining to personal preference for food, flavor, or preperation method are grouped together under the category of "Personal Preference.
+
+Modification influence factors pertaining ingredients availability are grouped together under the category of "Ing. Availability"
+```{r searching}
+unique(separate_rows(my.data.factored[32],1, sep = ";"))
+my.data.selected<-my.data.factored[c(6,7,8,10,17,18,20,22,23,28,37,30,32,38)]
+variables<-c()
+
+##This creates a vector that will recode the variables with the proper names
+ for (i in 1:ncol(my.data.selected)){
+  temp<- my.data.selected[i]
+  temp<-separate_rows(temp,1, sep = ";")
+  variables<-append(variables,temp[[1]])
+  variables<-unique(variables)
+  data.frame(variables)
+ }
+
+variables
+
+cleaned.variables<-c(
+  "Mobile",
+  "Desktop",
+  "Digital",
+  "Physical Print",
+  "Physical Print",
+  "Digital",
+  "Physical Family",
+  "Physical Family",
+  "Physical Family",
+  "Physical Family",
+  "Mags",
+  "Blogs",
+  "Google",
+  "Youtube",
+  "Community Based" ,
+  "Mags",
+  "Community Based" ,
+  "Pinterest",
+  "Blogs",
+  "TikTok",
+  "Mags",
+  "Facebook",
+  "Reddit",
+  "Mags",
+  "Mags",
+  "Mags",
+  "Mags",
+  "Instagram",
+  "Mags",
+  "Friends/Family",
+  "Blogs",
+  "NA",
+  "Blogs",
+  "Mags",
+  "Instagram",
+  "Instagram",
+  "None",
+  "None",
+  "Friends/Family",
+  "Online Groups",
+  "Other Users",
+  "Influencers",
+  "Influencers",
+  "Facebook",
+  "Browser Bookmarks",
+  "Digital Filing",
+  "Memory",
+  "Search History",
+  "Save Function",
+  "Physical Filing",
+  "None",
+  "Memory",
+  "Memory",
+  "Memory",
+  "Save Function",
+  "Verbal",
+  "Verbal",
+  "Verbal",
+  "Digital Chat",
+  "Verbal",
+  "Verbal",
+  "Digital Chat",
+  "Google Docs",
+  "Digital Chat",
+  "Verbal",
+  "Verbal",
+  "Verbal",
+  "Verbal",
+  "Verbal",
+  "Verbal",
+  "Verbal",
+  "Verbal",
+  "Digital Chat",
+  "None",
+  "Digital Chat",
+  "Verbal",
+  "Digital Chat",
+  "Digital Chat",
+  "None",
+  "Diet",
+  "Diet",
+  "Preference",
+  "Diet",
+  "Ing. Availability",
+  "Ing. Availability",
+  "Recommendation",
+  "Preference",
+  "Memory",
+  "Digital",
+  "Physical",
+  "Memory",
+  "None",
+  "Comments",
+  "None",
+  "Memory",
+  "Memory",
+  "None",
+  "None",
+  "Memory",
+  "None",
+  "None",
+  "5 Star Review",
+  "Groups",
+  "Up/Down Vote Posts",
+  "Up/Down Vote Com.",
+  "Collapse Comment",
+  "Comment Reply",
+  "Comment Thread",
+  "Inline Comment")
+
+names(cleaned.variables)<-variables
+```
+
+## Functions for Cleaning Data
+
+likert.cleaner(.s) turns the integer values of the likert scale into their corresponding categories
+
+ 
+```{r}
+likert.cleaner<-function(to.clean){
+  cut((to.clean),c(0, 1.2, 2.5,3.5,4.5,5.5),right=FALSE,labels=c("Never","Rarely","Sometimes", "Often","Always"))
+}
+
+likert.cleaner.S<-function(to.clean){
+  cut((to.clean),c(0, 1.2, 2.5,3.5,4.5,5.5),right=FALSE,
+  labels=c("Dissatisfied","Somewhat Dissatisfied", "Neutral",                               
+           "Somewhat Satisfied","Satisfied"))
+}
+
+dummies<-function(search.data, to.clean){
+  # search.data%>%replace_na(list(to.clean="None"))
+  col.names<-c(names(search.data))
+  col.names<-col.names[col.names!=to.clean]
+  search.data.clean<- search.data%>% separate_rows(all_of(to.clean), sep = ";")
+  
+  search.data.clean[to.clean]<-
+    as.character(cleaned.variables[search.data.clean[[to.clean]]])
+  # var<-to.clean[1]
+  # search.data.dummies<-search.data.clean%>%
+  #   group_by_at(col.names)%>%
+  #   tally()%>%
+  #   pivot_longer(cols=-col.names, names_to = "key", values_to = "value")%>%
+  #   # spread(var, n, fill = 0)
+  #   spread(key, value, fill = 0)
+  
+  # search.data.dummies<-search.data.clean%>%
+  #   select((to.clean))%>%
+  #   dummy()%>%
+  #   bind_cols(search.data.clean)%>%
+  #   select(-(to.clean))%>%
+  #   pivot_longer(cols=-col.names, names_to = "key", values_to = "value")%>%
+  #   filter(value!=0)%>%
+  #   unique()%>%
+  #   spread(key, value, fill = 0)
+    
+  search.data.dummies<-search.data.clean%>%
+    select((to.clean))%>%
+    dummy()%>%
+    bind_cols(search.data.clean)%>%
+    select(-(to.clean))%>%
+    pivot_longer(cols=-col.names, names_to = "key", values_to = "value")#%>%
+    group_by_at(col.names)
+  # new.names<-unique(search.data.dummies$key)
+  # %>%
+  #   filter(value!=0)%>%
+  #   unique()%>%
+    # spread(key, value, fill = 0)
+}
+
+```
+
+```{r}
+# search.data<-my.data.factored[c("Age", "Primary.Meal.Prepper" , "Household.Dietary.Restriction", "Home.Cooking.Rate" ,"Primary.Search.Website",
+#                                 "Enjoyed.Website.Searching", "NOT.Enjoyed.Website.Searching" , "Recipe.Search.Bar.Frequency", 
+#                                 "Previous.Recipe.Search.Frequency", "Click.Rate")]
+# search.data<-data.frame(search.data)
+# colnames(search.data)<-c("Age", "Meal.Prepper","Dietary.Restriction","Home.Cook.Rate","Primary.C",
+#                          "Enjoyed.C","NOT.Enjoyed.C","Repeat.Search.F","Browse.Search.F","Click.Rate")
+# search.data<-tibble::rowid_to_column(search.data, "ID")
+# cleaned<-search.data
+# to.dummy<-select(cleaned, ends_with(".C"))
+# to.dummy.cols<-c(colnames(to.dummy))
+# for (col in to.dummy.cols){
+#   cleaned<-dummies(cleaned,c(col))
+# }
+# cleaned.likhert<-apply(select(cleaned,ends_with(".F")),2,likert.cleaner)
+# 
+# cleaned[, colnames(cleaned) %in% colnames(cleaned.likhert)] <- cleaned.likhert
+# rm(cleaned.likhert)
+# cols<-names(cleaned)
+```
+
+
+
+## Load Data
+```{r}
+search.data<-my.data.factored[-c(1,9,11,19,21)]
+search.data<-data.frame(search.data)
+new.names=c("Age", "Meal.Prepper","Dietary.Restriction","Home.Cook.Rate","Primary.Format.C","Primary.S.C",
+            "Enjoyed.S.C","NOT.Enjoyed.S.C","Recipe.Search.F","Repeat.S.F","Browse.Search.F","Click.Rate",
+            "Search.Browse.Same","Primary.B.C","Enjoyed.B.C","NOT.Enjoyed.B.C", "Primary.R.C", "Influential.R.C", 
+            "Use.R.F","Seek.R.F", "R.F","Save.F","Save.C","Mod.F","Why.Mod.C", "Mod.Note.F", "Mod.Note.C", 
+            "Note.Method.S","Potential.Note.Taker","Disc.F","Read.Disc.F","Disc.C","Enjoy.Disc.C", "Ing.L.V.Above", 
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")
+
+colnames(search.data)<-new.names
+search.data<-tibble::rowid_to_column(search.data, "ID")
+```
+
+<!-- ##Perform Naive MCA -->
+<!-- ```{r} -->
+
+<!-- cleaned.search.data<-data.frame(search.data[-c(1)]) -->
+<!-- cols<-names(cleaned.search.data) -->
+<!-- cleaned.search.data<-lapply(cleaned.search.data[cols], as.factor) -->
+<!-- char.cols<-select(data.frame(cleaned.search.data), ends_with(".C")) -->
+<!-- cleaned.search.data<-data.frame(cleaned.search.data) -->
+
+<!-- search.MCA=MCA(cleaned.search.data,graph=FALSE) -->
+<!-- fviz_screeplot(search.MCA,addlabels=T) -->
+<!-- fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE, -->
+<!--              ggtheme = theme_minimal()) -->
+<!-- ``` -->
+The categories that are farther from the origin explain more of the variance in the data set, and are well represented by the factor map. Furthermore, the categories that are closer together have similar profiles.
+
+From this data we can see that frequency of discussion, seeking reviews, reading discussion, reviewing, and saving recipes have similar profiles. Additionally, neither the first nor the second component have negativly correlated variable categories.
+
+
+```{r}
+# fviz_mca_var(search.MCA, col.var = "cos2",
+#              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+#              repel = TRUE, ggtheme = theme_minimal())
+# fviz_mca_biplot(search.MCA, repel = TRUE, ggtheme= theme_minimal())
+```
+
+### Improved MCA
+```{r}
+cleaned<-search.data
+head(cleaned)
+to.dummy<-select(cleaned, ends_with(".C"))
+to.dummy.cols<-c(colnames(to.dummy))
+to.dummy.cols[[3]]
+cleaned<-dummies(cleaned,c("Enjoyed.S.C"))
+#  for (col in to.dummy.cols){
+#    cleaned<-dummies(cleaned,c(col))
+#    print(col)
+#    print(length(unique(cleaned$ID)))
+# #   # cleaned<-cSplit_e(cleaned, split.col=col,sep=";", type="character",
+# #                     # mode="binary", drop=T, fill = 0)
+#  }
+length(unique(cleaned$ID))
+cleaned
+# cleaned.likert<-apply(select(cleaned,ends_with(".F")),2,likert.cleaner)
+# cleaned[, colnames(cleaned) %in% colnames(cleaned.likert)] <- cleaned.likert
+# 
+# cleaned.likert.s<-apply(select(cleaned,ends_with(".S")),2,likert.cleaner.S)
+# cleaned[, colnames(cleaned) %in% colnames(cleaned.likert.s)] <- cleaned.likert.s
+
+cols<-names(cleaned)
+cleaned.factored<-lapply(cleaned[cols], as.factor)
+```
+```{r}
+cleaner<-function(df){
+to.dummy<-select(cleaned, ends_with(".C"))
+to.dummy.cols<-c(colnames(to.dummy))
+
+
+for (col in to.dummy.cols){
+  #cleaned<-dummies(cleaned,c(col))
+  cleaned<-cSplit_e(cleaned, split.col=col,sep=";", type="character",
+                    mode="binary", drop=T, fill = 0)
+}
+
+dim(cleaned)
+cleaned.likert<-apply(select(cleaned,ends_with(".F")),2,likert.cleaner)
+cleaned[, colnames(cleaned) %in% colnames(cleaned.likert)] <- cleaned.likert
+
+cleaned.likert.s<-apply(select(cleaned,ends_with(".S")),2,likert.cleaner.S)
+cleaned[, colnames(cleaned) %in% colnames(cleaned.likert.s)] <- cleaned.likert.s
+
+cols<-names(cleaned)
+cleaned.factored<-lapply(cleaned[cols], as.factor)
+}
+```
+
+```{r}
+cleaned.search.data<-data.frame(cleaned.factored[-c(1)])
+dim(cleaned.search.data)
+search.MCA=MCA(cleaned.search.data,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+fviz_contrib(search.MCA, choice = "var", axes = 1, top = 15)
+fviz_contrib(search.MCA, choice = "var", axes = 2, top = 15)
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+### What Do Users Enjoy?
+
+```{r}
+enjoyed.data<-search.data[c("Age", "Meal.Prepper","Dietary.Restriction","Home.Cook.Rate","Primary.Format.C","Primary.S.C",
+            "Enjoyed.S.C","NOT.Enjoyed.S.C","Primary.B.C","Enjoyed.B.C","Influential.R.C", 
+            "Use.R.F", "Mod.Note.C", 
+            "Note.Method.S","Potential.Note.Taker","Disc.C","Enjoy.Disc.C", "Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+```

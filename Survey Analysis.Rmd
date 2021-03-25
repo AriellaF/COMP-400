@@ -1,0 +1,428 @@
+---
+title: "Survey Analysis"
+author: "Ariella Fuzaylov"
+date: "3/11/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+library(ggplot2)
+library(tidyverse)
+library(tm)
+library(SnowballC)
+library(textclean)
+library(FactoMineR)
+library(factoextra)
+library("gplots")
+library(corrplot)
+library(dummy)
+library(missMDA)
+```
+
+## Loading Data and Update Header
+
+```{r cars}
+my.data=read.csv("Online Recipe Sharing.csv", header=TRUE, na=c("","."," "))
+colnames(my.data)
+colnames(my.data)<-c("Timestamp", "Age", "Primary.Meal.Prepper", "Household.Dietary.Restriction",
+"Home.Cooking.Frequency", 
+"Primary.Recipe Format", 
+"Primary.Search.Website",
+"Enjoyed.Website.Searching", "Comments.Enjoyed.Website.Searching", "NOT.Enjoyed.Website.Searching", "Comments.NOT.Enjoyed.Website.Searching", "Recipe.Search.Bar.Frequency", 
+"Previous.Recipe.Search.Frequency",
+"Browsing.While.Searching.Frequecny", 
+"Click.Rate", 
+"Search.Browse.Same.Websites",
+"Primary.Browsing.Website", 
+"Enjoyed.Website.Browsing", 
+"Comments.Enjoyed.Website.Browsing", "NOT.Enjoyed.Website.Browsing", "Comments.NOT.Enjoyed.Website.Browsing", "Primary.Source.of.Reviews",
+"Source.of.Influential.Reviews", "Frequency.Reviews.Effect.Behavior", 
+"Frequency.Seek.Out.Review", 
+"Frequency.of.Review", 
+"Frequency.of.Recipe.Saving", 
+"Method.of.Recipe.Saving", 
+"Modification.Frequency", 
+"Modification.Influence.Factors",
+"Modification.Record.Frequency", 
+"Modification.Record.Method", "Satisfaction.with.Available.Record.Methods", 
+"Interest.in.Improved.Record.Method",
+"Frequency.of.Recipe.Discussion", "Frequency.of.Reading.Discussion",
+"Primary.Discussion.Medium", "Enjoyed.Features.of.Discussion.Mediums", "Ingredients.L.V.Above", 
+"Ingredients.L.Comments.Inline.V.Below", "Ingredients.Above.Comments.Below.V.Inline", "Ingredients.By.Step.V.Above", 
+"Ingredients.By.Step.V.Scroll.L", 
+"Ingredients.Above.V.Scroll.L")
+```
+
+```{r}
+for (i in 1:nrow(my.data)){
+  if (my.data$Search.Browse.Same.Websites[i]=="Yes"){
+    my.data$Primary.Browsing.Website[i]<-my.data$Primary.Search.Website[i]
+    my.data$Enjoyed.Website.Browsing[i]<-my.data$Enjoyed.Website.Searching[i]
+    my.data$NOT.Enjoyed.Website.Browsing[i]<-my.data$NOT.Enjoyed.Website.Searching[i]
+  }
+}
+```
+### Word Frequency Table
+```{r}
+Comments.Enjoyed.Searching<-my.data[,21]
+head(Comments.Enjoyed.Searching)
+
+Comments.Enjoyed.Searching<-Comments.Enjoyed.Searching[ Comments.Enjoyed.Searching != ""]
+Comments.Enjoyed.Searching
+Comments.Enjoyed.Searching<-removePunctuation(Comments.Enjoyed.Searching)
+corp<-Corpus(VectorSource(Comments.Enjoyed.Searching))
+corp <- tm_map(corp, content_transformer(tolower))
+corp<-tm_map(corp, content_transformer(removeWords), stopwords('english'))
+corp<-tm_map(corp,stemDocument)
+corp <- tm_map(corp, stripWhitespace) 
+myTdm <- as.matrix(TermDocumentMatrix(corp))
+FreqMat <- data.frame(ST = rownames(myTdm), 
+                      Freq = rowSums(myTdm), 
+                      row.names = NULL)
+FreqMat
+```
+### Remove Stop Words
+```{r}
+# stop.words<- c("i", "me", "my", "myself", "we", "our", "ours", "ourselves", "you", "your", "yours", "yourself", "yourselves", "he", "him", "his", "himself", "she", "her", "hers", "herself", "it", "its", "itself", "they", "them", "their", "theirs", "themselves", "what", "which", "who", "whom", "this", "that", "these", "those", "am", "is", "are", "was", "were", "be", "been", "being", "have", "has", "had", "having", "do", "does", "did", "doing", "a", "an", "the", "and", "but", "if", "or", "because", "as", "until", "while", "of", "at", "by", "for", "with", "about", "against", "between", "into", "through", "during", "before", "after", "above", "below", "to", "from", "up", "down", "in", "out", "on", "off", "over", "under", "again", "further", "then", "once", "here", "there", "when", "where", "why", "how", "all", "any", "both", "each", "few", "more", "most", "other", "some", "such", "no", "nor", "not", "only", "own", "same", "so", "than", "too", "very", "s", "t", "can", "will", "just", "dont", "should", "now", "whether", "get", "lot", "also", "something","really", "many", "like", "usually", "made","make", "try", "want")
+# FreqMat<-FreqMat[!(FreqMat$ST %in% stop.words),]
+
+FreqMat<-FreqMat[!(FreqMat$Freq == 1),]
+FreqMat
+ggplot(data=FreqMat, aes(x=reorder( ST, -Freq), y=Freq)) +
+  geom_bar(stat="identity")+
+  theme(axis.text.x = element_text(angle = 90))
+```
+
+
+### Make a Function to do the above
+```{r}
+freqchart <- function(charlist){
+  charlist<-charlist[charlist!=""]
+  corp<-VCorpus(VectorSource(charlist))
+  
+  corp <- tm_map(corp, content_transformer(tolower))
+  corp <- tm_map(corp, removePunctuation)
+
+  corp<-tm_map(corp, content_transformer(removeWords), stopwords('english'))
+  corp<-tm_map(corp,stemDocument)
+  corp <- tm_map(corp, stripWhitespace) 
+  
+
+  myTdm <- as.matrix(TermDocumentMatrix(corp))
+  FreqMat <- data.frame(ST = rownames(myTdm), 
+                      Freq = rowSums(myTdm), 
+                      row.names = NULL)%>%arrange(desc(Freq))
+  # stop.words<- c("i", "me", "my", "myself", "we", "our", "ours", "ourselves", "you", "your", "yours", "yourself", "yourselves", "he", "him", "his", "himself", "she", "her", "hers", "herself", "it", "its", "itself", "they", "them", "their", "theirs", "themselves", "what", "which", "who", "whom", "this", "that", "these", "those", "am", "is", "are", "was", "were", "be", "been", "being", "have", "has", "had", "having", "do", "does", "did", "doing", "a", "an", "the", "and", "but", "if", "or", "because", "as", "until", "while", "of", "at", "by", "for", "with", "about", "against", "between", "into", "through", "during", "before", "after", "above", "below", "to", "from", "up", "down", "in", "out", "on", "off", "over", "under", "again", "further", "then", "once", "here", "there", "when", "where", "why", "how", "all", "any", "both", "each", "few", "more", "most", "other", "some", "such", "no", "nor", "not", "only", "own", "same", "so", "than", "too", "very", "s", "t", "can", "will", "just", "dont", "should", "now", "whether", "get", "lot", "also", "something","really", "many", "like", "usually", "made","make", "makes", "try", "want", "don't", "much", "might", "feel", "sometimes", "good", "better", "like")
+  # FreqMat<-FreqMat[!(FreqMat$ST %in% stop.words),]
+  FreqMat<-FreqMat[!(FreqMat$Freq == 1),]
+  FreqMat
+  p<-ggplot(data=FreqMat, aes(x=reorder( ST, -Freq), y=Freq)) +
+    geom_bar(stat="identity", fill="dodger blue")+
+    theme(axis.text.x = element_text(angle = 90))
+}
+Comments.Enjoyed.Searching.Plot<-freqchart(my.data[,9])
+Comments.Enjoyed.Searching.Plot + ggtitle("Enjoy Searching Responces")
+Comments.NOT.Enjoyed.Searching.Plot<-freqchart(my.data[,11])
+Comments.NOT.Enjoyed.Searching.Plot + ggtitle("NOT Enjoy Searching Responces")
+Comments.Enjoyed.Browsing.Plot<-freqchart(my.data[,19])
+Comments.Enjoyed.Browsing.Plot + ggtitle("Enjoy Browsing Responces")
+Comments.NOT.Enjoyed.Browsing.Plot<-freqchart(my.data[,21])
+Comments.NOT.Enjoyed.Browsing.Plot + ggtitle("NOT Enjoy Browsing Responces")
+```
+
+```{r}
+
+ab.test<-my.data[,39:44]
+
+# ad.MCA=MCA(my.data,graph=FALSE)
+# head(ab.test)
+# fviz_mca_biplot(ad.MCA,repel = TRUE, # Avoid text overlapping (slow if many point)
+#                ggtheme = theme_minimal())
+# fviz_screeplot(ad.MCA,addlabels=T)
+# fviz_mca_var(ad.MCA, choice = "mca.cor", repel = TRUE, 
+#              ggtheme = theme_minimal())
+# fviz_contrib(ad.MCA, choice = "var", axes = 1, top = 15)
+# fviz_mca_var(ad.MCA, col.var = "cos2",
+#              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+#              repel = TRUE, ggtheme = theme_minimal())
+
+```
+
+
+```{r}
+ab.test<-my.data[,39:44]
+class(ab.test)
+ad.MCA=MCA(ab.test,graph=FALSE)
+fviz_screeplot(ad.MCA,addlabels=T)
+fviz_mca_var(ad.MCA, choice = "mca.cor", repel = TRUE, 
+             ggtheme = theme_minimal())
+fviz_contrib(ad.MCA, choice = "var", axes = 1, top = 15)
+fviz_mca_var(ad.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+# col_names<-names(ab.test)
+# ab.test[col_names]<-lapply(ab.test[col_names],as.factor)
+ab.test$Ingredients.L.V.Above<-c(A= "Ing. L", B ="Ing. Above")
+ab.test$Ingredients.L.Comments.Inline.V.Below<-c(A= "Ing. L, Com In", B ="Ing. L, Com Below")
+ab.test$Ingredients.Above.Comments.Below.V.Inline<-c(A= "Ing. Above, Com Below", B ="Ing. Above, Com In")
+ab.test$Ingredients.By.Step.V.Above<-c(A= "Ing. By Step", B ="Ing. Above")
+ab.test$Ingredients.By.Step.V.Scroll.L<-c(A= "Ing. By Step", B ="Ing. Scroll")
+ab.test$Ingredients.Above.V.Scroll.L<-c(A= "Ing. Above", B ="Ing. Scroll")
+
+
+ad.MCA=MCA(ab.test,graph=FALSE)
+fviz_screeplot(ad.MCA,addlabels=T)
+fviz_mca_var(ad.MCA, choice = "mca.cor", repel = TRUE, 
+             ggtheme = theme_minimal())
+fviz_contrib(ad.MCA, choice = "var", axes = 1, top = 15)
+fviz_mca_var(ad.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+```{r}
+# drop<-c(9,11,19,21)
+# 
+# my.data.clean<-my.data[-c(9,11,19,21)]
+# names(my.data.clean)
+# search.data<-my.data.clean[c(1,7,8,9,11,12,13,16)]
+# cols<-names(search.data)
+# # search.data<-lapply(search.data[cols], as.factor)
+# search.data<-data.frame(search.data)
+# head(search.data)
+# 
+# search.data.clean<- search.data%>% separate_rows(Primary.Search.Website, sep = ";")
+# head(search.data.clean)
+# search.data.dummies<-search.data.clean%>%
+#   select(Primary.Search.Website)%>%
+#   dummy()%>%
+#   bind_cols(search.data.clean)%>%
+#   select(-Primary.Search.Website)%>%
+#   gather(key,value,-"Timestamp",-"Enjoyed.Website.Searching" ,  -"NOT.Enjoyed.Website.Searching",-"Previous.Recipe.Search.Frequency" ,  -"Browsing.While.Searching.Frequecny", -"Click.Rate")#%>%
+#   # filter(value!=0)%>%
+#   # spread(key,value,fill=0)%>%
+#   # group_by("Timestamp","Enjoyed.Website.Searching" , "NOT.Enjoyed.Website.Searching","Previous.Recipe.Search.Frequency" ,  "Browsing.While.Searching.Frequecny", "Click.Rate")%>%  
+#   #  ungroup() %>%
+#   #   left_join(y=search.data, by=c("Timestamp","Enjoyed.Website.Searching" ,         "NOT.Enjoyed.Website.Searching","Previous.Recipe.Search.Frequency" ,  "Browsing.While.Searching.Frequecny", "Click.Rate")) 
+# # %>%
+#   # mutate_all(funs(as.integer(.) %>% as.logical())) 
+# # %>%  ungroup()
+# # %>%
+# #   left_join(y=search.data, by=c("Enjoyed.Website.Searching" ,         "NOT.Enjoyed.Website.Searching","Previous.Recipe.Search.Frequency" ,  "Browsing.While.Searching.Frequecny", "Click.Rate")) %>% 
+#    # select("Primary.Search.Website","Enjoyed.Website.Searching" ,         "NOT.Enjoyed.Website.Searching","Previous.Recipe.Search.Frequency" ,  "Browsing.While.Searching.Frequecny", "Click.Rate", matches("Primary.Search.Website"))
+# # colnames(search.data.dummies)
+# head(search.data.dummies)
+
+```
+
+```{r}
+my.data.selected<-my.data[c(7,8,10,17,18,20,22,23,28,37)]
+head(my.data.selected)
+variables<-c()
+
+ for (i in 1:ncol(my.data.selected)){
+  temp<- my.data.selected[i]
+  temp<-separate_rows(temp,1, sep = ";")
+  
+  # ##separate values that contain a list of examples of a category
+  # temp<-unique(temp)
+  # etc<-c(grep("*etc.*",temp[[1]]))
+  # etc<-append(etc,c(grep("*ie*",temp[[1]])))
+  # etc<-temp[[1]][etc]
+  # 
+  # #take entries with lists and separate list
+  # rest<-temp[[1]][ ! temp[[1]]%in% etc ]
+  # rest
+  # rest<-data.frame(rest)
+  # rest<-separate_rows(rest,1, sep = ",")
+  # rest<-unique(rest)
+  # variables<-append(variables,etc)
+  variables<-append(variables,temp[[1]])
+  variables<-unique(variables)
+  data.frame(variables)
+ }
+variables
+cleaned.variables<-c(
+  "Mags",
+  "Blogs",
+  "Google",
+  "Youtube",
+  "Community Based" ,
+  "Mags",
+  "Community Based" ,
+  "Pinterest",
+  "Blogs",
+  "TikTok",
+  "Mags",
+  "Facebook",
+  "Reddit",
+  "Mags",
+  "Mags",
+  "Mags",
+  "Mags",
+  "Instagram",
+  "Mags",
+  "Friends/Family",
+  "Blogs",
+  "NA",
+  "Blogs",
+  "Mags",
+  "Instagram",
+  "Instagram",
+  "None",
+  "None",
+  "Friends/Family",
+  "Online Groups",
+  "Other Users",
+  "Influencers",
+  "Influencers",
+  "Facebook",
+  "Browser Bookmarks",
+  "Digital Filing",
+  "Memory",
+  "Search History",
+  "Save Function",
+  "Physical Filing",
+  "None",
+  "Memory",
+  "Memory",
+  "Memory",
+  "Save Function",
+  "Verbal",
+  "Verbal",
+  "Verbal",
+  "Digital Chat",
+  "Verbal",
+  "Verbal",
+  "Digital Chat",
+  "Google Docs",
+  "Digital Chat",
+  "Verbal",
+  "Verbal",
+  "Verbal",
+  "Verbal",
+  "Verbal",
+  "Verbal",
+  "Verbal",
+  "Verbal",
+  "Digital Chat",
+  "None",
+  "Digital Chat",
+  "Verbal",
+  "Digital Chat",
+  "Digital Chat",
+  "None"
+)
+names(cleaned.variables)<-variables
+cleaned.variables
+```
+
+```{r}
+drop<-c(9,11,19,21)
+my.data.clean<-my.data[-c(9,11,19,21)]
+search.data<-my.data.clean[c(7,8,9,11,12,13)]
+search.data<-data.frame(search.data)
+colnames(search.data)<-c("Primary","Enjoyed","NOT.Enjoyed","Repeat.Search","Browse.Search","Click.Rate")
+search.data<-tibble::rowid_to_column(search.data, "ID")
+search.data<- search.data%>% replace_na(list(NOT.Enjoyed
+="None"))
+write.csv(search.data, file="uncleaned.csv")
+
+```
+
+For the sake of this analysis any website that has a test kitchen that creates editorial content or is able to curate content from proffesional sources is a magazine, a a website with one or two people testing recipes is a blog, and a website that allows users to contribute their own recipes is community based. The information for this classification is found on the website's about page. Additionally, media such as cookbooks and podcasts are classified under Influencers due to their personality driven nature.
+
+```{r}
+dummies<-function(search.data, to.clean){
+  col.names<-c(names(search.data))
+  col.names<-col.names[col.names!=to.clean]
+  search.data[to.clean][is.na(search.data[to.clean])]<-"None"
+  # search.data%>%replace_na((to.clean="None"))
+
+  search.data.clean<- search.data%>% separate_rows(to.clean, sep = ";")
+  
+  search.data.clean[[to.clean]]<-as.character(cleaned.variables[search.data.clean[[to.clean]]])
+  
+  search.data.dummies<-search.data.clean%>%
+    select(to.clean)%>%
+    dummy()%>%
+    bind_cols(search.data.clean)%>%
+    select(-to.clean)%>%
+     pivot_longer(cols=-col.names, names_to = "key", values_to = "value")%>%
+     filter(value!=0)%>%
+    unique()%>%
+   spread(key, value, fill = 0)
+  # group_by_at(col.names)%>%
+  # ungroup() # %>%
+  # left_join(y=search.data, by=col.names)%>% select(-last_col())
+}
+# str(search.data)
+# cleaned<-dummies(search.data,c("Primary"))
+# cleaned<-dummies(cleaned,c("Enjoyed"))
+cleaned[is.na((cleaned))]="None"
+cleaned<-dummies(search.data, c("NOT.Enjoyed"))
+dim(cleaned)
+cleaned
+# cleaned=cleaned%>%mutate(Repeat.Search= cut(Repeat.Search, c(0, 1.2, 2.5,3.5,4.5,5.5),right=FALSE,labels=c("Never","Rarely","Sometimes", "Often","Always")), Browse.Search = cut(Browse.Search, c(0, 1.2, 2.5,3.5,4.5,5.5),right=FALSE,labels=c("Never","Rarely","Sometimes", "Often","Always")))
+
+cols<-names(cleaned)
+cleaned.factored<-lapply(cleaned[cols], as.factor)
+# cols<-names(search.data)
+# search.data<-lapply(search.data[cols], as.factor)
+
+write.csv(cleaned, file="myFileName.csv")
+# cleaned
+# missing.vals<-imputeMCA(cleaned, tab.disj =missing.vals$tab.disj, ncp = 1)
+# search.MCA=MCA(search.data,graph=FALSE)
+# fviz_screeplot(search.MCA,addlabels=T)
+# fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+#              ggtheme = theme_minimal())
+# fviz_contrib(search.MCA, choice = "var", axes = 1, top = 15)
+# fviz_mca_var(search.MCA, col.var= "cos2",
+#              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+#              repel = TRUE, ggtheme = theme_minimal())
+```
+
+```{r}
+cleaned.search.data1<-data.frame(cleaned[-c(1)])
+search.MCA=MCA(cleaned.search.data1,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+fviz_contrib(search.MCA, choice = "var", axes = 1, top = 15)
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+```{r}
+c(colnames(cleaned))
+var.names<-c(colnames(cleaned))
+var.names[7]<-"Primary_Blogs"
+var.names[8]<-"Primary_Community.Based.Websites"
+var.names[15]<-"Primary_Online.Cooking.Magazines"
+var.names[]<-"NOT.Enjoyed_Blogs"
+
+```
+
+
+
+
+```{r}
+
+set.seed(6933)
+
+fruit_words <- c("apple", "orange", "banana", "pappels", "orong", "bernaner")
+
+dat <- data.frame(fruit = sample(fruit_words, size=10, replace=TRUE), 
+                  stringsAsFactors=FALSE)
+
+fruit_lkup <- c(apple="appl", orange="orng", banana="bnna", 
+                pappels="appl", orong="orng", bernaner="bnna")
+str(dat)
+str(dat$fruit)
+
+dat$fruit_clean <- as.character(fruit_lkup[dat$fruit])
+dat
+
+```
