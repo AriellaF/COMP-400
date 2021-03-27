@@ -54,6 +54,7 @@ colnames(my.data)<-c("Timestamp", "Age", "Primary.Meal.Prepper", "Household.Diet
 "Ingredients.L.Comments.Inline.V.Below", "Ingredients.Above.Comments.Below.V.Inline", "Ingredients.By.Step.V.Above", 
 "Ingredients.By.Step.V.Scroll.L", 
 "Ingredients.Above.V.Scroll.L")
+head(my.data)
 ```
 
 ## Re-Factor Data
@@ -90,8 +91,7 @@ my.data.factored$Home.Cooking.Rate<-as.factor(my.data.factored$Home.Cooking.Rate
 my.data.factored<- mutate(my.data.factored, 
                           Age = fct_collapse(Age, 
                                              YA = c("18 - 24 years old","25 - 34 years old"),
-                                             Adult = c("35 - 44 years old","45 - 54 years old"),
-                                             Older.Adult=c("55 - 64 years old")),
+                                             Adult = c("35 - 44 years old","45 - 54 years old","55 - 64 years old")),
                           Primary.Meal.Prepper = fct_collapse(Primary.Meal.Prepper,
                                                               Respondent = c("You", "I cook for myself"),
                                                               other_level = "Other"),
@@ -101,7 +101,8 @@ my.data.factored<- mutate(my.data.factored,
                   Home.Cooking.Rate=fct_collapse(Home.Cooking.Rate,
                                                  Daily=c("Almost every meal","Daily","Every meal"),
                                                  Weekly=c("Several times a week","Once or twice a week"),
-                                                 Monthly=c("Once or twice a month")))
+                                                 Monthly=c("Once or twice a month"))
+                  )
 
 ```
 ### Website Recoding:
@@ -275,6 +276,9 @@ dummies<-function(search.data, to.clean){
   
   search.data.clean[to.clean]<-
     as.character(cleaned.variables[search.data.clean[[to.clean]]])
+  print(typeof(search.data.clean[to.clean]))
+  search.data.clean[to.clean]<-lapply(search.data.clean[to.clean],function(x) replace(x,is.na(x),"Empty"))
+  # search.data.clean[to.clean]<-replace_na(search.data.clean[to.clean], "Empty")
   # var<-to.clean[1]
   # search.data.dummies<-search.data.clean%>%
   #   group_by_at(col.names)%>%
@@ -289,8 +293,15 @@ dummies<-function(search.data, to.clean){
     bind_cols(search.data.clean)%>%
     select(-(to.clean))%>%
     pivot_longer(cols=-col.names, names_to = "key", values_to = "value")%>%
-    filter(value!=0)%>%
-    unique()%>%
+    filter(value!=0)
+  
+  # write.table(search.data.dummies, "before.csv", sep = ",", col.names = !file.exists("before.csv"), append = T)
+  search.data.dummies<-search.data.dummies%>%
+    unique()
+  
+  # write.table(search.data.dummies, "after.csv", sep = ",", col.names = !file.exists("after.csv"), append = T)
+
+  search.data.dummies<-search.data.dummies%>%
     spread(key, value, fill = 0)
     
   # search.data.dummies<-search.data.clean%>%
@@ -338,11 +349,12 @@ search.data<-my.data.factored[-c(1,9,11,19,21)]
 search.data<-data.frame(search.data)
 new.names=c("Age", "Meal.Prepper","Dietary.Restriction","Home.Cook.Rate","Primary.Format.C","Primary.S.C",
             "Enjoyed.S.C","NOT.Enjoyed.S.C","Recipe.Search.F","Repeat.S.F","Browse.Search.F","Click.Rate",
-            "Search.Browse.Same","Primary.B.C","Enjoyed.B.C","NOT.Enjoyed.B.C", "Primary.R.C", "Influential.R.C", 
-            "Use.R.F","Seek.R.F", "R.F","Save.F","Save.C","Mod.F","Why.Mod.C", "Mod.Note.F", "Mod.Note.C", 
-            "Note.Method.S","Potential.Note.Taker","Disc.F","Read.Disc.F","Disc.C","Enjoy.Disc.C", "Ing.L.V.Above", 
+            "Search.Browse.Same","Primary.B.C","Enjoyed.B.C","NOT.Enjoyed.B.C", "Primary.R.C", "Influential.R.C",
+            "Use.R.F","Seek.R.F", "R.F","Save.F","Save.C","Mod.F","Why.Mod.C", "Mod.Note.F", "Mod.Note.C",
+            "Note.Method.S","Potential.Note.Taker","Disc.F","Read.Disc.F","Disc.C","Enjoy.Disc.C", "Ing.L.V.Above",
             "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
-            "Ing.Above.V.Scroll.L")
+            "Ing.Above.V.Scroll.L"
+            )
 colnames(search.data)<-new.names
 
 search.data<-tibble::rowid_to_column(search.data, "ID")
@@ -400,9 +412,11 @@ From this data we can see that frequency of discussion, seeking reviews, reading
 cleaned<-search.data
 to.dummy<-select(cleaned, ends_with(".C"))
 to.dummy.cols<-c(colnames(to.dummy))
-
+cleaned$Primary.Format.C[57]
+# head(cleaned)
 for (col in to.dummy.cols){
    cleaned<-dummies(cleaned,c(col))
+   # print(dim(cleaned))
 # #   # cleaned<-cSplit_e(cleaned, split.col=col,sep=";", type="character",
 # #                     # mode="binary", drop=T, fill = 0)
 }
@@ -415,6 +429,7 @@ for (col in to.dummy.cols){
 
 cols<-names(cleaned)
 cleaned.factored<-lapply(cleaned[cols], as.factor)
+
 ```
 
 ```{r Cleaner func}
@@ -738,6 +753,7 @@ fviz_mca_var(search.MCA, col.var = "cos2",
 cleaned.adult<-filter(search.data, Age == "Adult")
 cleaned.adult<-cleaned.adult%>%select(-c(Age))
 data.cleaned.Adult<-cleaner.S(cleaned.adult)
+data.cleaned.Adult
 search.MCA=MCA(data.cleaned.Adult,graph=FALSE)
 fviz_screeplot(search.MCA,addlabels=T)
 fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,

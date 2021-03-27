@@ -61,9 +61,9 @@ colnames(my.data.avg)<-c("Timestamp", "Age", "Primary.Meal.Prepper", "Household.
 If Respondent indicated that they search and browse on the same websites, populate the empty cells with the same data. This assumes that the user's searching behavior is exactly the same as the browsing behavior if the user selected yes for searching and browsing on the same websites.
 
 ```{r}
-data.frame(a=my.data.avg$Primary.Browsing.Website,b=my.data.avg$Primary.Search.Website)
-head(my.data.avg$Primary.Search.Website)
-head(my.data.avg$Primary.Browsing.Website)
+# data.frame(a=my.data.avg$Primary.Browsing.Website,b=my.data.avg$Primary.Search.Website)
+# head(my.data.avg$Primary.Search.Website)
+# head(my.data.avg$Primary.Browsing.Website)
 
 for (i in 1:nrow(my.data.avg)){
   if (my.data.avg$Search.Browse.Same.Websites[i]=="No"){
