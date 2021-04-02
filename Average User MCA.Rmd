@@ -381,15 +381,15 @@ cleaner.S<-function(df){
 ```
 
 ```{r mca all search data}
-cleaned.search.data<-data.frame(cleaned.factored[-c(1)])
-search.MCA=MCA(cleaned.search.data,graph=FALSE)
-fviz_screeplot(search.MCA,addlabels=T)
-fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
-             ggtheme = theme_minimal())
-
-fviz_mca_var(search.MCA, col.var = "cos2",
-             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
-             repel = TRUE, ggtheme = theme_minimal())
+# cleaned.search.data<-data.frame(cleaned.factored[-c(1)])
+# search.MCA=MCA(cleaned.search.data,graph=FALSE)
+# fviz_screeplot(search.MCA,addlabels=T)
+# fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+#              ggtheme = theme_minimal())
+# 
+# fviz_mca_var(search.MCA, col.var = "cos2",
+#              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+#              repel = TRUE, ggtheme = theme_minimal())
 ```
 
 ## What Do Users Enjoy?
@@ -516,29 +516,29 @@ Slightly More variance is captured in the components when we stratify by diet.
 ```{r diet yes all}
 cleaned.Diet.Yes<-filter(search.data, Dietary.Restriction == "Yes")
 cleaned.Diet.Yes<-cleaned.Diet.Yes%>%select(-c(Dietary.Restriction))
-data.clean.Diet.Yes<-cleaner.S(cleaned.Diet.Yes)
-search.MCA=MCA(data.clean.Diet.Yes,graph=FALSE)
-fviz_screeplot(search.MCA,addlabels=T)
-fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
-             ggtheme = theme_minimal())
-
-fviz_mca_var(search.MCA, col.var = "cos2",
-             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
-             repel = TRUE, ggtheme = theme_minimal())
+# data.clean.Diet.Yes<-cleaner.S(cleaned.Diet.Yes)
+# search.MCA=MCA(data.clean.Diet.Yes,graph=FALSE)
+# fviz_screeplot(search.MCA,addlabels=T)
+# fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+#              ggtheme = theme_minimal())
+# 
+# fviz_mca_var(search.MCA, col.var = "cos2",
+#              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+#              repel = TRUE, ggtheme = theme_minimal())
 ```
 
 ```{r diet no all}
 cleaned.Diet.No<-filter(search.data, Dietary.Restriction == "No")
 cleaned.Diet.No<-cleaned.Diet.No%>%select(-c(Dietary.Restriction))
-data.clean.Diet.No<-cleaner.S(cleaned.Diet.No)
-search.MCA=MCA(data.clean.Diet.No,graph=FALSE)
-fviz_screeplot(search.MCA,addlabels=T)
-fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
-             ggtheme = theme_minimal())
-
-fviz_mca_var(search.MCA, col.var = "cos2",
-             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
-             repel = TRUE, ggtheme = theme_minimal())
+# data.clean.Diet.No<-cleaner.S(cleaned.Diet.No)
+# search.MCA=MCA(data.clean.Diet.No,graph=FALSE)
+# fviz_screeplot(search.MCA,addlabels=T)
+# fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+#              ggtheme = theme_minimal())
+# 
+# fviz_mca_var(search.MCA, col.var = "cos2",
+#              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+#              repel = TRUE, ggtheme = theme_minimal())
 ```
 
 ### What Do Users Enjoy?
@@ -767,29 +767,29 @@ fviz_mca_var(search.MCA, col.var = "cos2",
 cleaned.YA<-filter(search.data, Age == "YA")
 cleaned.YA<-cleaned.YA%>%select(-c(Age))
 
-data.cleaned.YA<-cleaner.S(cleaned.YA)
-search.MCA=MCA(data.cleaned.YA,graph=FALSE)
-fviz_screeplot(search.MCA,addlabels=T)
-fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
-             ggtheme = theme_minimal())
-
-fviz_mca_var(search.MCA, col.var = "cos2",
-             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
-             repel = TRUE, ggtheme = theme_minimal())
+# data.cleaned.YA<-cleaner.S(cleaned.YA)
+# search.MCA=MCA(data.cleaned.YA,graph=FALSE)
+# fviz_screeplot(search.MCA,addlabels=T)
+# fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+#              ggtheme = theme_minimal())
+# 
+# fviz_mca_var(search.MCA, col.var = "cos2",
+#              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+#              repel = TRUE, ggtheme = theme_minimal())
 ```
 
 ```{r adult all}
 cleaned.adult<-filter(search.data, Age == "Adult")
 cleaned.adult<-cleaned.adult%>%select(-c(Age))
 
-data.cleaned.Adult<-cleaner.S(cleaned.adult)
-search.MCA=MCA(data.cleaned.Adult,graph=FALSE)
-fviz_screeplot(search.MCA,addlabels=T)
-fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
-             ggtheme = theme_minimal())
-fviz_mca_var(search.MCA, col.var = "cos2",
-             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
-             repel = TRUE, ggtheme = theme_minimal())
+# data.cleaned.Adult<-cleaner.S(cleaned.adult)
+# search.MCA=MCA(data.cleaned.Adult,graph=FALSE)
+# fviz_screeplot(search.MCA,addlabels=T)
+# fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+#              ggtheme = theme_minimal())
+# fviz_mca_var(search.MCA, col.var = "cos2",
+#              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+#              repel = TRUE, ggtheme = theme_minimal())
 ```
 ### What Do Users Enjoy?
 ```{r YA enjoy}
@@ -1018,29 +1018,29 @@ fviz_mca_var(search.MCA, col.var = "cos2",
 primary.cook<-filter(search.data, Meal.Prepper == "Respondent")
 primary.cook<-primary.cook%>%select(-c(Meal.Prepper))
 
-data.cook.cleaned<-cleaner.S(primary.cook)
-search.MCA=MCA(data.cook.cleaned,graph=FALSE)
-fviz_screeplot(search.MCA,addlabels=T)
-fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
-             ggtheme = theme_minimal())
-
-fviz_mca_var(search.MCA, col.var = "cos2",
-             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
-             repel = TRUE, ggtheme = theme_minimal())
+# data.cook.cleaned<-cleaner.S(primary.cook)
+# search.MCA=MCA(data.cook.cleaned,graph=FALSE)
+# fviz_screeplot(search.MCA,addlabels=T)
+# fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+#              ggtheme = theme_minimal())
+# 
+# fviz_mca_var(search.MCA, col.var = "cos2",
+#              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+#              repel = TRUE, ggtheme = theme_minimal())
 ```
 
 ```{r primary cook other}
 primary.cook.o<-filter(search.data, Meal.Prepper == "Other")
 primary.cook.o<-primary.cook.o%>%select(-c(Meal.Prepper))
 
-data.cleaned.cook.o<-cleaner.S(primary.cook.o)
-search.MCA=MCA(data.cleaned.cook.o,graph=FALSE)
-fviz_screeplot(search.MCA,addlabels=T)
-fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
-             ggtheme = theme_minimal())
-fviz_mca_var(search.MCA, col.var = "cos2",
-             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
-             repel = TRUE, ggtheme = theme_minimal())
+# data.cleaned.cook.o<-cleaner.S(primary.cook.o)
+# search.MCA=MCA(data.cleaned.cook.o,graph=FALSE)
+# fviz_screeplot(search.MCA,addlabels=T)
+# fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+#              ggtheme = theme_minimal())
+# fviz_mca_var(search.MCA, col.var = "cos2",
+#              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+#              repel = TRUE, ggtheme = theme_minimal())
 ```
 ### What Do Users Enjoy?
 ```{r primary cook repsondent enjoy}
@@ -1259,33 +1259,33 @@ fviz_mca_var(search.MCA, col.var = "cos2",
 ```{r daily cooks all}
 daily.cooks<-filter(search.data, Home.Cook.Rate == "Daily")
 daily.cooks<-daily.cooks%>%select(-c(Home.Cook.Rate))
-cols<-names(daily.cooks)
-daily.cook.data<-lapply(daily.cooks[cols], as.factor)
-daily.cook.data<-data.frame(daily.cook.data)
-data.cook.cleaned<-cleaner.S(daily.cook.data)
-search.MCA=MCA(data.cook.cleaned,graph=FALSE)
-fviz_screeplot(search.MCA,addlabels=T)
-fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
-             ggtheme = theme_minimal())
-
-fviz_mca_var(search.MCA, col.var = "cos2",
-             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
-             repel = TRUE, ggtheme = theme_minimal())
+# cols<-names(daily.cooks)
+# daily.cook.data<-lapply(daily.cooks[cols], as.factor)
+# daily.cook.data<-data.frame(daily.cook.data)
+# data.cook.cleaned<-cleaner.S(daily.cook.data)
+# search.MCA=MCA(data.cook.cleaned,graph=FALSE)
+# fviz_screeplot(search.MCA,addlabels=T)
+# fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+#              ggtheme = theme_minimal())
+# 
+# fviz_mca_var(search.MCA, col.var = "cos2",
+#              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+#              repel = TRUE, ggtheme = theme_minimal())
 ```
 
 ```{r weekly/monlthly cooks all}
 weekly.cooks<-filter(search.data, !(Home.Cook.Rate == "Daily") )
 weekly.cooks<-weekly.cooks%>%select(-c(Home.Cook.Rate))
-cols<-names(weekly.cooks)
-weekly.cook.data<-lapply(weekly.cooks[cols], as.factor)
-weekly.cook.data<-data.frame(weekly.cook.data)
-search.MCA=MCA(weekly.cook.data,graph=FALSE)
-fviz_screeplot(search.MCA,addlabels=T)
-fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
-             ggtheme = theme_minimal())
-fviz_mca_var(search.MCA, col.var = "cos2",
-             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
-             repel = TRUE, ggtheme = theme_minimal())
+# cols<-names(weekly.cooks)
+# weekly.cook.data<-lapply(weekly.cooks[cols], as.factor)
+# weekly.cook.data<-data.frame(weekly.cook.data)
+# search.MCA=MCA(weekly.cook.data,graph=FALSE)
+# fviz_screeplot(search.MCA,addlabels=T)
+# fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+#              ggtheme = theme_minimal())
+# fviz_mca_var(search.MCA, col.var = "cos2",
+#              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+#              repel = TRUE, ggtheme = theme_minimal())
 ```
 
 

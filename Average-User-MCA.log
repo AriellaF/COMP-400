@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2021.3.29)  29 MAR 2021 10:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2021.3.29)  30 MAR 2021 16:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -645,1509 +645,1259 @@ Underfull \vbox (badness 10000) detected at line 606
  []
 
 [8] [9] [10]
-<Average-User-MCA_files/figure-latex/mca all search data-1.pdf, id=72, 469.755p
-t x 325.215pt>
-File: Average-User-MCA_files/figure-latex/mca all search data-1.pdf Graphic fil
-e (type pdf)
-<use Average-User-MCA_files/figure-latex/mca all search data-1.pdf>
-Package pdftex.def Info: Average-User-MCA_files/figure-latex/mca all search dat
-a-1.pdf  used on input line 747.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[11]
-<Average-User-MCA_files/figure-latex/mca all search data-2.pdf, id=77, 469.755p
-t x 325.215pt>
-File: Average-User-MCA_files/figure-latex/mca all search data-2.pdf Graphic fil
-e (type pdf)
-<use Average-User-MCA_files/figure-latex/mca all search data-2.pdf>
-Package pdftex.def Info: Average-User-MCA_files/figure-latex/mca all search dat
-a-2.pdf  used on input line 761.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[12 <./Average-User-MCA_files/figure-latex/mca all search data-1.pdf>]
-<Average-User-MCA_files/figure-latex/mca all search data-3.pdf, id=87, 469.755p
-t x 325.215pt>
-File: Average-User-MCA_files/figure-latex/mca all search data-3.pdf Graphic fil
-e (type pdf)
-<use Average-User-MCA_files/figure-latex/mca all search data-3.pdf>
-Package pdftex.def Info: Average-User-MCA_files/figure-latex/mca all search dat
-a-3.pdf  used on input line 776.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[13 <./Average-User-MCA_files/figure-latex/mca all search data-2.pdf>]
-<Average-User-MCA_files/figure-latex/mca enjoyed all-1.pdf, id=98, 469.755pt x 
+<Average-User-MCA_files/figure-latex/mca enjoyed all-1.pdf, id=72, 469.755pt x 
 325.215pt>
 File: Average-User-MCA_files/figure-latex/mca enjoyed all-1.pdf Graphic file (t
 ype pdf)
 <use Average-User-MCA_files/figure-latex/mca enjoyed all-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/mca enjoyed all-1.
-pdf  used on input line 796.
+pdf  used on input line 771.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[14 <./Average-User-MCA_files/figure-latex/mca all search data-3.pdf>]
-<Average-User-MCA_files/figure-latex/mca enjoyed all-2.pdf, id=111, 469.755pt x
- 325.215pt>
+[11]
+<Average-User-MCA_files/figure-latex/mca enjoyed all-2.pdf, id=79, 469.755pt x 
+325.215pt>
 File: Average-User-MCA_files/figure-latex/mca enjoyed all-2.pdf Graphic file (t
 ype pdf)
 <use Average-User-MCA_files/figure-latex/mca enjoyed all-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/mca enjoyed all-2.
-pdf  used on input line 810.
+pdf  used on input line 785.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[15 <./Average-User-MCA_files/figure-latex/mca enjoyed all-1.pdf>]
-<Average-User-MCA_files/figure-latex/mca enjoyed all-3.pdf, id=121, 469.755pt x
- 325.215pt>
+[12 <./Average-User-MCA_files/figure-latex/mca enjoyed all-1.pdf>]
+<Average-User-MCA_files/figure-latex/mca enjoyed all-3.pdf, id=89, 469.755pt x 
+325.215pt>
 File: Average-User-MCA_files/figure-latex/mca enjoyed all-3.pdf Graphic file (t
 ype pdf)
 <use Average-User-MCA_files/figure-latex/mca enjoyed all-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/mca enjoyed all-3.
-pdf  used on input line 825.
+pdf  used on input line 800.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[16 <./Average-User-MCA_files/figure-latex/mca enjoyed all-2.pdf>]
-<Average-User-MCA_files/figure-latex/mca not enjoyed all-1.pdf, id=131, 469.755
+[13 <./Average-User-MCA_files/figure-latex/mca enjoyed all-2.pdf>]
+<Average-User-MCA_files/figure-latex/mca not enjoyed all-1.pdf, id=100, 469.755
 pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/mca not enjoyed all-1.pdf Graphic fil
 e (type pdf)
 <use Average-User-MCA_files/figure-latex/mca not enjoyed all-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/mca not enjoyed al
-l-1.pdf  used on input line 843.
+l-1.pdf  used on input line 818.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[17 <./Average-User-MCA_files/figure-latex/mca enjoyed all-3.pdf>]
-<Average-User-MCA_files/figure-latex/mca not enjoyed all-2.pdf, id=144, 469.755
+[14 <./Average-User-MCA_files/figure-latex/mca enjoyed all-3.pdf>]
+<Average-User-MCA_files/figure-latex/mca not enjoyed all-2.pdf, id=113, 469.755
 pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/mca not enjoyed all-2.pdf Graphic fil
 e (type pdf)
 <use Average-User-MCA_files/figure-latex/mca not enjoyed all-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/mca not enjoyed al
-l-2.pdf  used on input line 857.
+l-2.pdf  used on input line 832.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[18 <./Average-User-MCA_files/figure-latex/mca not enjoyed all-1.pdf>]
-<Average-User-MCA_files/figure-latex/mca not enjoyed all-3.pdf, id=155, 469.755
+[15 <./Average-User-MCA_files/figure-latex/mca not enjoyed all-1.pdf>]
+<Average-User-MCA_files/figure-latex/mca not enjoyed all-3.pdf, id=123, 469.755
 pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/mca not enjoyed all-3.pdf Graphic fil
 e (type pdf)
 <use Average-User-MCA_files/figure-latex/mca not enjoyed all-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/mca not enjoyed al
-l-3.pdf  used on input line 872.
+l-3.pdf  used on input line 847.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[19 <./Average-User-MCA_files/figure-latex/mca not enjoyed all-2.pdf>]
-<Average-User-MCA_files/figure-latex/mca searching all-1.pdf, id=166, 469.755pt
+[16 <./Average-User-MCA_files/figure-latex/mca not enjoyed all-2.pdf>]
+<Average-User-MCA_files/figure-latex/mca searching all-1.pdf, id=133, 469.755pt
  x 325.215pt>
 File: Average-User-MCA_files/figure-latex/mca searching all-1.pdf Graphic file 
 (type pdf)
 <use Average-User-MCA_files/figure-latex/mca searching all-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/mca searching all-
-1.pdf  used on input line 891.
+1.pdf  used on input line 866.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[20 <./Average-User-MCA_files/figure-latex/mca not enjoyed all-3.pdf>]
-<Average-User-MCA_files/figure-latex/mca searching all-2.pdf, id=179, 469.755pt
+[17 <./Average-User-MCA_files/figure-latex/mca not enjoyed all-3.pdf>]
+<Average-User-MCA_files/figure-latex/mca searching all-2.pdf, id=146, 469.755pt
  x 325.215pt>
 File: Average-User-MCA_files/figure-latex/mca searching all-2.pdf Graphic file 
 (type pdf)
 <use Average-User-MCA_files/figure-latex/mca searching all-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/mca searching all-
-2.pdf  used on input line 905.
+2.pdf  used on input line 880.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[21 <./Average-User-MCA_files/figure-latex/mca searching all-1.pdf>]
-<Average-User-MCA_files/figure-latex/mca searching all-3.pdf, id=189, 469.755pt
+[18 <./Average-User-MCA_files/figure-latex/mca searching all-1.pdf>]
+<Average-User-MCA_files/figure-latex/mca searching all-3.pdf, id=157, 469.755pt
  x 325.215pt>
 File: Average-User-MCA_files/figure-latex/mca searching all-3.pdf Graphic file 
 (type pdf)
 <use Average-User-MCA_files/figure-latex/mca searching all-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/mca searching all-
-3.pdf  used on input line 920.
+3.pdf  used on input line 895.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[22 <./Average-User-MCA_files/figure-latex/mca searching all-2.pdf>]
-<Average-User-MCA_files/figure-latex/mca browsing all-1.pdf, id=199, 469.755pt 
+[19 <./Average-User-MCA_files/figure-latex/mca searching all-2.pdf>]
+<Average-User-MCA_files/figure-latex/mca browsing all-1.pdf, id=168, 469.755pt 
 x 325.215pt>
 File: Average-User-MCA_files/figure-latex/mca browsing all-1.pdf Graphic file (
 type pdf)
 <use Average-User-MCA_files/figure-latex/mca browsing all-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/mca browsing all-1
-.pdf  used on input line 938.
+.pdf  used on input line 913.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[23 <./Average-User-MCA_files/figure-latex/mca searching all-3.pdf>]
-<Average-User-MCA_files/figure-latex/mca browsing all-2.pdf, id=212, 469.755pt 
+[20 <./Average-User-MCA_files/figure-latex/mca searching all-3.pdf>]
+<Average-User-MCA_files/figure-latex/mca browsing all-2.pdf, id=181, 469.755pt 
 x 325.215pt>
 File: Average-User-MCA_files/figure-latex/mca browsing all-2.pdf Graphic file (
 type pdf)
 <use Average-User-MCA_files/figure-latex/mca browsing all-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/mca browsing all-2
-.pdf  used on input line 952.
+.pdf  used on input line 927.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[24 <./Average-User-MCA_files/figure-latex/mca browsing all-1.pdf>]
-<Average-User-MCA_files/figure-latex/mca browsing all-3.pdf, id=222, 469.755pt 
+[21 <./Average-User-MCA_files/figure-latex/mca browsing all-1.pdf>]
+<Average-User-MCA_files/figure-latex/mca browsing all-3.pdf, id=191, 469.755pt 
 x 325.215pt>
 File: Average-User-MCA_files/figure-latex/mca browsing all-3.pdf Graphic file (
 type pdf)
 <use Average-User-MCA_files/figure-latex/mca browsing all-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/mca browsing all-3
-.pdf  used on input line 967.
+.pdf  used on input line 942.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[25 <./Average-User-MCA_files/figure-latex/mca browsing all-2.pdf>]
-<Average-User-MCA_files/figure-latex/mca social all-1.pdf, id=233, 469.755pt x 
+[22 <./Average-User-MCA_files/figure-latex/mca browsing all-2.pdf>]
+<Average-User-MCA_files/figure-latex/mca social all-1.pdf, id=201, 469.755pt x 
 325.215pt>
 File: Average-User-MCA_files/figure-latex/mca social all-1.pdf Graphic file (ty
 pe pdf)
 <use Average-User-MCA_files/figure-latex/mca social all-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/mca social all-1.p
-df  used on input line 984.
+df  used on input line 959.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[26 <./Average-User-MCA_files/figure-latex/mca browsing all-3.pdf>]
-<Average-User-MCA_files/figure-latex/mca social all-2.pdf, id=246, 469.755pt x 
+[23 <./Average-User-MCA_files/figure-latex/mca browsing all-3.pdf>]
+<Average-User-MCA_files/figure-latex/mca social all-2.pdf, id=214, 469.755pt x 
 325.215pt>
 File: Average-User-MCA_files/figure-latex/mca social all-2.pdf Graphic file (ty
 pe pdf)
 <use Average-User-MCA_files/figure-latex/mca social all-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/mca social all-2.p
-df  used on input line 998.
+df  used on input line 973.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[27 <./Average-User-MCA_files/figure-latex/mca social all-1.pdf>]
-<Average-User-MCA_files/figure-latex/mca social all-3.pdf, id=256, 469.755pt x 
+[24 <./Average-User-MCA_files/figure-latex/mca social all-1.pdf>]
+<Average-User-MCA_files/figure-latex/mca social all-3.pdf, id=224, 469.755pt x 
 325.215pt>
 File: Average-User-MCA_files/figure-latex/mca social all-3.pdf Graphic file (ty
 pe pdf)
 <use Average-User-MCA_files/figure-latex/mca social all-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/mca social all-3.p
-df  used on input line 1013.
+df  used on input line 988.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[28 <./Average-User-MCA_files/figure-latex/mca social all-2.pdf>]
-<Average-User-MCA_files/figure-latex/freq-1.pdf, id=266, 469.755pt x 325.215pt>
+[25 <./Average-User-MCA_files/figure-latex/mca social all-2.pdf>]
+<Average-User-MCA_files/figure-latex/freq-1.pdf, id=235, 469.755pt x 325.215pt>
 
 File: Average-User-MCA_files/figure-latex/freq-1.pdf Graphic file (type pdf)
 <use Average-User-MCA_files/figure-latex/freq-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/freq-1.pdf  used o
-n input line 1032.
+n input line 1007.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[29 <./Average-User-MCA_files/figure-latex/mca social all-3.pdf>]
-<Average-User-MCA_files/figure-latex/freq-2.pdf, id=279, 469.755pt x 325.215pt>
+[26 <./Average-User-MCA_files/figure-latex/mca social all-3.pdf>]
+<Average-User-MCA_files/figure-latex/freq-2.pdf, id=248, 469.755pt x 325.215pt>
 
 File: Average-User-MCA_files/figure-latex/freq-2.pdf Graphic file (type pdf)
 <use Average-User-MCA_files/figure-latex/freq-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/freq-2.pdf  used o
-n input line 1041.
+n input line 1016.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[30 <./Average-User-MCA_files/figure-latex/freq-1.pdf>]
-<Average-User-MCA_files/figure-latex/freq-3.pdf, id=289, 469.755pt x 325.215pt>
+[27 <./Average-User-MCA_files/figure-latex/freq-1.pdf>]
+<Average-User-MCA_files/figure-latex/freq-3.pdf, id=258, 469.755pt x 325.215pt>
 
 File: Average-User-MCA_files/figure-latex/freq-3.pdf Graphic file (type pdf)
 <use Average-User-MCA_files/figure-latex/freq-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/freq-3.pdf  used o
-n input line 1056.
+n input line 1031.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1056--1058
+Underfull \hbox (badness 10000) in paragraph at lines 1031--1033
 [][]
  []
 
-[31 <./Average-User-MCA_files/figure-latex/freq-2.pdf>]
-<Average-User-MCA_files/figure-latex/diet yes all-1.pdf, id=301, 469.755pt x 32
-5.215pt>
-File: Average-User-MCA_files/figure-latex/diet yes all-1.pdf Graphic file (type
- pdf)
-<use Average-User-MCA_files/figure-latex/diet yes all-1.pdf>
-Package pdftex.def Info: Average-User-MCA_files/figure-latex/diet yes all-1.pdf
-  used on input line 1075.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[32 <./Average-User-MCA_files/figure-latex/freq-3.pdf>]
-<Average-User-MCA_files/figure-latex/diet yes all-2.pdf, id=314, 469.755pt x 32
-5.215pt>
-File: Average-User-MCA_files/figure-latex/diet yes all-2.pdf Graphic file (type
- pdf)
-<use Average-User-MCA_files/figure-latex/diet yes all-2.pdf>
-Package pdftex.def Info: Average-User-MCA_files/figure-latex/diet yes all-2.pdf
-  used on input line 1089.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[33 <./Average-User-MCA_files/figure-latex/diet yes all-1.pdf>]
-<Average-User-MCA_files/figure-latex/diet yes all-3.pdf, id=324, 469.755pt x 32
-5.215pt>
-File: Average-User-MCA_files/figure-latex/diet yes all-3.pdf Graphic file (type
- pdf)
-<use Average-User-MCA_files/figure-latex/diet yes all-3.pdf>
-Package pdftex.def Info: Average-User-MCA_files/figure-latex/diet yes all-3.pdf
-  used on input line 1104.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[34 <./Average-User-MCA_files/figure-latex/diet yes all-2.pdf>]
-<Average-User-MCA_files/figure-latex/diet no all-1.pdf, id=334, 469.755pt x 325
-.215pt>
-File: Average-User-MCA_files/figure-latex/diet no all-1.pdf Graphic file (type 
-pdf)
-<use Average-User-MCA_files/figure-latex/diet no all-1.pdf>
-Package pdftex.def Info: Average-User-MCA_files/figure-latex/diet no all-1.pdf 
- used on input line 1116.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[35 <./Average-User-MCA_files/figure-latex/diet yes all-3.pdf>]
-<Average-User-MCA_files/figure-latex/diet no all-2.pdf, id=345, 469.755pt x 325
-.215pt>
-File: Average-User-MCA_files/figure-latex/diet no all-2.pdf Graphic file (type 
-pdf)
-<use Average-User-MCA_files/figure-latex/diet no all-2.pdf>
-Package pdftex.def Info: Average-User-MCA_files/figure-latex/diet no all-2.pdf 
- used on input line 1130.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[36 <./Average-User-MCA_files/figure-latex/diet no all-1.pdf>]
-<Average-User-MCA_files/figure-latex/diet no all-3.pdf, id=355, 469.755pt x 325
-.215pt>
-File: Average-User-MCA_files/figure-latex/diet no all-3.pdf Graphic file (type 
-pdf)
-<use Average-User-MCA_files/figure-latex/diet no all-3.pdf>
-Package pdftex.def Info: Average-User-MCA_files/figure-latex/diet no all-3.pdf 
- used on input line 1145.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[37 <./Average-User-MCA_files/figure-latex/diet no all-2.pdf>]
-<Average-User-MCA_files/figure-latex/diet yes enjoy-1.pdf, id=366, 469.755pt x 
+[28 <./Average-User-MCA_files/figure-latex/freq-2.pdf>] [29 <./Average-User-MCA
+_files/figure-latex/freq-3.pdf>]
+<Average-User-MCA_files/figure-latex/diet yes enjoy-1.pdf, id=280, 469.755pt x 
 325.215pt>
 File: Average-User-MCA_files/figure-latex/diet yes enjoy-1.pdf Graphic file (ty
 pe pdf)
 <use Average-User-MCA_files/figure-latex/diet yes enjoy-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/diet yes enjoy-1.p
-df  used on input line 1165.
+df  used on input line 1090.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[38 <./Average-User-MCA_files/figure-latex/diet no all-3.pdf>]
-<Average-User-MCA_files/figure-latex/diet yes enjoy-2.pdf, id=379, 469.755pt x 
+<Average-User-MCA_files/figure-latex/diet yes enjoy-2.pdf, id=281, 469.755pt x 
 325.215pt>
 File: Average-User-MCA_files/figure-latex/diet yes enjoy-2.pdf Graphic file (ty
 pe pdf)
 <use Average-User-MCA_files/figure-latex/diet yes enjoy-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/diet yes enjoy-2.p
-df  used on input line 1179.
+df  used on input line 1104.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[39 <./Average-User-MCA_files/figure-latex/diet yes enjoy-1.pdf>]
-<Average-User-MCA_files/figure-latex/diet yes enjoy-3.pdf, id=389, 469.755pt x 
+[30 <./Average-User-MCA_files/figure-latex/diet yes enjoy-1.pdf>]
+<Average-User-MCA_files/figure-latex/diet yes enjoy-3.pdf, id=293, 469.755pt x 
 325.215pt>
 File: Average-User-MCA_files/figure-latex/diet yes enjoy-3.pdf Graphic file (ty
 pe pdf)
 <use Average-User-MCA_files/figure-latex/diet yes enjoy-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/diet yes enjoy-3.p
-df  used on input line 1194.
+df  used on input line 1119.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[40 <./Average-User-MCA_files/figure-latex/diet yes enjoy-2.pdf>]
-<Average-User-MCA_files/figure-latex/diet no enjoy-1.pdf, id=399, 469.755pt x 3
+[31 <./Average-User-MCA_files/figure-latex/diet yes enjoy-2.pdf>]
+<Average-User-MCA_files/figure-latex/diet no enjoy-1.pdf, id=305, 469.755pt x 3
 25.215pt>
 File: Average-User-MCA_files/figure-latex/diet no enjoy-1.pdf Graphic file (typ
 e pdf)
 <use Average-User-MCA_files/figure-latex/diet no enjoy-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/diet no enjoy-1.pd
-f  used on input line 1210.
+f  used on input line 1135.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[41 <./Average-User-MCA_files/figure-latex/diet yes enjoy-3.pdf>]
-<Average-User-MCA_files/figure-latex/diet no enjoy-2.pdf, id=410, 469.755pt x 3
+[32 <./Average-User-MCA_files/figure-latex/diet yes enjoy-3.pdf>]
+<Average-User-MCA_files/figure-latex/diet no enjoy-2.pdf, id=316, 469.755pt x 3
 25.215pt>
 File: Average-User-MCA_files/figure-latex/diet no enjoy-2.pdf Graphic file (typ
 e pdf)
 <use Average-User-MCA_files/figure-latex/diet no enjoy-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/diet no enjoy-2.pd
-f  used on input line 1224.
+f  used on input line 1149.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[42 <./Average-User-MCA_files/figure-latex/diet no enjoy-1.pdf>]
-<Average-User-MCA_files/figure-latex/diet no enjoy-3.pdf, id=420, 469.755pt x 3
+[33 <./Average-User-MCA_files/figure-latex/diet no enjoy-1.pdf>]
+<Average-User-MCA_files/figure-latex/diet no enjoy-3.pdf, id=326, 469.755pt x 3
 25.215pt>
 File: Average-User-MCA_files/figure-latex/diet no enjoy-3.pdf Graphic file (typ
 e pdf)
 <use Average-User-MCA_files/figure-latex/diet no enjoy-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/diet no enjoy-3.pd
-f  used on input line 1239.
+f  used on input line 1164.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[43 <./Average-User-MCA_files/figure-latex/diet no enjoy-2.pdf>]
-<Average-User-MCA_files/figure-latex/diet yes not enjoy-1.pdf, id=431, 469.755p
+[34 <./Average-User-MCA_files/figure-latex/diet no enjoy-2.pdf>]
+<Average-User-MCA_files/figure-latex/diet yes not enjoy-1.pdf, id=336, 469.755p
 t x 325.215pt>
 File: Average-User-MCA_files/figure-latex/diet yes not enjoy-1.pdf Graphic file
  (type pdf)
 <use Average-User-MCA_files/figure-latex/diet yes not enjoy-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/diet yes not enjoy
--1.pdf  used on input line 1258.
+-1.pdf  used on input line 1183.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[44 <./Average-User-MCA_files/figure-latex/diet no enjoy-3.pdf>]
-<Average-User-MCA_files/figure-latex/diet yes not enjoy-2.pdf, id=444, 469.755p
+[35 <./Average-User-MCA_files/figure-latex/diet no enjoy-3.pdf>]
+<Average-User-MCA_files/figure-latex/diet yes not enjoy-2.pdf, id=349, 469.755p
 t x 325.215pt>
 File: Average-User-MCA_files/figure-latex/diet yes not enjoy-2.pdf Graphic file
  (type pdf)
 <use Average-User-MCA_files/figure-latex/diet yes not enjoy-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/diet yes not enjoy
--2.pdf  used on input line 1272.
+-2.pdf  used on input line 1197.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[45 <./Average-User-MCA_files/figure-latex/diet yes not enjoy-1.pdf>]
-<Average-User-MCA_files/figure-latex/diet yes not enjoy-3.pdf, id=455, 469.755p
+[36 <./Average-User-MCA_files/figure-latex/diet yes not enjoy-1.pdf>]
+<Average-User-MCA_files/figure-latex/diet yes not enjoy-3.pdf, id=359, 469.755p
 t x 325.215pt>
 File: Average-User-MCA_files/figure-latex/diet yes not enjoy-3.pdf Graphic file
  (type pdf)
 <use Average-User-MCA_files/figure-latex/diet yes not enjoy-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/diet yes not enjoy
--3.pdf  used on input line 1287.
+-3.pdf  used on input line 1212.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[46 <./Average-User-MCA_files/figure-latex/diet yes not enjoy-2.pdf>]
-<Average-User-MCA_files/figure-latex/diet no not enjoyed-1.pdf, id=465, 469.755
+[37 <./Average-User-MCA_files/figure-latex/diet yes not enjoy-2.pdf>]
+<Average-User-MCA_files/figure-latex/diet no not enjoyed-1.pdf, id=370, 469.755
 pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/diet no not enjoyed-1.pdf Graphic fil
 e (type pdf)
 <use Average-User-MCA_files/figure-latex/diet no not enjoyed-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/diet no not enjoye
-d-1.pdf  used on input line 1302.
+d-1.pdf  used on input line 1227.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[47 <./Average-User-MCA_files/figure-latex/diet yes not enjoy-3.pdf>]
-<Average-User-MCA_files/figure-latex/diet no not enjoyed-2.pdf, id=476, 469.755
+[38 <./Average-User-MCA_files/figure-latex/diet yes not enjoy-3.pdf>]
+<Average-User-MCA_files/figure-latex/diet no not enjoyed-2.pdf, id=381, 469.755
 pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/diet no not enjoyed-2.pdf Graphic fil
 e (type pdf)
 <use Average-User-MCA_files/figure-latex/diet no not enjoyed-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/diet no not enjoye
-d-2.pdf  used on input line 1316.
+d-2.pdf  used on input line 1241.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[48 <./Average-User-MCA_files/figure-latex/diet no not enjoyed-1.pdf>]
-<Average-User-MCA_files/figure-latex/diet no not enjoyed-3.pdf, id=486, 469.755
+[39 <./Average-User-MCA_files/figure-latex/diet no not enjoyed-1.pdf>]
+<Average-User-MCA_files/figure-latex/diet no not enjoyed-3.pdf, id=391, 469.755
 pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/diet no not enjoyed-3.pdf Graphic fil
 e (type pdf)
 <use Average-User-MCA_files/figure-latex/diet no not enjoyed-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/diet no not enjoye
-d-3.pdf  used on input line 1331.
+d-3.pdf  used on input line 1256.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[49 <./Average-User-MCA_files/figure-latex/diet no not enjoyed-2.pdf>]
-<Average-User-MCA_files/figure-latex/diet yes search-1.pdf, id=497, 469.755pt x
+[40 <./Average-User-MCA_files/figure-latex/diet no not enjoyed-2.pdf>]
+<Average-User-MCA_files/figure-latex/diet yes search-1.pdf, id=401, 469.755pt x
  325.215pt>
 File: Average-User-MCA_files/figure-latex/diet yes search-1.pdf Graphic file (t
 ype pdf)
 <use Average-User-MCA_files/figure-latex/diet yes search-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/diet yes search-1.
-pdf  used on input line 1350.
+pdf  used on input line 1275.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[50 <./Average-User-MCA_files/figure-latex/diet no not enjoyed-3.pdf>]
-<Average-User-MCA_files/figure-latex/diet yes search-2.pdf, id=510, 469.755pt x
+[41 <./Average-User-MCA_files/figure-latex/diet no not enjoyed-3.pdf>]
+<Average-User-MCA_files/figure-latex/diet yes search-2.pdf, id=414, 469.755pt x
  325.215pt>
 File: Average-User-MCA_files/figure-latex/diet yes search-2.pdf Graphic file (t
 ype pdf)
 <use Average-User-MCA_files/figure-latex/diet yes search-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/diet yes search-2.
-pdf  used on input line 1364.
+pdf  used on input line 1289.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[51 <./Average-User-MCA_files/figure-latex/diet yes search-1.pdf>]
-<Average-User-MCA_files/figure-latex/diet yes search-3.pdf, id=520, 469.755pt x
+[42 <./Average-User-MCA_files/figure-latex/diet yes search-1.pdf>]
+<Average-User-MCA_files/figure-latex/diet yes search-3.pdf, id=424, 469.755pt x
  325.215pt>
 File: Average-User-MCA_files/figure-latex/diet yes search-3.pdf Graphic file (t
 ype pdf)
 <use Average-User-MCA_files/figure-latex/diet yes search-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/diet yes search-3.
-pdf  used on input line 1379.
+pdf  used on input line 1304.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[52 <./Average-User-MCA_files/figure-latex/diet yes search-2.pdf>]
-<Average-User-MCA_files/figure-latex/diet no search-1.pdf, id=530, 469.755pt x 
+[43 <./Average-User-MCA_files/figure-latex/diet yes search-2.pdf>]
+<Average-User-MCA_files/figure-latex/diet no search-1.pdf, id=435, 469.755pt x 
 325.215pt>
 File: Average-User-MCA_files/figure-latex/diet no search-1.pdf Graphic file (ty
 pe pdf)
 <use Average-User-MCA_files/figure-latex/diet no search-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/diet no search-1.p
-df  used on input line 1395.
+df  used on input line 1320.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[53 <./Average-User-MCA_files/figure-latex/diet yes search-3.pdf>]
-<Average-User-MCA_files/figure-latex/diet no search-2.pdf, id=541, 469.755pt x 
+[44 <./Average-User-MCA_files/figure-latex/diet yes search-3.pdf>]
+<Average-User-MCA_files/figure-latex/diet no search-2.pdf, id=447, 469.755pt x 
 325.215pt>
 File: Average-User-MCA_files/figure-latex/diet no search-2.pdf Graphic file (ty
 pe pdf)
 <use Average-User-MCA_files/figure-latex/diet no search-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/diet no search-2.p
-df  used on input line 1409.
+df  used on input line 1334.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[54 <./Average-User-MCA_files/figure-latex/diet no search-1.pdf>]
-<Average-User-MCA_files/figure-latex/diet no search-3.pdf, id=551, 469.755pt x 
+[45 <./Average-User-MCA_files/figure-latex/diet no search-1.pdf>]
+<Average-User-MCA_files/figure-latex/diet no search-3.pdf, id=457, 469.755pt x 
 325.215pt>
 File: Average-User-MCA_files/figure-latex/diet no search-3.pdf Graphic file (ty
 pe pdf)
 <use Average-User-MCA_files/figure-latex/diet no search-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/diet no search-3.p
-df  used on input line 1424.
+df  used on input line 1349.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[55 <./Average-User-MCA_files/figure-latex/diet no search-2.pdf>]
-<Average-User-MCA_files/figure-latex/diet yes browse-1.pdf, id=562, 469.755pt x
+[46 <./Average-User-MCA_files/figure-latex/diet no search-2.pdf>]
+<Average-User-MCA_files/figure-latex/diet yes browse-1.pdf, id=467, 469.755pt x
  325.215pt>
 File: Average-User-MCA_files/figure-latex/diet yes browse-1.pdf Graphic file (t
 ype pdf)
 <use Average-User-MCA_files/figure-latex/diet yes browse-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/diet yes browse-1.
-pdf  used on input line 1442.
+pdf  used on input line 1367.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[56 <./Average-User-MCA_files/figure-latex/diet no search-3.pdf>]
-<Average-User-MCA_files/figure-latex/diet yes browse-2.pdf, id=575, 469.755pt x
+[47 <./Average-User-MCA_files/figure-latex/diet no search-3.pdf>]
+<Average-User-MCA_files/figure-latex/diet yes browse-2.pdf, id=480, 469.755pt x
  325.215pt>
 File: Average-User-MCA_files/figure-latex/diet yes browse-2.pdf Graphic file (t
 ype pdf)
 <use Average-User-MCA_files/figure-latex/diet yes browse-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/diet yes browse-2.
-pdf  used on input line 1456.
+pdf  used on input line 1381.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[57 <./Average-User-MCA_files/figure-latex/diet yes browse-1.pdf>]
-<Average-User-MCA_files/figure-latex/diet yes browse-3.pdf, id=585, 469.755pt x
+[48 <./Average-User-MCA_files/figure-latex/diet yes browse-1.pdf>]
+<Average-User-MCA_files/figure-latex/diet yes browse-3.pdf, id=490, 469.755pt x
  325.215pt>
 File: Average-User-MCA_files/figure-latex/diet yes browse-3.pdf Graphic file (t
 ype pdf)
 <use Average-User-MCA_files/figure-latex/diet yes browse-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/diet yes browse-3.
-pdf  used on input line 1471.
+pdf  used on input line 1396.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[58 <./Average-User-MCA_files/figure-latex/diet yes browse-2.pdf>]
-<Average-User-MCA_files/figure-latex/diet no browse-1.pdf, id=596, 469.755pt x 
+[49 <./Average-User-MCA_files/figure-latex/diet yes browse-2.pdf>]
+<Average-User-MCA_files/figure-latex/diet no browse-1.pdf, id=501, 469.755pt x 
 325.215pt>
 File: Average-User-MCA_files/figure-latex/diet no browse-1.pdf Graphic file (ty
 pe pdf)
 <use Average-User-MCA_files/figure-latex/diet no browse-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/diet no browse-1.p
-df  used on input line 1486.
+df  used on input line 1411.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[59 <./Average-User-MCA_files/figure-latex/diet yes browse-3.pdf>]
-<Average-User-MCA_files/figure-latex/diet no browse-2.pdf, id=607, 469.755pt x 
+[50 <./Average-User-MCA_files/figure-latex/diet yes browse-3.pdf>]
+<Average-User-MCA_files/figure-latex/diet no browse-2.pdf, id=512, 469.755pt x 
 325.215pt>
 File: Average-User-MCA_files/figure-latex/diet no browse-2.pdf Graphic file (ty
 pe pdf)
 <use Average-User-MCA_files/figure-latex/diet no browse-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/diet no browse-2.p
-df  used on input line 1500.
+df  used on input line 1425.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[60 <./Average-User-MCA_files/figure-latex/diet no browse-1.pdf>]
-<Average-User-MCA_files/figure-latex/diet no browse-3.pdf, id=617, 469.755pt x 
+[51 <./Average-User-MCA_files/figure-latex/diet no browse-1.pdf>]
+<Average-User-MCA_files/figure-latex/diet no browse-3.pdf, id=522, 469.755pt x 
 325.215pt>
 File: Average-User-MCA_files/figure-latex/diet no browse-3.pdf Graphic file (ty
 pe pdf)
 <use Average-User-MCA_files/figure-latex/diet no browse-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/diet no browse-3.p
-df  used on input line 1515.
+df  used on input line 1440.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[61 <./Average-User-MCA_files/figure-latex/diet no browse-2.pdf>]
-<Average-User-MCA_files/figure-latex/diet yes social-1.pdf, id=628, 469.755pt x
+[52 <./Average-User-MCA_files/figure-latex/diet no browse-2.pdf>]
+<Average-User-MCA_files/figure-latex/diet yes social-1.pdf, id=532, 469.755pt x
  325.215pt>
 File: Average-User-MCA_files/figure-latex/diet yes social-1.pdf Graphic file (t
 ype pdf)
 <use Average-User-MCA_files/figure-latex/diet yes social-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/diet yes social-1.
-pdf  used on input line 1533.
+pdf  used on input line 1458.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[62 <./Average-User-MCA_files/figure-latex/diet no browse-3.pdf>]
-<Average-User-MCA_files/figure-latex/diet yes social-2.pdf, id=641, 469.755pt x
+[53 <./Average-User-MCA_files/figure-latex/diet no browse-3.pdf>]
+<Average-User-MCA_files/figure-latex/diet yes social-2.pdf, id=545, 469.755pt x
  325.215pt>
 File: Average-User-MCA_files/figure-latex/diet yes social-2.pdf Graphic file (t
 ype pdf)
 <use Average-User-MCA_files/figure-latex/diet yes social-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/diet yes social-2.
-pdf  used on input line 1547.
+pdf  used on input line 1472.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[63 <./Average-User-MCA_files/figure-latex/diet yes social-1.pdf>]
-<Average-User-MCA_files/figure-latex/diet yes social-3.pdf, id=651, 469.755pt x
+[54 <./Average-User-MCA_files/figure-latex/diet yes social-1.pdf>]
+<Average-User-MCA_files/figure-latex/diet yes social-3.pdf, id=555, 469.755pt x
  325.215pt>
 File: Average-User-MCA_files/figure-latex/diet yes social-3.pdf Graphic file (t
 ype pdf)
 <use Average-User-MCA_files/figure-latex/diet yes social-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/diet yes social-3.
-pdf  used on input line 1562.
+pdf  used on input line 1487.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[64 <./Average-User-MCA_files/figure-latex/diet yes social-2.pdf>]
-<Average-User-MCA_files/figure-latex/diet no social-1.pdf, id=661, 469.755pt x 
+[55 <./Average-User-MCA_files/figure-latex/diet yes social-2.pdf>]
+<Average-User-MCA_files/figure-latex/diet no social-1.pdf, id=566, 469.755pt x 
 325.215pt>
 File: Average-User-MCA_files/figure-latex/diet no social-1.pdf Graphic file (ty
 pe pdf)
 <use Average-User-MCA_files/figure-latex/diet no social-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/diet no social-1.p
-df  used on input line 1577.
+df  used on input line 1502.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[65 <./Average-User-MCA_files/figure-latex/diet yes social-3.pdf>]
-<Average-User-MCA_files/figure-latex/diet no social-2.pdf, id=672, 469.755pt x 
+[56 <./Average-User-MCA_files/figure-latex/diet yes social-3.pdf>]
+<Average-User-MCA_files/figure-latex/diet no social-2.pdf, id=577, 469.755pt x 
 325.215pt>
 File: Average-User-MCA_files/figure-latex/diet no social-2.pdf Graphic file (ty
 pe pdf)
 <use Average-User-MCA_files/figure-latex/diet no social-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/diet no social-2.p
-df  used on input line 1591.
+df  used on input line 1516.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[66 <./Average-User-MCA_files/figure-latex/diet no social-1.pdf>]
-<Average-User-MCA_files/figure-latex/diet no social-3.pdf, id=682, 469.755pt x 
+[57 <./Average-User-MCA_files/figure-latex/diet no social-1.pdf>]
+<Average-User-MCA_files/figure-latex/diet no social-3.pdf, id=587, 469.755pt x 
 325.215pt>
 File: Average-User-MCA_files/figure-latex/diet no social-3.pdf Graphic file (ty
 pe pdf)
 <use Average-User-MCA_files/figure-latex/diet no social-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/diet no social-3.p
-df  used on input line 1606.
+df  used on input line 1531.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1606--1608
+Underfull \hbox (badness 10000) in paragraph at lines 1531--1533
 [][]
  []
 
-[67 <./Average-User-MCA_files/figure-latex/diet no social-2.pdf>]
-<Average-User-MCA_files/figure-latex/freq diet yes-1.pdf, id=693, 469.755pt x 3
+[58 <./Average-User-MCA_files/figure-latex/diet no social-2.pdf>]
+<Average-User-MCA_files/figure-latex/freq diet yes-1.pdf, id=598, 469.755pt x 3
 25.215pt>
 File: Average-User-MCA_files/figure-latex/freq diet yes-1.pdf Graphic file (typ
 e pdf)
 <use Average-User-MCA_files/figure-latex/freq diet yes-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/freq diet yes-1.pd
-f  used on input line 1623.
+f  used on input line 1548.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[68 <./Average-User-MCA_files/figure-latex/diet no social-3.pdf>]
-<Average-User-MCA_files/figure-latex/freq diet yes-2.pdf, id=704, 469.755pt x 3
+[59 <./Average-User-MCA_files/figure-latex/diet no social-3.pdf>]
+<Average-User-MCA_files/figure-latex/freq diet yes-2.pdf, id=609, 469.755pt x 3
 25.215pt>
 File: Average-User-MCA_files/figure-latex/freq diet yes-2.pdf Graphic file (typ
 e pdf)
 <use Average-User-MCA_files/figure-latex/freq diet yes-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/freq diet yes-2.pd
-f  used on input line 1632.
+f  used on input line 1557.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[69 <./Average-User-MCA_files/figure-latex/freq diet yes-1.pdf>]
-<Average-User-MCA_files/figure-latex/freq diet yes-3.pdf, id=714, 469.755pt x 3
+[60 <./Average-User-MCA_files/figure-latex/freq diet yes-1.pdf>]
+<Average-User-MCA_files/figure-latex/freq diet yes-3.pdf, id=619, 469.755pt x 3
 25.215pt>
 File: Average-User-MCA_files/figure-latex/freq diet yes-3.pdf Graphic file (typ
 e pdf)
 <use Average-User-MCA_files/figure-latex/freq diet yes-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/freq diet yes-3.pd
-f  used on input line 1647.
+f  used on input line 1572.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[70 <./Average-User-MCA_files/figure-latex/freq diet yes-2.pdf>]
-<Average-User-MCA_files/figure-latex/freq diet no-1.pdf, id=724, 469.755pt x 32
+[61 <./Average-User-MCA_files/figure-latex/freq diet yes-2.pdf>]
+<Average-User-MCA_files/figure-latex/freq diet no-1.pdf, id=630, 469.755pt x 32
 5.215pt>
 File: Average-User-MCA_files/figure-latex/freq diet no-1.pdf Graphic file (type
  pdf)
 <use Average-User-MCA_files/figure-latex/freq diet no-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/freq diet no-1.pdf
-  used on input line 1663.
+  used on input line 1588.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[71 <./Average-User-MCA_files/figure-latex/freq diet yes-3.pdf>]
-<Average-User-MCA_files/figure-latex/freq diet no-2.pdf, id=735, 469.755pt x 32
+[62 <./Average-User-MCA_files/figure-latex/freq diet yes-3.pdf>]
+<Average-User-MCA_files/figure-latex/freq diet no-2.pdf, id=641, 469.755pt x 32
 5.215pt>
 File: Average-User-MCA_files/figure-latex/freq diet no-2.pdf Graphic file (type
  pdf)
 <use Average-User-MCA_files/figure-latex/freq diet no-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/freq diet no-2.pdf
-  used on input line 1672.
+  used on input line 1597.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[72 <./Average-User-MCA_files/figure-latex/freq diet no-1.pdf>]
-<Average-User-MCA_files/figure-latex/freq diet no-3.pdf, id=746, 469.755pt x 32
+[63 <./Average-User-MCA_files/figure-latex/freq diet no-1.pdf>]
+<Average-User-MCA_files/figure-latex/freq diet no-3.pdf, id=651, 469.755pt x 32
 5.215pt>
 File: Average-User-MCA_files/figure-latex/freq diet no-3.pdf Graphic file (type
  pdf)
 <use Average-User-MCA_files/figure-latex/freq diet no-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/freq diet no-3.pdf
-  used on input line 1687.
+  used on input line 1612.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[73 <./Average-User-MCA_files/figure-latex/freq diet no-2.pdf>]
-<Average-User-MCA_files/figure-latex/ya all-1.pdf, id=757, 469.755pt x 325.215p
-t>
-File: Average-User-MCA_files/figure-latex/ya all-1.pdf Graphic file (type pdf)
-<use Average-User-MCA_files/figure-latex/ya all-1.pdf>
-Package pdftex.def Info: Average-User-MCA_files/figure-latex/ya all-1.pdf  used
- on input line 1703.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[74 <./Average-User-MCA_files/figure-latex/freq diet no-3.pdf>]
-<Average-User-MCA_files/figure-latex/ya all-2.pdf, id=770, 469.755pt x 325.215p
-t>
-File: Average-User-MCA_files/figure-latex/ya all-2.pdf Graphic file (type pdf)
-<use Average-User-MCA_files/figure-latex/ya all-2.pdf>
-Package pdftex.def Info: Average-User-MCA_files/figure-latex/ya all-2.pdf  used
- on input line 1717.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[75 <./Average-User-MCA_files/figure-latex/ya all-1.pdf>]
-<Average-User-MCA_files/figure-latex/ya all-3.pdf, id=780, 469.755pt x 325.215p
-t>
-File: Average-User-MCA_files/figure-latex/ya all-3.pdf Graphic file (type pdf)
-<use Average-User-MCA_files/figure-latex/ya all-3.pdf>
-Package pdftex.def Info: Average-User-MCA_files/figure-latex/ya all-3.pdf  used
- on input line 1732.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[76 <./Average-User-MCA_files/figure-latex/ya all-2.pdf>]
-<Average-User-MCA_files/figure-latex/adult all-1.pdf, id=790, 469.755pt x 325.2
-15pt>
-File: Average-User-MCA_files/figure-latex/adult all-1.pdf Graphic file (type pd
-f)
-<use Average-User-MCA_files/figure-latex/adult all-1.pdf>
-Package pdftex.def Info: Average-User-MCA_files/figure-latex/adult all-1.pdf  u
-sed on input line 1745.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[77 <./Average-User-MCA_files/figure-latex/ya all-3.pdf>]
-<Average-User-MCA_files/figure-latex/adult all-2.pdf, id=801, 469.755pt x 325.2
-15pt>
-File: Average-User-MCA_files/figure-latex/adult all-2.pdf Graphic file (type pd
-f)
-<use Average-User-MCA_files/figure-latex/adult all-2.pdf>
-Package pdftex.def Info: Average-User-MCA_files/figure-latex/adult all-2.pdf  u
-sed on input line 1759.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[78 <./Average-User-MCA_files/figure-latex/adult all-1.pdf>]
-<Average-User-MCA_files/figure-latex/adult all-3.pdf, id=811, 469.755pt x 325.2
-15pt>
-File: Average-User-MCA_files/figure-latex/adult all-3.pdf Graphic file (type pd
-f)
-<use Average-User-MCA_files/figure-latex/adult all-3.pdf>
-Package pdftex.def Info: Average-User-MCA_files/figure-latex/adult all-3.pdf  u
-sed on input line 1774.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 1774--1776
-[][]
- []
-
-[79 <./Average-User-MCA_files/figure-latex/adult all-2.pdf>]
-<Average-User-MCA_files/figure-latex/YA enjoy-1.pdf, id=822, 469.755pt x 325.21
+[64 <./Average-User-MCA_files/figure-latex/freq diet no-2.pdf>] [65 <./Average-
+User-MCA_files/figure-latex/freq diet no-3.pdf>]
+<Average-User-MCA_files/figure-latex/YA enjoy-1.pdf, id=673, 469.755pt x 325.21
 5pt>
 File: Average-User-MCA_files/figure-latex/YA enjoy-1.pdf Graphic file (type pdf
 )
 <use Average-User-MCA_files/figure-latex/YA enjoy-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/YA enjoy-1.pdf  us
-ed on input line 1792.
+ed on input line 1668.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[80 <./Average-User-MCA_files/figure-latex/adult all-3.pdf>]
-<Average-User-MCA_files/figure-latex/YA enjoy-2.pdf, id=833, 469.755pt x 325.21
+<Average-User-MCA_files/figure-latex/YA enjoy-2.pdf, id=674, 469.755pt x 325.21
 5pt>
 File: Average-User-MCA_files/figure-latex/YA enjoy-2.pdf Graphic file (type pdf
 )
 <use Average-User-MCA_files/figure-latex/YA enjoy-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/YA enjoy-2.pdf  us
-ed on input line 1806.
+ed on input line 1682.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[81 <./Average-User-MCA_files/figure-latex/YA enjoy-1.pdf>]
-<Average-User-MCA_files/figure-latex/YA enjoy-3.pdf, id=843, 469.755pt x 325.21
+[66 <./Average-User-MCA_files/figure-latex/YA enjoy-1.pdf>]
+<Average-User-MCA_files/figure-latex/YA enjoy-3.pdf, id=686, 469.755pt x 325.21
 5pt>
 File: Average-User-MCA_files/figure-latex/YA enjoy-3.pdf Graphic file (type pdf
 )
 <use Average-User-MCA_files/figure-latex/YA enjoy-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/YA enjoy-3.pdf  us
-ed on input line 1821.
+ed on input line 1697.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[82 <./Average-User-MCA_files/figure-latex/YA enjoy-2.pdf>]
-<Average-User-MCA_files/figure-latex/adult enjoy-1.pdf, id=853, 469.755pt x 325
+[67 <./Average-User-MCA_files/figure-latex/YA enjoy-2.pdf>]
+<Average-User-MCA_files/figure-latex/adult enjoy-1.pdf, id=697, 469.755pt x 325
 .215pt>
 File: Average-User-MCA_files/figure-latex/adult enjoy-1.pdf Graphic file (type 
 pdf)
 <use Average-User-MCA_files/figure-latex/adult enjoy-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/adult enjoy-1.pdf 
- used on input line 1838.
+ used on input line 1714.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[83 <./Average-User-MCA_files/figure-latex/YA enjoy-3.pdf>]
-<Average-User-MCA_files/figure-latex/adult enjoy-2.pdf, id=864, 469.755pt x 325
+[68 <./Average-User-MCA_files/figure-latex/YA enjoy-3.pdf>]
+<Average-User-MCA_files/figure-latex/adult enjoy-2.pdf, id=708, 469.755pt x 325
 .215pt>
 File: Average-User-MCA_files/figure-latex/adult enjoy-2.pdf Graphic file (type 
 pdf)
 <use Average-User-MCA_files/figure-latex/adult enjoy-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/adult enjoy-2.pdf 
- used on input line 1852.
+ used on input line 1728.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[84 <./Average-User-MCA_files/figure-latex/adult enjoy-1.pdf>]
-<Average-User-MCA_files/figure-latex/adult enjoy-3.pdf, id=874, 469.755pt x 325
+[69 <./Average-User-MCA_files/figure-latex/adult enjoy-1.pdf>]
+<Average-User-MCA_files/figure-latex/adult enjoy-3.pdf, id=718, 469.755pt x 325
 .215pt>
 File: Average-User-MCA_files/figure-latex/adult enjoy-3.pdf Graphic file (type 
 pdf)
 <use Average-User-MCA_files/figure-latex/adult enjoy-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/adult enjoy-3.pdf 
- used on input line 1867.
+ used on input line 1743.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[85 <./Average-User-MCA_files/figure-latex/adult enjoy-2.pdf>]
-<Average-User-MCA_files/figure-latex/YA not enjoy-1.pdf, id=885, 469.755pt x 32
+[70 <./Average-User-MCA_files/figure-latex/adult enjoy-2.pdf>]
+<Average-User-MCA_files/figure-latex/YA not enjoy-1.pdf, id=728, 469.755pt x 32
 5.215pt>
 File: Average-User-MCA_files/figure-latex/YA not enjoy-1.pdf Graphic file (type
  pdf)
 <use Average-User-MCA_files/figure-latex/YA not enjoy-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/YA not enjoy-1.pdf
-  used on input line 1886.
+  used on input line 1762.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[86 <./Average-User-MCA_files/figure-latex/adult enjoy-3.pdf>]
-<Average-User-MCA_files/figure-latex/YA not enjoy-2.pdf, id=899, 469.755pt x 32
+[71 <./Average-User-MCA_files/figure-latex/adult enjoy-3.pdf>]
+<Average-User-MCA_files/figure-latex/YA not enjoy-2.pdf, id=742, 469.755pt x 32
 5.215pt>
 File: Average-User-MCA_files/figure-latex/YA not enjoy-2.pdf Graphic file (type
  pdf)
 <use Average-User-MCA_files/figure-latex/YA not enjoy-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/YA not enjoy-2.pdf
-  used on input line 1900.
+  used on input line 1776.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[87 <./Average-User-MCA_files/figure-latex/YA not enjoy-1.pdf>]
-<Average-User-MCA_files/figure-latex/YA not enjoy-3.pdf, id=909, 469.755pt x 32
+[72 <./Average-User-MCA_files/figure-latex/YA not enjoy-1.pdf>]
+<Average-User-MCA_files/figure-latex/YA not enjoy-3.pdf, id=752, 469.755pt x 32
 5.215pt>
 File: Average-User-MCA_files/figure-latex/YA not enjoy-3.pdf Graphic file (type
  pdf)
 <use Average-User-MCA_files/figure-latex/YA not enjoy-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/YA not enjoy-3.pdf
-  used on input line 1915.
+  used on input line 1791.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[88 <./Average-User-MCA_files/figure-latex/YA not enjoy-2.pdf>]
-<Average-User-MCA_files/figure-latex/adult not enjoyed-1.pdf, id=919, 469.755pt
+[73 <./Average-User-MCA_files/figure-latex/YA not enjoy-2.pdf>]
+<Average-User-MCA_files/figure-latex/adult not enjoyed-1.pdf, id=763, 469.755pt
  x 325.215pt>
 File: Average-User-MCA_files/figure-latex/adult not enjoyed-1.pdf Graphic file 
 (type pdf)
 <use Average-User-MCA_files/figure-latex/adult not enjoyed-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/adult not enjoyed-
-1.pdf  used on input line 1930.
+1.pdf  used on input line 1806.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[89 <./Average-User-MCA_files/figure-latex/YA not enjoy-3.pdf>]
-<Average-User-MCA_files/figure-latex/adult not enjoyed-2.pdf, id=930, 469.755pt
+[74 <./Average-User-MCA_files/figure-latex/YA not enjoy-3.pdf>]
+<Average-User-MCA_files/figure-latex/adult not enjoyed-2.pdf, id=774, 469.755pt
  x 325.215pt>
 File: Average-User-MCA_files/figure-latex/adult not enjoyed-2.pdf Graphic file 
 (type pdf)
 <use Average-User-MCA_files/figure-latex/adult not enjoyed-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/adult not enjoyed-
-2.pdf  used on input line 1944.
+2.pdf  used on input line 1820.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[90 <./Average-User-MCA_files/figure-latex/adult not enjoyed-1.pdf>]
-<Average-User-MCA_files/figure-latex/adult not enjoyed-3.pdf, id=940, 469.755pt
+[75 <./Average-User-MCA_files/figure-latex/adult not enjoyed-1.pdf>]
+<Average-User-MCA_files/figure-latex/adult not enjoyed-3.pdf, id=784, 469.755pt
  x 325.215pt>
 File: Average-User-MCA_files/figure-latex/adult not enjoyed-3.pdf Graphic file 
 (type pdf)
 <use Average-User-MCA_files/figure-latex/adult not enjoyed-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/adult not enjoyed-
-3.pdf  used on input line 1959.
+3.pdf  used on input line 1835.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[91 <./Average-User-MCA_files/figure-latex/adult not enjoyed-2.pdf>]
-<Average-User-MCA_files/figure-latex/YA search-1.pdf, id=951, 469.755pt x 325.2
+[76 <./Average-User-MCA_files/figure-latex/adult not enjoyed-2.pdf>]
+<Average-User-MCA_files/figure-latex/YA search-1.pdf, id=794, 469.755pt x 325.2
 15pt>
 File: Average-User-MCA_files/figure-latex/YA search-1.pdf Graphic file (type pd
 f)
 <use Average-User-MCA_files/figure-latex/YA search-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/YA search-1.pdf  u
-sed on input line 1978.
+sed on input line 1854.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[92 <./Average-User-MCA_files/figure-latex/adult not enjoyed-3.pdf>]
-<Average-User-MCA_files/figure-latex/YA search-2.pdf, id=964, 469.755pt x 325.2
+[77 <./Average-User-MCA_files/figure-latex/adult not enjoyed-3.pdf>]
+<Average-User-MCA_files/figure-latex/YA search-2.pdf, id=807, 469.755pt x 325.2
 15pt>
 File: Average-User-MCA_files/figure-latex/YA search-2.pdf Graphic file (type pd
 f)
 <use Average-User-MCA_files/figure-latex/YA search-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/YA search-2.pdf  u
-sed on input line 1992.
+sed on input line 1868.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[93 <./Average-User-MCA_files/figure-latex/YA search-1.pdf>]
-<Average-User-MCA_files/figure-latex/YA search-3.pdf, id=974, 469.755pt x 325.2
+[78 <./Average-User-MCA_files/figure-latex/YA search-1.pdf>]
+<Average-User-MCA_files/figure-latex/YA search-3.pdf, id=817, 469.755pt x 325.2
 15pt>
 File: Average-User-MCA_files/figure-latex/YA search-3.pdf Graphic file (type pd
 f)
 <use Average-User-MCA_files/figure-latex/YA search-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/YA search-3.pdf  u
-sed on input line 2007.
+sed on input line 1883.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[94 <./Average-User-MCA_files/figure-latex/YA search-2.pdf>]
-<Average-User-MCA_files/figure-latex/adult search-1.pdf, id=984, 469.755pt x 32
+[79 <./Average-User-MCA_files/figure-latex/YA search-2.pdf>]
+<Average-User-MCA_files/figure-latex/adult search-1.pdf, id=828, 469.755pt x 32
 5.215pt>
 File: Average-User-MCA_files/figure-latex/adult search-1.pdf Graphic file (type
  pdf)
 <use Average-User-MCA_files/figure-latex/adult search-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/adult search-1.pdf
-  used on input line 2023.
+  used on input line 1899.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[95 <./Average-User-MCA_files/figure-latex/YA search-3.pdf>]
-<Average-User-MCA_files/figure-latex/adult search-2.pdf, id=995, 469.755pt x 32
+[80 <./Average-User-MCA_files/figure-latex/YA search-3.pdf>]
+<Average-User-MCA_files/figure-latex/adult search-2.pdf, id=839, 469.755pt x 32
 5.215pt>
 File: Average-User-MCA_files/figure-latex/adult search-2.pdf Graphic file (type
  pdf)
 <use Average-User-MCA_files/figure-latex/adult search-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/adult search-2.pdf
-  used on input line 2037.
+  used on input line 1913.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[96 <./Average-User-MCA_files/figure-latex/adult search-1.pdf>]
-<Average-User-MCA_files/figure-latex/adult search-3.pdf, id=1005, 469.755pt x 3
-25.215pt>
+[81 <./Average-User-MCA_files/figure-latex/adult search-1.pdf>]
+<Average-User-MCA_files/figure-latex/adult search-3.pdf, id=849, 469.755pt x 32
+5.215pt>
 File: Average-User-MCA_files/figure-latex/adult search-3.pdf Graphic file (type
  pdf)
 <use Average-User-MCA_files/figure-latex/adult search-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/adult search-3.pdf
-  used on input line 2052.
+  used on input line 1928.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[97 <./Average-User-MCA_files/figure-latex/adult search-2.pdf>]
-<Average-User-MCA_files/figure-latex/YA browse-1.pdf, id=1016, 469.755pt x 325.
-215pt>
+[82 <./Average-User-MCA_files/figure-latex/adult search-2.pdf>]
+<Average-User-MCA_files/figure-latex/YA browse-1.pdf, id=859, 469.755pt x 325.2
+15pt>
 File: Average-User-MCA_files/figure-latex/YA browse-1.pdf Graphic file (type pd
 f)
 <use Average-User-MCA_files/figure-latex/YA browse-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/YA browse-1.pdf  u
-sed on input line 2070.
+sed on input line 1946.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[98 <./Average-User-MCA_files/figure-latex/adult search-3.pdf>]
-<Average-User-MCA_files/figure-latex/YA browse-2.pdf, id=1029, 469.755pt x 325.
-215pt>
+[83 <./Average-User-MCA_files/figure-latex/adult search-3.pdf>]
+<Average-User-MCA_files/figure-latex/YA browse-2.pdf, id=872, 469.755pt x 325.2
+15pt>
 File: Average-User-MCA_files/figure-latex/YA browse-2.pdf Graphic file (type pd
 f)
 <use Average-User-MCA_files/figure-latex/YA browse-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/YA browse-2.pdf  u
-sed on input line 2084.
+sed on input line 1960.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[99 <./Average-User-MCA_files/figure-latex/YA browse-1.pdf>]
-<Average-User-MCA_files/figure-latex/YA browse-3.pdf, id=1039, 469.755pt x 325.
-215pt>
+[84 <./Average-User-MCA_files/figure-latex/YA browse-1.pdf>]
+<Average-User-MCA_files/figure-latex/YA browse-3.pdf, id=882, 469.755pt x 325.2
+15pt>
 File: Average-User-MCA_files/figure-latex/YA browse-3.pdf Graphic file (type pd
 f)
 <use Average-User-MCA_files/figure-latex/YA browse-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/YA browse-3.pdf  u
-sed on input line 2099.
+sed on input line 1975.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[100 <./Average-User-MCA_files/figure-latex/YA browse-2.pdf>]
-<Average-User-MCA_files/figure-latex/adult browse-1.pdf, id=1050, 469.755pt x 3
-25.215pt>
+[85 <./Average-User-MCA_files/figure-latex/YA browse-2.pdf>]
+<Average-User-MCA_files/figure-latex/adult browse-1.pdf, id=894, 469.755pt x 32
+5.215pt>
 File: Average-User-MCA_files/figure-latex/adult browse-1.pdf Graphic file (type
  pdf)
 <use Average-User-MCA_files/figure-latex/adult browse-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/adult browse-1.pdf
-  used on input line 2114.
+  used on input line 1990.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[101 <./Average-User-MCA_files/figure-latex/YA browse-3.pdf>]
-<Average-User-MCA_files/figure-latex/adult browse-2.pdf, id=1061, 469.755pt x 3
-25.215pt>
+[86 <./Average-User-MCA_files/figure-latex/YA browse-3.pdf>]
+<Average-User-MCA_files/figure-latex/adult browse-2.pdf, id=905, 469.755pt x 32
+5.215pt>
 File: Average-User-MCA_files/figure-latex/adult browse-2.pdf Graphic file (type
  pdf)
 <use Average-User-MCA_files/figure-latex/adult browse-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/adult browse-2.pdf
-  used on input line 2128.
+  used on input line 2004.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[102 <./Average-User-MCA_files/figure-latex/adult browse-1.pdf>]
-<Average-User-MCA_files/figure-latex/adult browse-3.pdf, id=1071, 469.755pt x 3
-25.215pt>
+[87 <./Average-User-MCA_files/figure-latex/adult browse-1.pdf>]
+<Average-User-MCA_files/figure-latex/adult browse-3.pdf, id=915, 469.755pt x 32
+5.215pt>
 File: Average-User-MCA_files/figure-latex/adult browse-3.pdf Graphic file (type
  pdf)
 <use Average-User-MCA_files/figure-latex/adult browse-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/adult browse-3.pdf
-  used on input line 2143.
+  used on input line 2019.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[103 <./Average-User-MCA_files/figure-latex/adult browse-2.pdf>]
-<Average-User-MCA_files/figure-latex/YA social-1.pdf, id=1082, 469.755pt x 325.
-215pt>
+[88 <./Average-User-MCA_files/figure-latex/adult browse-2.pdf>]
+<Average-User-MCA_files/figure-latex/YA social-1.pdf, id=925, 469.755pt x 325.2
+15pt>
 File: Average-User-MCA_files/figure-latex/YA social-1.pdf Graphic file (type pd
 f)
 <use Average-User-MCA_files/figure-latex/YA social-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/YA social-1.pdf  u
-sed on input line 2161.
+sed on input line 2037.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[104 <./Average-User-MCA_files/figure-latex/adult browse-3.pdf>]
-<Average-User-MCA_files/figure-latex/YA social-2.pdf, id=1095, 469.755pt x 325.
-215pt>
+[89 <./Average-User-MCA_files/figure-latex/adult browse-3.pdf>]
+<Average-User-MCA_files/figure-latex/YA social-2.pdf, id=938, 469.755pt x 325.2
+15pt>
 File: Average-User-MCA_files/figure-latex/YA social-2.pdf Graphic file (type pd
 f)
 <use Average-User-MCA_files/figure-latex/YA social-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/YA social-2.pdf  u
-sed on input line 2175.
+sed on input line 2051.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[105 <./Average-User-MCA_files/figure-latex/YA social-1.pdf>]
-<Average-User-MCA_files/figure-latex/YA social-3.pdf, id=1105, 469.755pt x 325.
-215pt>
+[90 <./Average-User-MCA_files/figure-latex/YA social-1.pdf>]
+<Average-User-MCA_files/figure-latex/YA social-3.pdf, id=948, 469.755pt x 325.2
+15pt>
 File: Average-User-MCA_files/figure-latex/YA social-3.pdf Graphic file (type pd
 f)
 <use Average-User-MCA_files/figure-latex/YA social-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/YA social-3.pdf  u
-sed on input line 2190.
+sed on input line 2066.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[106 <./Average-User-MCA_files/figure-latex/YA social-2.pdf>]
-<Average-User-MCA_files/figure-latex/adult social-1.pdf, id=1115, 469.755pt x 3
-25.215pt>
+[91 <./Average-User-MCA_files/figure-latex/YA social-2.pdf>]
+<Average-User-MCA_files/figure-latex/adult social-1.pdf, id=959, 469.755pt x 32
+5.215pt>
 File: Average-User-MCA_files/figure-latex/adult social-1.pdf Graphic file (type
  pdf)
 <use Average-User-MCA_files/figure-latex/adult social-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/adult social-1.pdf
-  used on input line 2205.
+  used on input line 2081.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[107 <./Average-User-MCA_files/figure-latex/YA social-3.pdf>]
-<Average-User-MCA_files/figure-latex/adult social-2.pdf, id=1126, 469.755pt x 3
-25.215pt>
+[92 <./Average-User-MCA_files/figure-latex/YA social-3.pdf>]
+<Average-User-MCA_files/figure-latex/adult social-2.pdf, id=970, 469.755pt x 32
+5.215pt>
 File: Average-User-MCA_files/figure-latex/adult social-2.pdf Graphic file (type
  pdf)
 <use Average-User-MCA_files/figure-latex/adult social-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/adult social-2.pdf
-  used on input line 2219.
+  used on input line 2095.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[108 <./Average-User-MCA_files/figure-latex/adult social-1.pdf>]
-<Average-User-MCA_files/figure-latex/adult social-3.pdf, id=1136, 469.755pt x 3
-25.215pt>
+[93 <./Average-User-MCA_files/figure-latex/adult social-1.pdf>]
+<Average-User-MCA_files/figure-latex/adult social-3.pdf, id=980, 469.755pt x 32
+5.215pt>
 File: Average-User-MCA_files/figure-latex/adult social-3.pdf Graphic file (type
  pdf)
 <use Average-User-MCA_files/figure-latex/adult social-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/adult social-3.pdf
-  used on input line 2234.
+  used on input line 2110.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 2234--2236
+Underfull \hbox (badness 10000) in paragraph at lines 2110--2112
 [][]
  []
 
-[109 <./Average-User-MCA_files/figure-latex/adult social-2.pdf>]
-<Average-User-MCA_files/figure-latex/ya frequency-1.pdf, id=1147, 469.755pt x 3
-25.215pt>
+[94 <./Average-User-MCA_files/figure-latex/adult social-2.pdf>]
+<Average-User-MCA_files/figure-latex/ya frequency-1.pdf, id=990, 469.755pt x 32
+5.215pt>
 File: Average-User-MCA_files/figure-latex/ya frequency-1.pdf Graphic file (type
  pdf)
 <use Average-User-MCA_files/figure-latex/ya frequency-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/ya frequency-1.pdf
-  used on input line 2251.
+  used on input line 2127.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[110 <./Average-User-MCA_files/figure-latex/adult social-3.pdf>]
-<Average-User-MCA_files/figure-latex/ya frequency-2.pdf, id=1158, 469.755pt x 3
+[95 <./Average-User-MCA_files/figure-latex/adult social-3.pdf>]
+<Average-User-MCA_files/figure-latex/ya frequency-2.pdf, id=1001, 469.755pt x 3
 25.215pt>
 File: Average-User-MCA_files/figure-latex/ya frequency-2.pdf Graphic file (type
  pdf)
 <use Average-User-MCA_files/figure-latex/ya frequency-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/ya frequency-2.pdf
-  used on input line 2260.
+  used on input line 2136.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[111 <./Average-User-MCA_files/figure-latex/ya frequency-1.pdf>]
-<Average-User-MCA_files/figure-latex/ya frequency-3.pdf, id=1168, 469.755pt x 3
+[96 <./Average-User-MCA_files/figure-latex/ya frequency-1.pdf>]
+<Average-User-MCA_files/figure-latex/ya frequency-3.pdf, id=1011, 469.755pt x 3
 25.215pt>
 File: Average-User-MCA_files/figure-latex/ya frequency-3.pdf Graphic file (type
  pdf)
 <use Average-User-MCA_files/figure-latex/ya frequency-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/ya frequency-3.pdf
-  used on input line 2275.
+  used on input line 2151.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[112 <./Average-User-MCA_files/figure-latex/ya frequency-2.pdf>]
-<Average-User-MCA_files/figure-latex/adult frequency-1.pdf, id=1178, 469.755pt 
+[97 <./Average-User-MCA_files/figure-latex/ya frequency-2.pdf>]
+<Average-User-MCA_files/figure-latex/adult frequency-1.pdf, id=1022, 469.755pt 
 x 325.215pt>
 File: Average-User-MCA_files/figure-latex/adult frequency-1.pdf Graphic file (t
 ype pdf)
 <use Average-User-MCA_files/figure-latex/adult frequency-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/adult frequency-1.
-pdf  used on input line 2291.
+pdf  used on input line 2167.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[113 <./Average-User-MCA_files/figure-latex/ya frequency-3.pdf>]
-<Average-User-MCA_files/figure-latex/adult frequency-2.pdf, id=1189, 469.755pt 
+[98 <./Average-User-MCA_files/figure-latex/ya frequency-3.pdf>]
+<Average-User-MCA_files/figure-latex/adult frequency-2.pdf, id=1033, 469.755pt 
 x 325.215pt>
 File: Average-User-MCA_files/figure-latex/adult frequency-2.pdf Graphic file (t
 ype pdf)
 <use Average-User-MCA_files/figure-latex/adult frequency-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/adult frequency-2.
-pdf  used on input line 2300.
+pdf  used on input line 2176.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[114 <./Average-User-MCA_files/figure-latex/adult frequency-1.pdf>]
-<Average-User-MCA_files/figure-latex/adult frequency-3.pdf, id=1200, 469.755pt 
+[99 <./Average-User-MCA_files/figure-latex/adult frequency-1.pdf>]
+<Average-User-MCA_files/figure-latex/adult frequency-3.pdf, id=1044, 469.755pt 
 x 325.215pt>
 File: Average-User-MCA_files/figure-latex/adult frequency-3.pdf Graphic file (t
 ype pdf)
 <use Average-User-MCA_files/figure-latex/adult frequency-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/adult frequency-3.
-pdf  used on input line 2315.
+pdf  used on input line 2191.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[115 <./Average-User-MCA_files/figure-latex/adult frequency-2.pdf>]
-<Average-User-MCA_files/figure-latex/primary cook repsondent all-1.pdf, id=1211
-, 469.755pt x 325.215pt>
-File: Average-User-MCA_files/figure-latex/primary cook repsondent all-1.pdf Gra
-phic file (type pdf)
-<use Average-User-MCA_files/figure-latex/primary cook repsondent all-1.pdf>
-Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook repso
-ndent all-1.pdf  used on input line 2331.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[116 <./Average-User-MCA_files/figure-latex/adult frequency-3.pdf>]
-<Average-User-MCA_files/figure-latex/primary cook repsondent all-2.pdf, id=1224
-, 469.755pt x 325.215pt>
-File: Average-User-MCA_files/figure-latex/primary cook repsondent all-2.pdf Gra
-phic file (type pdf)
-<use Average-User-MCA_files/figure-latex/primary cook repsondent all-2.pdf>
-Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook repso
-ndent all-2.pdf  used on input line 2345.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[117 <./Average-User-MCA_files/figure-latex/primary cook repsondent all-1.pdf>]
-<Average-User-MCA_files/figure-latex/primary cook repsondent all-3.pdf, id=1234
-, 469.755pt x 325.215pt>
-File: Average-User-MCA_files/figure-latex/primary cook repsondent all-3.pdf Gra
-phic file (type pdf)
-<use Average-User-MCA_files/figure-latex/primary cook repsondent all-3.pdf>
-Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook repso
-ndent all-3.pdf  used on input line 2360.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[118 <./Average-User-MCA_files/figure-latex/primary cook repsondent all-2.pdf>]
-<Average-User-MCA_files/figure-latex/primary cook other-1.pdf, id=1244, 469.755
-pt x 325.215pt>
-File: Average-User-MCA_files/figure-latex/primary cook other-1.pdf Graphic file
- (type pdf)
-<use Average-User-MCA_files/figure-latex/primary cook other-1.pdf>
-Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook other
--1.pdf  used on input line 2373.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[119 <./Average-User-MCA_files/figure-latex/primary cook repsondent all-3.pdf>]
-<Average-User-MCA_files/figure-latex/primary cook other-2.pdf, id=1255, 469.755
-pt x 325.215pt>
-File: Average-User-MCA_files/figure-latex/primary cook other-2.pdf Graphic file
- (type pdf)
-<use Average-User-MCA_files/figure-latex/primary cook other-2.pdf>
-Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook other
--2.pdf  used on input line 2387.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[120 <./Average-User-MCA_files/figure-latex/primary cook other-1.pdf>]
-<Average-User-MCA_files/figure-latex/primary cook other-3.pdf, id=1265, 469.755
-pt x 325.215pt>
-File: Average-User-MCA_files/figure-latex/primary cook other-3.pdf Graphic file
- (type pdf)
-<use Average-User-MCA_files/figure-latex/primary cook other-3.pdf>
-Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook other
--3.pdf  used on input line 2402.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 2402--2404
-[][]
- []
-
-[121 <./Average-User-MCA_files/figure-latex/primary cook other-2.pdf>]
-<Average-User-MCA_files/figure-latex/primary cook repsondent enjoy-1.pdf, id=12
-76, 469.755pt x 325.215pt>
+[100 <./Average-User-MCA_files/figure-latex/adult frequency-2.pdf>] [101 <./Ave
+rage-User-MCA_files/figure-latex/adult frequency-3.pdf>]
+<Average-User-MCA_files/figure-latex/primary cook repsondent enjoy-1.pdf, id=10
+66, 469.755pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/primary cook repsondent enjoy-1.pdf G
 raphic file (type pdf)
 <use Average-User-MCA_files/figure-latex/primary cook repsondent enjoy-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook repso
-ndent enjoy-1.pdf  used on input line 2419.
+ndent enjoy-1.pdf  used on input line 2246.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[122 <./Average-User-MCA_files/figure-latex/primary cook other-3.pdf>]
-<Average-User-MCA_files/figure-latex/primary cook repsondent enjoy-2.pdf, id=12
-87, 469.755pt x 325.215pt>
+<Average-User-MCA_files/figure-latex/primary cook repsondent enjoy-2.pdf, id=10
+67, 469.755pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/primary cook repsondent enjoy-2.pdf G
 raphic file (type pdf)
 <use Average-User-MCA_files/figure-latex/primary cook repsondent enjoy-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook repso
-ndent enjoy-2.pdf  used on input line 2433.
+ndent enjoy-2.pdf  used on input line 2260.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[123 <./Average-User-MCA_files/figure-latex/primary cook repsondent enjoy-1.pdf
+[102 <./Average-User-MCA_files/figure-latex/primary cook repsondent enjoy-1.pdf
 >]
-<Average-User-MCA_files/figure-latex/primary cook repsondent enjoy-3.pdf, id=12
-97, 469.755pt x 325.215pt>
+<Average-User-MCA_files/figure-latex/primary cook repsondent enjoy-3.pdf, id=10
+79, 469.755pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/primary cook repsondent enjoy-3.pdf G
 raphic file (type pdf)
 <use Average-User-MCA_files/figure-latex/primary cook repsondent enjoy-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook repso
-ndent enjoy-3.pdf  used on input line 2448.
+ndent enjoy-3.pdf  used on input line 2275.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[124 <./Average-User-MCA_files/figure-latex/primary cook repsondent enjoy-2.pdf
+[103 <./Average-User-MCA_files/figure-latex/primary cook repsondent enjoy-2.pdf
 >]
-<Average-User-MCA_files/figure-latex/primary cook other enjoy-1.pdf, id=1307, 4
+<Average-User-MCA_files/figure-latex/primary cook other enjoy-1.pdf, id=1090, 4
 69.755pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/primary cook other enjoy-1.pdf Graphi
 c file (type pdf)
 <use Average-User-MCA_files/figure-latex/primary cook other enjoy-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook other
- enjoy-1.pdf  used on input line 2464.
+ enjoy-1.pdf  used on input line 2291.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[125 <./Average-User-MCA_files/figure-latex/primary cook repsondent enjoy-3.pdf
+[104 <./Average-User-MCA_files/figure-latex/primary cook repsondent enjoy-3.pdf
 >]
-<Average-User-MCA_files/figure-latex/primary cook other enjoy-2.pdf, id=1318, 4
+<Average-User-MCA_files/figure-latex/primary cook other enjoy-2.pdf, id=1101, 4
 69.755pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/primary cook other enjoy-2.pdf Graphi
 c file (type pdf)
 <use Average-User-MCA_files/figure-latex/primary cook other enjoy-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook other
- enjoy-2.pdf  used on input line 2478.
+ enjoy-2.pdf  used on input line 2305.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[126 <./Average-User-MCA_files/figure-latex/primary cook other enjoy-1.pdf>]
-<Average-User-MCA_files/figure-latex/primary cook other enjoy-3.pdf, id=1328, 4
+[105 <./Average-User-MCA_files/figure-latex/primary cook other enjoy-1.pdf>]
+<Average-User-MCA_files/figure-latex/primary cook other enjoy-3.pdf, id=1111, 4
 69.755pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/primary cook other enjoy-3.pdf Graphi
 c file (type pdf)
 <use Average-User-MCA_files/figure-latex/primary cook other enjoy-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook other
- enjoy-3.pdf  used on input line 2493.
+ enjoy-3.pdf  used on input line 2320.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[127 <./Average-User-MCA_files/figure-latex/primary cook other enjoy-2.pdf>]
+[106 <./Average-User-MCA_files/figure-latex/primary cook other enjoy-2.pdf>]
 <Average-User-MCA_files/figure-latex/primary cook repsondent NOT enjoy-1.pdf, i
-d=1339, 469.755pt x 325.215pt>
+d=1121, 469.755pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/primary cook repsondent NOT enjoy-1.p
 df Graphic file (type pdf)
 <use Average-User-MCA_files/figure-latex/primary cook repsondent NOT enjoy-1.pd
 f>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook repso
-ndent NOT enjoy-1.pdf  used on input line 2511.
+ndent NOT enjoy-1.pdf  used on input line 2338.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[128 <./Average-User-MCA_files/figure-latex/primary cook other enjoy-3.pdf>]
+[107 <./Average-User-MCA_files/figure-latex/primary cook other enjoy-3.pdf>]
 <Average-User-MCA_files/figure-latex/primary cook repsondent NOT enjoy-2.pdf, i
-d=1353, 469.755pt x 325.215pt>
+d=1134, 469.755pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/primary cook repsondent NOT enjoy-2.p
 df Graphic file (type pdf)
 <use Average-User-MCA_files/figure-latex/primary cook repsondent NOT enjoy-2.pd
 f>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook repso
-ndent NOT enjoy-2.pdf  used on input line 2525.
+ndent NOT enjoy-2.pdf  used on input line 2352.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[129 <./Average-User-MCA_files/figure-latex/primary cook repsondent NOT enjoy-1
+[108 <./Average-User-MCA_files/figure-latex/primary cook repsondent NOT enjoy-1
 .pdf>]
 <Average-User-MCA_files/figure-latex/primary cook repsondent NOT enjoy-3.pdf, i
-d=1363, 469.755pt x 325.215pt>
+d=1144, 469.755pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/primary cook repsondent NOT enjoy-3.p
 df Graphic file (type pdf)
 <use Average-User-MCA_files/figure-latex/primary cook repsondent NOT enjoy-3.pd
 f>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook repso
-ndent NOT enjoy-3.pdf  used on input line 2540.
+ndent NOT enjoy-3.pdf  used on input line 2367.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[130 <./Average-User-MCA_files/figure-latex/primary cook repsondent NOT enjoy-2
+[109 <./Average-User-MCA_files/figure-latex/primary cook repsondent NOT enjoy-2
 .pdf>]
 <Average-User-MCA_files/figure-latex/primary cook other not enjoyed-1.pdf, id=1
-373, 469.755pt x 325.215pt>
+155, 469.755pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/primary cook other not enjoyed-1.pdf 
 Graphic file (type pdf)
 <use Average-User-MCA_files/figure-latex/primary cook other not enjoyed-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook other
- not enjoyed-1.pdf  used on input line 2554.
+ not enjoyed-1.pdf  used on input line 2381.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[131 <./Average-User-MCA_files/figure-latex/primary cook repsondent NOT enjoy-3
+[110 <./Average-User-MCA_files/figure-latex/primary cook repsondent NOT enjoy-3
 .pdf>]
 <Average-User-MCA_files/figure-latex/primary cook other not enjoyed-2.pdf, id=1
-384, 469.755pt x 325.215pt>
+166, 469.755pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/primary cook other not enjoyed-2.pdf 
 Graphic file (type pdf)
 <use Average-User-MCA_files/figure-latex/primary cook other not enjoyed-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook other
- not enjoyed-2.pdf  used on input line 2568.
+ not enjoyed-2.pdf  used on input line 2395.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[132 <./Average-User-MCA_files/figure-latex/primary cook other not enjoyed-1.pd
+[111 <./Average-User-MCA_files/figure-latex/primary cook other not enjoyed-1.pd
 f>]
 <Average-User-MCA_files/figure-latex/primary cook other not enjoyed-3.pdf, id=1
-394, 469.755pt x 325.215pt>
+176, 469.755pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/primary cook other not enjoyed-3.pdf 
 Graphic file (type pdf)
 <use Average-User-MCA_files/figure-latex/primary cook other not enjoyed-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook other
- not enjoyed-3.pdf  used on input line 2583.
+ not enjoyed-3.pdf  used on input line 2410.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[133 <./Average-User-MCA_files/figure-latex/primary cook other not enjoyed-2.pd
+[112 <./Average-User-MCA_files/figure-latex/primary cook other not enjoyed-2.pd
 f>]
 <Average-User-MCA_files/figure-latex/primary cook respondent search-1.pdf, id=1
-405, 469.755pt x 325.215pt>
+186, 469.755pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/primary cook respondent search-1.pdf 
 Graphic file (type pdf)
 <use Average-User-MCA_files/figure-latex/primary cook respondent search-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook respo
-ndent search-1.pdf  used on input line 2601.
+ndent search-1.pdf  used on input line 2428.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[134 <./Average-User-MCA_files/figure-latex/primary cook other not enjoyed-3.pd
+[113 <./Average-User-MCA_files/figure-latex/primary cook other not enjoyed-3.pd
 f>]
 <Average-User-MCA_files/figure-latex/primary cook respondent search-2.pdf, id=1
-418, 469.755pt x 325.215pt>
+200, 469.755pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/primary cook respondent search-2.pdf 
 Graphic file (type pdf)
 <use Average-User-MCA_files/figure-latex/primary cook respondent search-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook respo
-ndent search-2.pdf  used on input line 2615.
+ndent search-2.pdf  used on input line 2442.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[135 <./Average-User-MCA_files/figure-latex/primary cook respondent search-1.pd
+[114 <./Average-User-MCA_files/figure-latex/primary cook respondent search-1.pd
 f>]
 <Average-User-MCA_files/figure-latex/primary cook respondent search-3.pdf, id=1
-428, 469.755pt x 325.215pt>
+210, 469.755pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/primary cook respondent search-3.pdf 
 Graphic file (type pdf)
 <use Average-User-MCA_files/figure-latex/primary cook respondent search-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook respo
-ndent search-3.pdf  used on input line 2630.
+ndent search-3.pdf  used on input line 2457.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[136 <./Average-User-MCA_files/figure-latex/primary cook respondent search-2.pd
+[115 <./Average-User-MCA_files/figure-latex/primary cook respondent search-2.pd
 f>]
-<Average-User-MCA_files/figure-latex/primary cook other search-1.pdf, id=1438, 
+<Average-User-MCA_files/figure-latex/primary cook other search-1.pdf, id=1221, 
 469.755pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/primary cook other search-1.pdf Graph
 ic file (type pdf)
 <use Average-User-MCA_files/figure-latex/primary cook other search-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook other
- search-1.pdf  used on input line 2645.
+ search-1.pdf  used on input line 2472.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[137 <./Average-User-MCA_files/figure-latex/primary cook respondent search-3.pd
+[116 <./Average-User-MCA_files/figure-latex/primary cook respondent search-3.pd
 f>]
-<Average-User-MCA_files/figure-latex/primary cook other search-2.pdf, id=1449, 
+<Average-User-MCA_files/figure-latex/primary cook other search-2.pdf, id=1232, 
 469.755pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/primary cook other search-2.pdf Graph
 ic file (type pdf)
 <use Average-User-MCA_files/figure-latex/primary cook other search-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook other
- search-2.pdf  used on input line 2659.
+ search-2.pdf  used on input line 2486.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[138 <./Average-User-MCA_files/figure-latex/primary cook other search-1.pdf>]
-<Average-User-MCA_files/figure-latex/primary cook other search-3.pdf, id=1459, 
+[117 <./Average-User-MCA_files/figure-latex/primary cook other search-1.pdf>]
+<Average-User-MCA_files/figure-latex/primary cook other search-3.pdf, id=1242, 
 469.755pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/primary cook other search-3.pdf Graph
 ic file (type pdf)
 <use Average-User-MCA_files/figure-latex/primary cook other search-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook other
- search-3.pdf  used on input line 2674.
+ search-3.pdf  used on input line 2501.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[139 <./Average-User-MCA_files/figure-latex/primary cook other search-2.pdf>]
+[118 <./Average-User-MCA_files/figure-latex/primary cook other search-2.pdf>]
 <Average-User-MCA_files/figure-latex/primary cook respondent browse-1.pdf, id=1
-470, 469.755pt x 325.215pt>
+252, 469.755pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/primary cook respondent browse-1.pdf 
 Graphic file (type pdf)
 <use Average-User-MCA_files/figure-latex/primary cook respondent browse-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook respo
-ndent browse-1.pdf  used on input line 2691.
+ndent browse-1.pdf  used on input line 2518.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[140 <./Average-User-MCA_files/figure-latex/primary cook other search-3.pdf>]
+[119 <./Average-User-MCA_files/figure-latex/primary cook other search-3.pdf>]
 <Average-User-MCA_files/figure-latex/primary cook respondent browse-2.pdf, id=1
-483, 469.755pt x 325.215pt>
+265, 469.755pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/primary cook respondent browse-2.pdf 
 Graphic file (type pdf)
 <use Average-User-MCA_files/figure-latex/primary cook respondent browse-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook respo
-ndent browse-2.pdf  used on input line 2705.
+ndent browse-2.pdf  used on input line 2532.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[141 <./Average-User-MCA_files/figure-latex/primary cook respondent browse-1.pd
+[120 <./Average-User-MCA_files/figure-latex/primary cook respondent browse-1.pd
 f>]
 <Average-User-MCA_files/figure-latex/primary cook respondent browse-3.pdf, id=1
-494, 469.755pt x 325.215pt>
+275, 469.755pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/primary cook respondent browse-3.pdf 
 Graphic file (type pdf)
 <use Average-User-MCA_files/figure-latex/primary cook respondent browse-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook respo
-ndent browse-3.pdf  used on input line 2720.
+ndent browse-3.pdf  used on input line 2547.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[142 <./Average-User-MCA_files/figure-latex/primary cook respondent browse-2.pd
+[121 <./Average-User-MCA_files/figure-latex/primary cook respondent browse-2.pd
 f>]
-<Average-User-MCA_files/figure-latex/primary cook other browse-1.pdf, id=1504, 
+<Average-User-MCA_files/figure-latex/primary cook other browse-1.pdf, id=1286, 
 469.755pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/primary cook other browse-1.pdf Graph
 ic file (type pdf)
 <use Average-User-MCA_files/figure-latex/primary cook other browse-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook other
- browse-1.pdf  used on input line 2734.
+ browse-1.pdf  used on input line 2561.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[143 <./Average-User-MCA_files/figure-latex/primary cook respondent browse-3.pd
+[122 <./Average-User-MCA_files/figure-latex/primary cook respondent browse-3.pd
 f>]
-<Average-User-MCA_files/figure-latex/primary cook other browse-2.pdf, id=1515, 
+<Average-User-MCA_files/figure-latex/primary cook other browse-2.pdf, id=1297, 
 469.755pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/primary cook other browse-2.pdf Graph
 ic file (type pdf)
 <use Average-User-MCA_files/figure-latex/primary cook other browse-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook other
- browse-2.pdf  used on input line 2743.
+ browse-2.pdf  used on input line 2570.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[144 <./Average-User-MCA_files/figure-latex/primary cook other browse-1.pdf>]
-<Average-User-MCA_files/figure-latex/primary cook other browse-3.pdf, id=1525, 
+[123 <./Average-User-MCA_files/figure-latex/primary cook other browse-1.pdf>]
+<Average-User-MCA_files/figure-latex/primary cook other browse-3.pdf, id=1307, 
 469.755pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/primary cook other browse-3.pdf Graph
 ic file (type pdf)
 <use Average-User-MCA_files/figure-latex/primary cook other browse-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook other
- browse-3.pdf  used on input line 2758.
+ browse-3.pdf  used on input line 2585.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[145 <./Average-User-MCA_files/figure-latex/primary cook other browse-2.pdf>]
+[124 <./Average-User-MCA_files/figure-latex/primary cook other browse-2.pdf>]
 <Average-User-MCA_files/figure-latex/primary cook respondent social-1.pdf, id=1
-536, 469.755pt x 325.215pt>
+317, 469.755pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/primary cook respondent social-1.pdf 
 Graphic file (type pdf)
 <use Average-User-MCA_files/figure-latex/primary cook respondent social-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook respo
-ndent social-1.pdf  used on input line 2776.
+ndent social-1.pdf  used on input line 2603.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[146 <./Average-User-MCA_files/figure-latex/primary cook other browse-3.pdf>]
+[125 <./Average-User-MCA_files/figure-latex/primary cook other browse-3.pdf>]
 <Average-User-MCA_files/figure-latex/primary cook respondent social-2.pdf, id=1
-549, 469.755pt x 325.215pt>
+330, 469.755pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/primary cook respondent social-2.pdf 
 Graphic file (type pdf)
 <use Average-User-MCA_files/figure-latex/primary cook respondent social-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook respo
-ndent social-2.pdf  used on input line 2790.
+ndent social-2.pdf  used on input line 2617.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[147 <./Average-User-MCA_files/figure-latex/primary cook respondent social-1.pd
+[126 <./Average-User-MCA_files/figure-latex/primary cook respondent social-1.pd
 f>]
 <Average-User-MCA_files/figure-latex/primary cook respondent social-3.pdf, id=1
-559, 469.755pt x 325.215pt>
+341, 469.755pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/primary cook respondent social-3.pdf 
 Graphic file (type pdf)
 <use Average-User-MCA_files/figure-latex/primary cook respondent social-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook respo
-ndent social-3.pdf  used on input line 2805.
+ndent social-3.pdf  used on input line 2632.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[148 <./Average-User-MCA_files/figure-latex/primary cook respondent social-2.pd
+[127 <./Average-User-MCA_files/figure-latex/primary cook respondent social-2.pd
 f>]
-<Average-User-MCA_files/figure-latex/primary cook other social-1.pdf, id=1569, 
+<Average-User-MCA_files/figure-latex/primary cook other social-1.pdf, id=1352, 
 469.755pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/primary cook other social-1.pdf Graph
 ic file (type pdf)
 <use Average-User-MCA_files/figure-latex/primary cook other social-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook other
- social-1.pdf  used on input line 2819.
+ social-1.pdf  used on input line 2646.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[149 <./Average-User-MCA_files/figure-latex/primary cook respondent social-3.pd
+[128 <./Average-User-MCA_files/figure-latex/primary cook respondent social-3.pd
 f>]
-<Average-User-MCA_files/figure-latex/primary cook other social-2.pdf, id=1580, 
+<Average-User-MCA_files/figure-latex/primary cook other social-2.pdf, id=1363, 
 469.755pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/primary cook other social-2.pdf Graph
 ic file (type pdf)
 <use Average-User-MCA_files/figure-latex/primary cook other social-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook other
- social-2.pdf  used on input line 2833.
+ social-2.pdf  used on input line 2660.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[150 <./Average-User-MCA_files/figure-latex/primary cook other social-1.pdf>]
-<Average-User-MCA_files/figure-latex/primary cook other social-3.pdf, id=1590, 
+[129 <./Average-User-MCA_files/figure-latex/primary cook other social-1.pdf>]
+<Average-User-MCA_files/figure-latex/primary cook other social-3.pdf, id=1373, 
 469.755pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/primary cook other social-3.pdf Graph
 ic file (type pdf)
 <use Average-User-MCA_files/figure-latex/primary cook other social-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook other
- social-3.pdf  used on input line 2848.
+ social-3.pdf  used on input line 2675.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 2848--2850
+Underfull \hbox (badness 10000) in paragraph at lines 2675--2677
 [][]
  []
 
-[151 <./Average-User-MCA_files/figure-latex/primary cook other social-2.pdf>]
-<Average-User-MCA_files/figure-latex/primary cook respondent freq-1.pdf, id=160
-1, 469.755pt x 325.215pt>
+[130 <./Average-User-MCA_files/figure-latex/primary cook other social-2.pdf>]
+<Average-User-MCA_files/figure-latex/primary cook respondent freq-1.pdf, id=138
+3, 469.755pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/primary cook respondent freq-1.pdf Gr
 aphic file (type pdf)
 <use Average-User-MCA_files/figure-latex/primary cook respondent freq-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook respo
-ndent freq-1.pdf  used on input line 2865.
+ndent freq-1.pdf  used on input line 2692.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[152 <./Average-User-MCA_files/figure-latex/primary cook other social-3.pdf>]
-<Average-User-MCA_files/figure-latex/primary cook respondent freq-2.pdf, id=161
-2, 469.755pt x 325.215pt>
+[131 <./Average-User-MCA_files/figure-latex/primary cook other social-3.pdf>]
+<Average-User-MCA_files/figure-latex/primary cook respondent freq-2.pdf, id=139
+4, 469.755pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/primary cook respondent freq-2.pdf Gr
 aphic file (type pdf)
 <use Average-User-MCA_files/figure-latex/primary cook respondent freq-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook respo
-ndent freq-2.pdf  used on input line 2879.
+ndent freq-2.pdf  used on input line 2706.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[153 <./Average-User-MCA_files/figure-latex/primary cook respondent freq-1.pdf>
+[132 <./Average-User-MCA_files/figure-latex/primary cook respondent freq-1.pdf>
 ]
-<Average-User-MCA_files/figure-latex/primary cook respondent freq-3.pdf, id=162
-2, 469.755pt x 325.215pt>
+<Average-User-MCA_files/figure-latex/primary cook respondent freq-3.pdf, id=140
+4, 469.755pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/primary cook respondent freq-3.pdf Gr
 aphic file (type pdf)
 <use Average-User-MCA_files/figure-latex/primary cook respondent freq-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook respo
-ndent freq-3.pdf  used on input line 2894.
+ndent freq-3.pdf  used on input line 2721.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[154 <./Average-User-MCA_files/figure-latex/primary cook respondent freq-2.pdf>
+[133 <./Average-User-MCA_files/figure-latex/primary cook respondent freq-2.pdf>
 ]
-<Average-User-MCA_files/figure-latex/primary cook other freq-1.pdf, id=1632, 46
+<Average-User-MCA_files/figure-latex/primary cook other freq-1.pdf, id=1415, 46
 9.755pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/primary cook other freq-1.pdf Graphic
  file (type pdf)
 <use Average-User-MCA_files/figure-latex/primary cook other freq-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook other
- freq-1.pdf  used on input line 2910.
+ freq-1.pdf  used on input line 2737.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[155 <./Average-User-MCA_files/figure-latex/primary cook respondent freq-3.pdf>
+[134 <./Average-User-MCA_files/figure-latex/primary cook respondent freq-3.pdf>
 ]
-<Average-User-MCA_files/figure-latex/primary cook other freq-2.pdf, id=1644, 46
+<Average-User-MCA_files/figure-latex/primary cook other freq-2.pdf, id=1426, 46
 9.755pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/primary cook other freq-2.pdf Graphic
  file (type pdf)
 <use Average-User-MCA_files/figure-latex/primary cook other freq-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook other
- freq-2.pdf  used on input line 2919.
+ freq-2.pdf  used on input line 2746.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[156 <./Average-User-MCA_files/figure-latex/primary cook other freq-1.pdf>]
-<Average-User-MCA_files/figure-latex/primary cook other freq-3.pdf, id=1654, 46
+[135 <./Average-User-MCA_files/figure-latex/primary cook other freq-1.pdf>]
+<Average-User-MCA_files/figure-latex/primary cook other freq-3.pdf, id=1436, 46
 9.755pt x 325.215pt>
 File: Average-User-MCA_files/figure-latex/primary cook other freq-3.pdf Graphic
  file (type pdf)
 <use Average-User-MCA_files/figure-latex/primary cook other freq-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/primary cook other
- freq-3.pdf  used on input line 2934.
+ freq-3.pdf  used on input line 2761.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[157 <./Average-User-MCA_files/figure-latex/primary cook other freq-2.pdf>]
-<Average-User-MCA_files/figure-latex/daily cooks all-1.pdf, id=1665, 469.755pt 
-x 325.215pt>
-File: Average-User-MCA_files/figure-latex/daily cooks all-1.pdf Graphic file (t
-ype pdf)
-<use Average-User-MCA_files/figure-latex/daily cooks all-1.pdf>
-Package pdftex.def Info: Average-User-MCA_files/figure-latex/daily cooks all-1.
-pdf  used on input line 2956.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[158 <./Average-User-MCA_files/figure-latex/primary cook other freq-3.pdf>]
-<Average-User-MCA_files/figure-latex/daily cooks all-2.pdf, id=1680, 469.755pt 
-x 325.215pt>
-File: Average-User-MCA_files/figure-latex/daily cooks all-2.pdf Graphic file (t
-ype pdf)
-<use Average-User-MCA_files/figure-latex/daily cooks all-2.pdf>
-Package pdftex.def Info: Average-User-MCA_files/figure-latex/daily cooks all-2.
-pdf  used on input line 2970.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[159 <./Average-User-MCA_files/figure-latex/daily cooks all-1.pdf>]
-<Average-User-MCA_files/figure-latex/daily cooks all-3.pdf, id=1690, 469.755pt 
-x 325.215pt>
-File: Average-User-MCA_files/figure-latex/daily cooks all-3.pdf Graphic file (t
-ype pdf)
-<use Average-User-MCA_files/figure-latex/daily cooks all-3.pdf>
-Package pdftex.def Info: Average-User-MCA_files/figure-latex/daily cooks all-3.
-pdf  used on input line 2985.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[160 <./Average-User-MCA_files/figure-latex/daily cooks all-2.pdf>]
-<Average-User-MCA_files/figure-latex/weekly/monlthly cooks all-1.pdf, id=1700, 
-469.755pt x 325.215pt>
-File: Average-User-MCA_files/figure-latex/weekly/monlthly cooks all-1.pdf Graph
-ic file (type pdf)
-<use Average-User-MCA_files/figure-latex/weekly/monlthly cooks all-1.pdf>
-Package pdftex.def Info: Average-User-MCA_files/figure-latex/weekly/monlthly co
-oks all-1.pdf  used on input line 2999.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[161 <./Average-User-MCA_files/figure-latex/daily cooks all-3.pdf>]
-<Average-User-MCA_files/figure-latex/weekly/monlthly cooks all-2.pdf, id=1711, 
-469.755pt x 325.215pt>
-File: Average-User-MCA_files/figure-latex/weekly/monlthly cooks all-2.pdf Graph
-ic file (type pdf)
-<use Average-User-MCA_files/figure-latex/weekly/monlthly cooks all-2.pdf>
-Package pdftex.def Info: Average-User-MCA_files/figure-latex/weekly/monlthly co
-oks all-2.pdf  used on input line 3008.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[162 <./Average-User-MCA_files/figure-latex/weekly/monlthly cooks all-1.pdf>]
-<Average-User-MCA_files/figure-latex/weekly/monlthly cooks all-3.pdf, id=1721, 
-469.755pt x 325.215pt>
-File: Average-User-MCA_files/figure-latex/weekly/monlthly cooks all-3.pdf Graph
-ic file (type pdf)
-<use Average-User-MCA_files/figure-latex/weekly/monlthly cooks all-3.pdf>
-Package pdftex.def Info: Average-User-MCA_files/figure-latex/weekly/monlthly co
-oks all-3.pdf  used on input line 3023.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[163 <./Average-User-MCA_files/figure-latex/weekly/monlthly cooks all-2.pdf>]
-<Average-User-MCA_files/figure-latex/weekly cook enjoy-1.pdf, id=1732, 469.755p
+[136 <./Average-User-MCA_files/figure-latex/primary cook other freq-2.pdf>] [13
+7 <./Average-User-MCA_files/figure-latex/primary cook other freq-3.pdf>]
+<Average-User-MCA_files/figure-latex/weekly cook enjoy-1.pdf, id=1460, 469.755p
 t x 325.215pt>
 File: Average-User-MCA_files/figure-latex/weekly cook enjoy-1.pdf Graphic file 
 (type pdf)
 <use Average-User-MCA_files/figure-latex/weekly cook enjoy-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/weekly cook enjoy-
-1.pdf  used on input line 3042.
+1.pdf  used on input line 2823.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[164 <./Average-User-MCA_files/figure-latex/weekly/monlthly cooks all-3.pdf>]
-<Average-User-MCA_files/figure-latex/weekly cook enjoy-2.pdf, id=1745, 469.755p
+[138 <./Average-User-MCA_files/figure-latex/weekly cook enjoy-1.pdf>]
+<Average-User-MCA_files/figure-latex/weekly cook enjoy-2.pdf, id=1472, 469.755p
 t x 325.215pt>
 File: Average-User-MCA_files/figure-latex/weekly cook enjoy-2.pdf Graphic file 
 (type pdf)
 <use Average-User-MCA_files/figure-latex/weekly cook enjoy-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/weekly cook enjoy-
-2.pdf  used on input line 3056.
+2.pdf  used on input line 2837.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[165 <./Average-User-MCA_files/figure-latex/weekly cook enjoy-1.pdf>]
-<Average-User-MCA_files/figure-latex/weekly cook enjoy-3.pdf, id=1755, 469.755p
+<Average-User-MCA_files/figure-latex/weekly cook enjoy-3.pdf, id=1473, 469.755p
 t x 325.215pt>
 File: Average-User-MCA_files/figure-latex/weekly cook enjoy-3.pdf Graphic file 
 (type pdf)
 <use Average-User-MCA_files/figure-latex/weekly cook enjoy-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/weekly cook enjoy-
-3.pdf  used on input line 3071.
+3.pdf  used on input line 2852.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[166 <./Average-User-MCA_files/figure-latex/weekly cook enjoy-2.pdf>]
-<Average-User-MCA_files/figure-latex/daily cook enjoy-1.pdf, id=1765, 469.755pt
+[139 <./Average-User-MCA_files/figure-latex/weekly cook enjoy-2.pdf>]
+<Average-User-MCA_files/figure-latex/daily cook enjoy-1.pdf, id=1485, 469.755pt
  x 325.215pt>
 File: Average-User-MCA_files/figure-latex/daily cook enjoy-1.pdf Graphic file (
 type pdf)
 <use Average-User-MCA_files/figure-latex/daily cook enjoy-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/daily cook enjoy-1
-.pdf  used on input line 3087.
+.pdf  used on input line 2868.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[167 <./Average-User-MCA_files/figure-latex/weekly cook enjoy-3.pdf>]
-<Average-User-MCA_files/figure-latex/daily cook enjoy-2.pdf, id=1776, 469.755pt
+[140 <./Average-User-MCA_files/figure-latex/weekly cook enjoy-3.pdf>]
+<Average-User-MCA_files/figure-latex/daily cook enjoy-2.pdf, id=1496, 469.755pt
  x 325.215pt>
 File: Average-User-MCA_files/figure-latex/daily cook enjoy-2.pdf Graphic file (
 type pdf)
 <use Average-User-MCA_files/figure-latex/daily cook enjoy-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/daily cook enjoy-2
-.pdf  used on input line 3101.
+.pdf  used on input line 2882.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[168 <./Average-User-MCA_files/figure-latex/daily cook enjoy-1.pdf>]
-<Average-User-MCA_files/figure-latex/daily cook enjoy-3.pdf, id=1786, 469.755pt
+[141 <./Average-User-MCA_files/figure-latex/daily cook enjoy-1.pdf>]
+<Average-User-MCA_files/figure-latex/daily cook enjoy-3.pdf, id=1506, 469.755pt
  x 325.215pt>
 File: Average-User-MCA_files/figure-latex/daily cook enjoy-3.pdf Graphic file (
 type pdf)
 <use Average-User-MCA_files/figure-latex/daily cook enjoy-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/daily cook enjoy-3
-.pdf  used on input line 3116.
+.pdf  used on input line 2897.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[169 <./Average-User-MCA_files/figure-latex/daily cook enjoy-2.pdf>]
+[142 <./Average-User-MCA_files/figure-latex/daily cook enjoy-2.pdf>]
 File: Average-User-MCA_files/figure-latex/weekly cook enjoy-1.pdf Graphic file 
 (type pdf)
 <use Average-User-MCA_files/figure-latex/weekly cook enjoy-1.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/weekly cook enjoy-
-1.pdf  used on input line 3134.
+1.pdf  used on input line 2915.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[170 <./Average-User-MCA_files/figure-latex/daily cook enjoy-3.pdf>]
+[143 <./Average-User-MCA_files/figure-latex/daily cook enjoy-3.pdf>]
 File: Average-User-MCA_files/figure-latex/weekly cook enjoy-2.pdf Graphic file 
 (type pdf)
 <use Average-User-MCA_files/figure-latex/weekly cook enjoy-2.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/weekly cook enjoy-
-2.pdf  used on input line 3148.
+2.pdf  used on input line 2929.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[171]
+[144]
 File: Average-User-MCA_files/figure-latex/weekly cook enjoy-3.pdf Graphic file 
 (type pdf)
 <use Average-User-MCA_files/figure-latex/weekly cook enjoy-3.pdf>
 Package pdftex.def Info: Average-User-MCA_files/figure-latex/weekly cook enjoy-
-3.pdf  used on input line 3163.
+3.pdf  used on input line 2944.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[172]
+[145]
 
 LaTeX Warning: File `Average-User-MCA_files/figure-latex/weekly cook search-1.p
-df' not found on input line 3199.
+df' not found on input line 2980.
 
 
 ! Package pdftex.def Error: File `Average-User-MCA_files/figure-latex/weekly co
@@ -2157,13 +1907,13 @@ See the pdftex.def package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3199 ...s/figure-latex/weekly cook search-1.pdf}
+l.2980 ...s/figure-latex/weekly cook search-1.pdf}
                                                    
 Here is how much of TeX's memory you used:
- 11637 strings out of 480962
- 214629 string characters out of 5905732
- 475322 words of memory out of 5000000
- 28273 multiletter control sequences out of 15000+600000
+ 11451 strings out of 480962
+ 204852 string characters out of 5905732
+ 472948 words of memory out of 5000000
+ 28138 multiletter control sequences out of 15000+600000
  432313 words of font info for 53 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  71i,6n,74p,501b,467s stack positions out of 5000i,500n,10000p,200000b,80000s

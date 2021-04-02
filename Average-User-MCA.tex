@@ -279,7 +279,7 @@ Since the data set is small, I am consolidating some of the categories.
                                                             \DataTypeTok{Scroll.L=}\KeywordTok{c}\NormalTok{(}\StringTok{"B"}\NormalTok{)),}
                   \DataTypeTok{Ingredients.L.Comments.Inline.V.Below=}\KeywordTok{fct_collapse}\NormalTok{(Ingredients.L.Comments.Inline.V.Below,}
                                                                      \DataTypeTok{Ing.L.Com.Inline=}\KeywordTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{),}
-                                                                     \DataTypeTok{Ing.L.Com.Above=}\KeywordTok{c}\NormalTok{(}\StringTok{"B"}\NormalTok{)),}
+                                                                     \DataTypeTok{Ing.L.Com.Below=}\KeywordTok{c}\NormalTok{(}\StringTok{"B"}\NormalTok{)),}
                   \DataTypeTok{Ingredients.By.Step.V.Scroll.L=}\KeywordTok{fct_collapse}\NormalTok{(Ingredients.By.Step.V.Scroll.L,}
                                                               \DataTypeTok{Ing.By.Step=}\KeywordTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{),}
                                                               \DataTypeTok{Ing.Scroll=}\NormalTok{(}\StringTok{"B"}\NormalTok{)),}
@@ -738,42 +738,17 @@ correlated variable categories.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{cleaned.search.data<-}\KeywordTok{data.frame}\NormalTok{(cleaned.factored[}\OperatorTok{-}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{)])}
-\NormalTok{search.MCA=}\KeywordTok{MCA}\NormalTok{(cleaned.search.data,}\DataTypeTok{graph=}\OtherTok{FALSE}\NormalTok{)}
-\KeywordTok{fviz_screeplot}\NormalTok{(search.MCA,}\DataTypeTok{addlabels=}\NormalTok{T)}
+\CommentTok{# cleaned.search.data<-data.frame(cleaned.factored[-c(1)])}
+\CommentTok{# search.MCA=MCA(cleaned.search.data,graph=FALSE)}
+\CommentTok{# fviz_screeplot(search.MCA,addlabels=T)}
+\CommentTok{# fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,}
+\CommentTok{#              ggtheme = theme_minimal())}
+\CommentTok{# }
+\CommentTok{# fviz_mca_var(search.MCA, col.var = "cos2",}
+\CommentTok{#              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),}
+\CommentTok{#              repel = TRUE, ggtheme = theme_minimal())}
 \end{Highlighting}
 \end{Shaded}
-
-\includegraphics{Average-User-MCA_files/figure-latex/mca all search data-1.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{fviz_mca_var}\NormalTok{(search.MCA, }\DataTypeTok{choice =} \StringTok{"mca.cor"}\NormalTok{, }\DataTypeTok{repel =} \OtherTok{TRUE}\NormalTok{,}
-             \DataTypeTok{ggtheme =} \KeywordTok{theme_minimal}\NormalTok{())}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Warning: ggrepel: 121 unlabeled data points (too many overlaps). Consider
-## increasing max.overlaps
-\end{verbatim}
-
-\includegraphics{Average-User-MCA_files/figure-latex/mca all search data-2.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{fviz_mca_var}\NormalTok{(search.MCA, }\DataTypeTok{col.var =} \StringTok{"cos2"}\NormalTok{,}
-             \DataTypeTok{gradient.cols =} \KeywordTok{c}\NormalTok{(}\StringTok{"#00AFBB"}\NormalTok{, }\StringTok{"#E7B800"}\NormalTok{, }\StringTok{"#FC4E07"}\NormalTok{),}
-             \DataTypeTok{repel =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{ggtheme =} \KeywordTok{theme_minimal}\NormalTok{())}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Warning: ggrepel: 343 unlabeled data points (too many overlaps). Consider
-## increasing max.overlaps
-\end{verbatim}
-
-\includegraphics{Average-User-MCA_files/figure-latex/mca all search data-3.pdf}
 
 \hypertarget{what-do-users-enjoy}{%
 \subsection{What Do Users Enjoy?}\label{what-do-users-enjoy}}
@@ -1066,83 +1041,33 @@ diet.
 \begin{Highlighting}[]
 \NormalTok{cleaned.Diet.Yes<-}\KeywordTok{filter}\NormalTok{(search.data, Dietary.Restriction }\OperatorTok{==}\StringTok{ "Yes"}\NormalTok{)}
 \NormalTok{cleaned.Diet.Yes<-cleaned.Diet.Yes}\OperatorTok{%>%}\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\KeywordTok{c}\NormalTok{(Dietary.Restriction))}
-\NormalTok{data.clean.Diet.Yes<-}\KeywordTok{cleaner.S}\NormalTok{(cleaned.Diet.Yes)}
-\NormalTok{search.MCA=}\KeywordTok{MCA}\NormalTok{(data.clean.Diet.Yes,}\DataTypeTok{graph=}\OtherTok{FALSE}\NormalTok{)}
-\KeywordTok{fviz_screeplot}\NormalTok{(search.MCA,}\DataTypeTok{addlabels=}\NormalTok{T)}
+\CommentTok{# data.clean.Diet.Yes<-cleaner.S(cleaned.Diet.Yes)}
+\CommentTok{# search.MCA=MCA(data.clean.Diet.Yes,graph=FALSE)}
+\CommentTok{# fviz_screeplot(search.MCA,addlabels=T)}
+\CommentTok{# fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,}
+\CommentTok{#              ggtheme = theme_minimal())}
+\CommentTok{# }
+\CommentTok{# fviz_mca_var(search.MCA, col.var = "cos2",}
+\CommentTok{#              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),}
+\CommentTok{#              repel = TRUE, ggtheme = theme_minimal())}
 \end{Highlighting}
 \end{Shaded}
-
-\includegraphics{Average-User-MCA_files/figure-latex/diet yes all-1.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{fviz_mca_var}\NormalTok{(search.MCA, }\DataTypeTok{choice =} \StringTok{"mca.cor"}\NormalTok{, }\DataTypeTok{repel =} \OtherTok{TRUE}\NormalTok{,}
-             \DataTypeTok{ggtheme =} \KeywordTok{theme_minimal}\NormalTok{())}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Warning: ggrepel: 123 unlabeled data points (too many overlaps). Consider
-## increasing max.overlaps
-\end{verbatim}
-
-\includegraphics{Average-User-MCA_files/figure-latex/diet yes all-2.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{fviz_mca_var}\NormalTok{(search.MCA, }\DataTypeTok{col.var =} \StringTok{"cos2"}\NormalTok{,}
-             \DataTypeTok{gradient.cols =} \KeywordTok{c}\NormalTok{(}\StringTok{"#00AFBB"}\NormalTok{, }\StringTok{"#E7B800"}\NormalTok{, }\StringTok{"#FC4E07"}\NormalTok{),}
-             \DataTypeTok{repel =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{ggtheme =} \KeywordTok{theme_minimal}\NormalTok{())}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Warning: ggrepel: 312 unlabeled data points (too many overlaps). Consider
-## increasing max.overlaps
-\end{verbatim}
-
-\includegraphics{Average-User-MCA_files/figure-latex/diet yes all-3.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{cleaned.Diet.No<-}\KeywordTok{filter}\NormalTok{(search.data, Dietary.Restriction }\OperatorTok{==}\StringTok{ "No"}\NormalTok{)}
 \NormalTok{cleaned.Diet.No<-cleaned.Diet.No}\OperatorTok{%>%}\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\KeywordTok{c}\NormalTok{(Dietary.Restriction))}
-\NormalTok{data.clean.Diet.No<-}\KeywordTok{cleaner.S}\NormalTok{(cleaned.Diet.No)}
-\NormalTok{search.MCA=}\KeywordTok{MCA}\NormalTok{(data.clean.Diet.No,}\DataTypeTok{graph=}\OtherTok{FALSE}\NormalTok{)}
-\KeywordTok{fviz_screeplot}\NormalTok{(search.MCA,}\DataTypeTok{addlabels=}\NormalTok{T)}
+\CommentTok{# data.clean.Diet.No<-cleaner.S(cleaned.Diet.No)}
+\CommentTok{# search.MCA=MCA(data.clean.Diet.No,graph=FALSE)}
+\CommentTok{# fviz_screeplot(search.MCA,addlabels=T)}
+\CommentTok{# fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,}
+\CommentTok{#              ggtheme = theme_minimal())}
+\CommentTok{# }
+\CommentTok{# fviz_mca_var(search.MCA, col.var = "cos2",}
+\CommentTok{#              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),}
+\CommentTok{#              repel = TRUE, ggtheme = theme_minimal())}
 \end{Highlighting}
 \end{Shaded}
-
-\includegraphics{Average-User-MCA_files/figure-latex/diet no all-1.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{fviz_mca_var}\NormalTok{(search.MCA, }\DataTypeTok{choice =} \StringTok{"mca.cor"}\NormalTok{, }\DataTypeTok{repel =} \OtherTok{TRUE}\NormalTok{,}
-             \DataTypeTok{ggtheme =} \KeywordTok{theme_minimal}\NormalTok{())}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Warning: ggrepel: 102 unlabeled data points (too many overlaps). Consider
-## increasing max.overlaps
-\end{verbatim}
-
-\includegraphics{Average-User-MCA_files/figure-latex/diet no all-2.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{fviz_mca_var}\NormalTok{(search.MCA, }\DataTypeTok{col.var =} \StringTok{"cos2"}\NormalTok{,}
-             \DataTypeTok{gradient.cols =} \KeywordTok{c}\NormalTok{(}\StringTok{"#00AFBB"}\NormalTok{, }\StringTok{"#E7B800"}\NormalTok{, }\StringTok{"#FC4E07"}\NormalTok{),}
-             \DataTypeTok{repel =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{ggtheme =} \KeywordTok{theme_minimal}\NormalTok{())}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Warning: ggrepel: 300 unlabeled data points (too many overlaps). Consider
-## increasing max.overlaps
-\end{verbatim}
-
-\includegraphics{Average-User-MCA_files/figure-latex/diet no all-3.pdf}
 
 \hypertarget{what-do-users-enjoy-1}{%
 \subsubsection{What Do Users Enjoy?}\label{what-do-users-enjoy-1}}
@@ -1694,85 +1619,36 @@ Enjoy?}\label{what-do-users-not-enjoy-1}}
 \NormalTok{cleaned.YA<-}\KeywordTok{filter}\NormalTok{(search.data, Age }\OperatorTok{==}\StringTok{ "YA"}\NormalTok{)}
 \NormalTok{cleaned.YA<-cleaned.YA}\OperatorTok{%>%}\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\KeywordTok{c}\NormalTok{(Age))}
 
-\NormalTok{data.cleaned.YA<-}\KeywordTok{cleaner.S}\NormalTok{(cleaned.YA)}
-\NormalTok{search.MCA=}\KeywordTok{MCA}\NormalTok{(data.cleaned.YA,}\DataTypeTok{graph=}\OtherTok{FALSE}\NormalTok{)}
-\KeywordTok{fviz_screeplot}\NormalTok{(search.MCA,}\DataTypeTok{addlabels=}\NormalTok{T)}
+\CommentTok{# data.cleaned.YA<-cleaner.S(cleaned.YA)}
+\CommentTok{# search.MCA=MCA(data.cleaned.YA,graph=FALSE)}
+\CommentTok{# fviz_screeplot(search.MCA,addlabels=T)}
+\CommentTok{# fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,}
+\CommentTok{#              ggtheme = theme_minimal())}
+\CommentTok{# }
+\CommentTok{# fviz_mca_var(search.MCA, col.var = "cos2",}
+\CommentTok{#              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),}
+\CommentTok{#              repel = TRUE, ggtheme = theme_minimal())}
 \end{Highlighting}
 \end{Shaded}
-
-\includegraphics{Average-User-MCA_files/figure-latex/ya all-1.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{fviz_mca_var}\NormalTok{(search.MCA, }\DataTypeTok{choice =} \StringTok{"mca.cor"}\NormalTok{, }\DataTypeTok{repel =} \OtherTok{TRUE}\NormalTok{,}
-             \DataTypeTok{ggtheme =} \KeywordTok{theme_minimal}\NormalTok{())}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Warning: ggrepel: 123 unlabeled data points (too many overlaps). Consider
-## increasing max.overlaps
-\end{verbatim}
-
-\includegraphics{Average-User-MCA_files/figure-latex/ya all-2.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{fviz_mca_var}\NormalTok{(search.MCA, }\DataTypeTok{col.var =} \StringTok{"cos2"}\NormalTok{,}
-             \DataTypeTok{gradient.cols =} \KeywordTok{c}\NormalTok{(}\StringTok{"#00AFBB"}\NormalTok{, }\StringTok{"#E7B800"}\NormalTok{, }\StringTok{"#FC4E07"}\NormalTok{),}
-             \DataTypeTok{repel =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{ggtheme =} \KeywordTok{theme_minimal}\NormalTok{())}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Warning: ggrepel: 334 unlabeled data points (too many overlaps). Consider
-## increasing max.overlaps
-\end{verbatim}
-
-\includegraphics{Average-User-MCA_files/figure-latex/ya all-3.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{cleaned.adult<-}\KeywordTok{filter}\NormalTok{(search.data, Age }\OperatorTok{==}\StringTok{ "Adult"}\NormalTok{)}
 \NormalTok{cleaned.adult<-cleaned.adult}\OperatorTok{%>%}\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\KeywordTok{c}\NormalTok{(Age))}
 
-\NormalTok{data.cleaned.Adult<-}\KeywordTok{cleaner.S}\NormalTok{(cleaned.adult)}
-\NormalTok{search.MCA=}\KeywordTok{MCA}\NormalTok{(data.cleaned.Adult,}\DataTypeTok{graph=}\OtherTok{FALSE}\NormalTok{)}
-\KeywordTok{fviz_screeplot}\NormalTok{(search.MCA,}\DataTypeTok{addlabels=}\NormalTok{T)}
+\CommentTok{# data.cleaned.Adult<-cleaner.S(cleaned.adult)}
+\CommentTok{# search.MCA=MCA(data.cleaned.Adult,graph=FALSE)}
+\CommentTok{# fviz_screeplot(search.MCA,addlabels=T)}
+\CommentTok{# fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,}
+\CommentTok{#              ggtheme = theme_minimal())}
+\CommentTok{# fviz_mca_var(search.MCA, col.var = "cos2",}
+\CommentTok{#              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),}
+\CommentTok{#              repel = TRUE, ggtheme = theme_minimal())}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Average-User-MCA_files/figure-latex/adult all-1.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{fviz_mca_var}\NormalTok{(search.MCA, }\DataTypeTok{choice =} \StringTok{"mca.cor"}\NormalTok{, }\DataTypeTok{repel =} \OtherTok{TRUE}\NormalTok{,}
-             \DataTypeTok{ggtheme =} \KeywordTok{theme_minimal}\NormalTok{())}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Warning: ggrepel: 75 unlabeled data points (too many overlaps). Consider
-## increasing max.overlaps
-\end{verbatim}
-
-\includegraphics{Average-User-MCA_files/figure-latex/adult all-2.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{fviz_mca_var}\NormalTok{(search.MCA, }\DataTypeTok{col.var =} \StringTok{"cos2"}\NormalTok{,}
-             \DataTypeTok{gradient.cols =} \KeywordTok{c}\NormalTok{(}\StringTok{"#00AFBB"}\NormalTok{, }\StringTok{"#E7B800"}\NormalTok{, }\StringTok{"#FC4E07"}\NormalTok{),}
-             \DataTypeTok{repel =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{ggtheme =} \KeywordTok{theme_minimal}\NormalTok{())}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Warning: ggrepel: 214 unlabeled data points (too many overlaps). Consider
-## increasing max.overlaps
-\end{verbatim}
-
-\includegraphics{Average-User-MCA_files/figure-latex/adult all-3.pdf}
-\#\#\# What Do Users Enjoy?
+\hypertarget{what-do-users-enjoy-2}{%
+\subsubsection{What Do Users Enjoy?}\label{what-do-users-enjoy-2}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2322,85 +2198,36 @@ Enjoy?}\label{what-do-users-not-enjoy-2}}
 \NormalTok{primary.cook<-}\KeywordTok{filter}\NormalTok{(search.data, Meal.Prepper }\OperatorTok{==}\StringTok{ "Respondent"}\NormalTok{)}
 \NormalTok{primary.cook<-primary.cook}\OperatorTok{%>%}\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\KeywordTok{c}\NormalTok{(Meal.Prepper))}
 
-\NormalTok{data.cook.cleaned<-}\KeywordTok{cleaner.S}\NormalTok{(primary.cook)}
-\NormalTok{search.MCA=}\KeywordTok{MCA}\NormalTok{(data.cook.cleaned,}\DataTypeTok{graph=}\OtherTok{FALSE}\NormalTok{)}
-\KeywordTok{fviz_screeplot}\NormalTok{(search.MCA,}\DataTypeTok{addlabels=}\NormalTok{T)}
+\CommentTok{# data.cook.cleaned<-cleaner.S(primary.cook)}
+\CommentTok{# search.MCA=MCA(data.cook.cleaned,graph=FALSE)}
+\CommentTok{# fviz_screeplot(search.MCA,addlabels=T)}
+\CommentTok{# fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,}
+\CommentTok{#              ggtheme = theme_minimal())}
+\CommentTok{# }
+\CommentTok{# fviz_mca_var(search.MCA, col.var = "cos2",}
+\CommentTok{#              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),}
+\CommentTok{#              repel = TRUE, ggtheme = theme_minimal())}
 \end{Highlighting}
 \end{Shaded}
-
-\includegraphics{Average-User-MCA_files/figure-latex/primary cook repsondent all-1.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{fviz_mca_var}\NormalTok{(search.MCA, }\DataTypeTok{choice =} \StringTok{"mca.cor"}\NormalTok{, }\DataTypeTok{repel =} \OtherTok{TRUE}\NormalTok{,}
-             \DataTypeTok{ggtheme =} \KeywordTok{theme_minimal}\NormalTok{())}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Warning: ggrepel: 106 unlabeled data points (too many overlaps). Consider
-## increasing max.overlaps
-\end{verbatim}
-
-\includegraphics{Average-User-MCA_files/figure-latex/primary cook repsondent all-2.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{fviz_mca_var}\NormalTok{(search.MCA, }\DataTypeTok{col.var =} \StringTok{"cos2"}\NormalTok{,}
-             \DataTypeTok{gradient.cols =} \KeywordTok{c}\NormalTok{(}\StringTok{"#00AFBB"}\NormalTok{, }\StringTok{"#E7B800"}\NormalTok{, }\StringTok{"#FC4E07"}\NormalTok{),}
-             \DataTypeTok{repel =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{ggtheme =} \KeywordTok{theme_minimal}\NormalTok{())}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Warning: ggrepel: 318 unlabeled data points (too many overlaps). Consider
-## increasing max.overlaps
-\end{verbatim}
-
-\includegraphics{Average-User-MCA_files/figure-latex/primary cook repsondent all-3.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{primary.cook.o<-}\KeywordTok{filter}\NormalTok{(search.data, Meal.Prepper }\OperatorTok{==}\StringTok{ "Other"}\NormalTok{)}
 \NormalTok{primary.cook.o<-primary.cook.o}\OperatorTok{%>%}\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\KeywordTok{c}\NormalTok{(Meal.Prepper))}
 
-\NormalTok{data.cleaned.cook.o<-}\KeywordTok{cleaner.S}\NormalTok{(primary.cook.o)}
-\NormalTok{search.MCA=}\KeywordTok{MCA}\NormalTok{(data.cleaned.cook.o,}\DataTypeTok{graph=}\OtherTok{FALSE}\NormalTok{)}
-\KeywordTok{fviz_screeplot}\NormalTok{(search.MCA,}\DataTypeTok{addlabels=}\NormalTok{T)}
+\CommentTok{# data.cleaned.cook.o<-cleaner.S(primary.cook.o)}
+\CommentTok{# search.MCA=MCA(data.cleaned.cook.o,graph=FALSE)}
+\CommentTok{# fviz_screeplot(search.MCA,addlabels=T)}
+\CommentTok{# fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,}
+\CommentTok{#              ggtheme = theme_minimal())}
+\CommentTok{# fviz_mca_var(search.MCA, col.var = "cos2",}
+\CommentTok{#              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),}
+\CommentTok{#              repel = TRUE, ggtheme = theme_minimal())}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Average-User-MCA_files/figure-latex/primary cook other-1.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{fviz_mca_var}\NormalTok{(search.MCA, }\DataTypeTok{choice =} \StringTok{"mca.cor"}\NormalTok{, }\DataTypeTok{repel =} \OtherTok{TRUE}\NormalTok{,}
-             \DataTypeTok{ggtheme =} \KeywordTok{theme_minimal}\NormalTok{())}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Warning: ggrepel: 81 unlabeled data points (too many overlaps). Consider
-## increasing max.overlaps
-\end{verbatim}
-
-\includegraphics{Average-User-MCA_files/figure-latex/primary cook other-2.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{fviz_mca_var}\NormalTok{(search.MCA, }\DataTypeTok{col.var =} \StringTok{"cos2"}\NormalTok{,}
-             \DataTypeTok{gradient.cols =} \KeywordTok{c}\NormalTok{(}\StringTok{"#00AFBB"}\NormalTok{, }\StringTok{"#E7B800"}\NormalTok{, }\StringTok{"#FC4E07"}\NormalTok{),}
-             \DataTypeTok{repel =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{ggtheme =} \KeywordTok{theme_minimal}\NormalTok{())}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Warning: ggrepel: 280 unlabeled data points (too many overlaps). Consider
-## increasing max.overlaps
-\end{verbatim}
-
-\includegraphics{Average-User-MCA_files/figure-latex/primary cook other-3.pdf}
-\#\#\# What Do Users Enjoy?
+\hypertarget{what-do-users-enjoy-3}{%
+\subsubsection{What Do Users Enjoy?}\label{what-do-users-enjoy-3}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2944,86 +2771,40 @@ Frequency}\label{stratify-by-cooking-frequency}}
 \begin{Highlighting}[]
 \NormalTok{daily.cooks<-}\KeywordTok{filter}\NormalTok{(search.data, Home.Cook.Rate }\OperatorTok{==}\StringTok{ "Daily"}\NormalTok{)}
 \NormalTok{daily.cooks<-daily.cooks}\OperatorTok{%>%}\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\KeywordTok{c}\NormalTok{(Home.Cook.Rate))}
-\NormalTok{cols<-}\KeywordTok{names}\NormalTok{(daily.cooks)}
-\NormalTok{daily.cook.data<-}\KeywordTok{lapply}\NormalTok{(daily.cooks[cols], as.factor)}
-\NormalTok{daily.cook.data<-}\KeywordTok{data.frame}\NormalTok{(daily.cook.data)}
-\NormalTok{data.cook.cleaned<-}\KeywordTok{cleaner.S}\NormalTok{(daily.cook.data)}
-\NormalTok{search.MCA=}\KeywordTok{MCA}\NormalTok{(data.cook.cleaned,}\DataTypeTok{graph=}\OtherTok{FALSE}\NormalTok{)}
-\KeywordTok{fviz_screeplot}\NormalTok{(search.MCA,}\DataTypeTok{addlabels=}\NormalTok{T)}
+\CommentTok{# cols<-names(daily.cooks)}
+\CommentTok{# daily.cook.data<-lapply(daily.cooks[cols], as.factor)}
+\CommentTok{# daily.cook.data<-data.frame(daily.cook.data)}
+\CommentTok{# data.cook.cleaned<-cleaner.S(daily.cook.data)}
+\CommentTok{# search.MCA=MCA(data.cook.cleaned,graph=FALSE)}
+\CommentTok{# fviz_screeplot(search.MCA,addlabels=T)}
+\CommentTok{# fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,}
+\CommentTok{#              ggtheme = theme_minimal())}
+\CommentTok{# }
+\CommentTok{# fviz_mca_var(search.MCA, col.var = "cos2",}
+\CommentTok{#              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),}
+\CommentTok{#              repel = TRUE, ggtheme = theme_minimal())}
 \end{Highlighting}
 \end{Shaded}
-
-\includegraphics{Average-User-MCA_files/figure-latex/daily cooks all-1.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{fviz_mca_var}\NormalTok{(search.MCA, }\DataTypeTok{choice =} \StringTok{"mca.cor"}\NormalTok{, }\DataTypeTok{repel =} \OtherTok{TRUE}\NormalTok{,}
-             \DataTypeTok{ggtheme =} \KeywordTok{theme_minimal}\NormalTok{())}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Warning: ggrepel: 121 unlabeled data points (too many overlaps). Consider
-## increasing max.overlaps
-\end{verbatim}
-
-\includegraphics{Average-User-MCA_files/figure-latex/daily cooks all-2.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{fviz_mca_var}\NormalTok{(search.MCA, }\DataTypeTok{col.var =} \StringTok{"cos2"}\NormalTok{,}
-             \DataTypeTok{gradient.cols =} \KeywordTok{c}\NormalTok{(}\StringTok{"#00AFBB"}\NormalTok{, }\StringTok{"#E7B800"}\NormalTok{, }\StringTok{"#FC4E07"}\NormalTok{),}
-             \DataTypeTok{repel =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{ggtheme =} \KeywordTok{theme_minimal}\NormalTok{())}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Warning: ggrepel: 317 unlabeled data points (too many overlaps). Consider
-## increasing max.overlaps
-\end{verbatim}
-
-\includegraphics{Average-User-MCA_files/figure-latex/daily cooks all-3.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{weekly.cooks<-}\KeywordTok{filter}\NormalTok{(search.data, }\OperatorTok{!}\NormalTok{(Home.Cook.Rate }\OperatorTok{==}\StringTok{ "Daily"}\NormalTok{) )}
 \NormalTok{weekly.cooks<-weekly.cooks}\OperatorTok{%>%}\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\KeywordTok{c}\NormalTok{(Home.Cook.Rate))}
-\NormalTok{cols<-}\KeywordTok{names}\NormalTok{(weekly.cooks)}
-\NormalTok{weekly.cook.data<-}\KeywordTok{lapply}\NormalTok{(weekly.cooks[cols], as.factor)}
-\NormalTok{weekly.cook.data<-}\KeywordTok{data.frame}\NormalTok{(weekly.cook.data)}
-\NormalTok{search.MCA=}\KeywordTok{MCA}\NormalTok{(weekly.cook.data,}\DataTypeTok{graph=}\OtherTok{FALSE}\NormalTok{)}
-\KeywordTok{fviz_screeplot}\NormalTok{(search.MCA,}\DataTypeTok{addlabels=}\NormalTok{T)}
+\CommentTok{# cols<-names(weekly.cooks)}
+\CommentTok{# weekly.cook.data<-lapply(weekly.cooks[cols], as.factor)}
+\CommentTok{# weekly.cook.data<-data.frame(weekly.cook.data)}
+\CommentTok{# search.MCA=MCA(weekly.cook.data,graph=FALSE)}
+\CommentTok{# fviz_screeplot(search.MCA,addlabels=T)}
+\CommentTok{# fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,}
+\CommentTok{#              ggtheme = theme_minimal())}
+\CommentTok{# fviz_mca_var(search.MCA, col.var = "cos2",}
+\CommentTok{#              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),}
+\CommentTok{#              repel = TRUE, ggtheme = theme_minimal())}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Average-User-MCA_files/figure-latex/weekly/monlthly cooks all-1.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{fviz_mca_var}\NormalTok{(search.MCA, }\DataTypeTok{choice =} \StringTok{"mca.cor"}\NormalTok{, }\DataTypeTok{repel =} \OtherTok{TRUE}\NormalTok{,}
-             \DataTypeTok{ggtheme =} \KeywordTok{theme_minimal}\NormalTok{())}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{Average-User-MCA_files/figure-latex/weekly/monlthly cooks all-2.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{fviz_mca_var}\NormalTok{(search.MCA, }\DataTypeTok{col.var =} \StringTok{"cos2"}\NormalTok{,}
-             \DataTypeTok{gradient.cols =} \KeywordTok{c}\NormalTok{(}\StringTok{"#00AFBB"}\NormalTok{, }\StringTok{"#E7B800"}\NormalTok{, }\StringTok{"#FC4E07"}\NormalTok{),}
-             \DataTypeTok{repel =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{ggtheme =} \KeywordTok{theme_minimal}\NormalTok{())}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Warning: ggrepel: 217 unlabeled data points (too many overlaps). Consider
-## increasing max.overlaps
-\end{verbatim}
-
-\includegraphics{Average-User-MCA_files/figure-latex/weekly/monlthly cooks all-3.pdf}
-
-\hypertarget{what-do-users-enjoy-2}{%
-\subsubsection{What Do Users Enjoy?}\label{what-do-users-enjoy-2}}
+\hypertarget{what-do-users-enjoy-4}{%
+\subsubsection{What Do Users Enjoy?}\label{what-do-users-enjoy-4}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
