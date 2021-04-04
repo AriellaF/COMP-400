@@ -144,9 +144,10 @@ Note saving methods that mention remembering or memory are grouped into memory, 
 
 Modification influence factors pertaining to diet, or nutrition are grouped together under the umbrella of "Diet".
 
-Modification influence factors pertaining to personal preference for food, flavor, or preperation method are grouped together under the category of "Personal Preference.
+Modification influence factors pertaining to personal preference for food, flavor, or preparation method are grouped together under the category of "Personal Preference.
 
 Modification influence factors pertaining ingredients availability are grouped together under the category of "Ing. Availability"
+
 ```{r create cleaning vector}
 unique(separate_rows(my.data.factored[32],1, sep = ";"))
 my.data.selected<-my.data.factored[c(6,7,8,10,17,18,20,22,23,28,37,30,32,38)]
@@ -277,7 +278,12 @@ names(cleaned.variables)<-variables
 
 ## Functions for Cleaning Data
 
+The function dummies takes in a data frame and a vectorized column name.
 
+1. separate entries delimited by ; in column into different rows
+2. clean data using vector constructed above
+3. replace empty responses with string "Empty"
+4. create dummy variables and send duplicate rows to colums
 ```{r dummies}
 
 dummies<-function(search.data, to.clean){
@@ -322,7 +328,7 @@ new.names=c("Age", "Meal.Prepper","Dietary.Restriction","Home.Cook.Rate","Primar
             )
 colnames(search.data)<-new.names
 
-# search.data<-tibble::rowid_to_column(search.data, "ID")
+## optional code below converts integers to proper likert scale.
 
 # for (col in colnames(select(search.data,ends_with(".S")))){
 #   search.data[[col]]<-factor(search.data[[col]], levels=c(NA,"1","2","3","4","5"))
@@ -338,8 +344,6 @@ colnames(search.data)<-new.names
 ```
 
 The categories that are farther from the origin explain more of the variance in the data set, and are well represented by the factor map. Furthermore, the categories that are closer together have similar profiles.
-
-
 
 
 ## Improved MCA
@@ -358,6 +362,8 @@ cleaned.factored<-lapply(cleaned[cols], as.factor)
 
 ```
 
+cleaner function selects and cleans columns.
+
 ```{r Cleaner func}
 cleaner.S<-function(df){
   to.dummy<-select(df, ends_with(".C"))
@@ -372,6 +378,20 @@ cleaner.S<-function(df){
   cleaned.table<-data.frame(cleaned.factored[-c(1)])
 }
 ```
+### About the Graphs
+
+#### Skree Plot
+
+Displays the components in order of importance i.e. in order of variance explained. This plot is used to understand how many components to keep in the analysis.
+I will be using the elbow rule to decide which components to include. This rule cuts off components at the inflection point (or elbow) of the explained variance. One can chose to cut off at or before the elbow. For the sake of simplicity, I will make the choice that results in keeping the closest to two components in the analysis.
+
+#### Variable Biplot
+
+This plot shows the association of variables and the association between the variables and the dimensions Variables that are close together have similar profiles. Variables that are far from the origin are better represented in the components.
+
+#### Variable Category Biplot
+
+This plot shows patterns in the data. Variables that are close together have similar profiles.Categories with negative associations to the dimension are contrasted with categories with positive associations.The larger the distance between the variable category and the origin, the better he quality of its representation.The categories are colored based on their cos2 value which measures the quality of their representation. A high cos2 value means the the quality of representation is good. A low cos2 value means that any interpretation made based on that category should be taken with caution. When there are many categories with high inertia i.e. high contribution I will focus on categories with high quality representation i.e. a high cos2 value.
 
 ```{r mca all search data}
 cleaned.search.data<-data.frame(cleaned.factored[-c(1)])
@@ -393,12 +413,12 @@ Using the elbow rule, I will be looking at the first two components of this MCA 
 
 Seeking Reviews is well represented and correlated with both dimensions.
 
-Similar Profiles:
+Ingredients above vs ingredients pinned left while scrolling, reading discussion frequency, discussion frequency, save frequency, and useing review frequency have similar profiles and are well represented in both dimensions.
 
-- No saving method, no modification note method, and no primary recipe website
-- Not enjoying recipe magazines & Empty why modify answer
-- Reading Discussion Frequency, Discussion Frequency, Use reviews frequency, Save frequency, AB: Ingredients above vs. scroll left
-- Modification Frequency, Modification Note Frequency, Ingredient listed step by step vs. ingredients pinned left when scrolling
+No saving method, no modification note method, no discussion platform, and no primary recipe website are associated with dimension two and have similar profiles.
+
+
+Ingredients listed step by step vs. ingredients listed above, review frequency, given ingredients above comment location below vs inline, and Ingredient listed step by step vs. ingredients pinned left when scrolling have similar profiles and are associated with dimension one.
 
 From this data we can see that frequency of discussion, seeking reviews, reading discussion, reviewing, and saving recipes have similar profiles. Additionally, neither the first nor the second component have negatively correlated variable categories.
 
@@ -406,6 +426,10 @@ From this data we can see that frequency of discussion, seeking reviews, reading
 #### Variable Categories
 
 Users that did not answer questions are associated in this analysis.
+
+Users that had no primary website for discussion, saving, saving modification notes, seeking reviews, discussing and browsing are associated.
+
+These two groups of users are contrasted in this analysis.
 
 
 ```{r mca plotter}
@@ -432,8 +456,6 @@ mca.plot<-function(selected.data){
 cleaned.Diet.Yes<-filter(search.data, Dietary.Restriction == "Yes")
 cleaned.Diet.Yes<-cleaned.Diet.Yes%>%select(-c(Dietary.Restriction))
 cleaned.data<-mca.plot(cleaned.Diet.Yes)
-
-fviz_mca_ind(cleaned.data, label="none", habillage = cleaned.Diet.Yes$Ing.Above.V.Scroll.L, addEllipses = TRUE, ellipse.level=0.95)
 ```
 
 #### Scree Plot
@@ -443,7 +465,11 @@ Using the elbow rule, I will be looking at the first two components of this MCA 
 
 #### Variables
 
-Save frequency, Recipe search frequency, and Reading the recipe discussion frequency have similar profiles in indeviduals who do follow a diet. These three columns are well represented by both dimensions.
+Save frequency, Recipe search frequency, and Reading the recipe discussion frequency have similar profiles in individuals who do follow a diet. These three columns are well represented by both dimensions.
+
+Not enjoying community based websites for searching and using pinterest as the primary browsing website have similar profiles and are well represented in dimension two. The similarity in column profiles implies that users who's primary browsing website is pinterest also do not enjoy searching community based recipe websites.
+
+Not enjoying blog browsing, primarily searching community based websites, no primary review site, primarily searching blogs, and no discussion websites are associated with dimension one.
 
 
 #### Variable Categories
@@ -451,6 +477,7 @@ Save frequency, Recipe search frequency, and Reading the recipe discussion frequ
 Dimension 1 contrasts users who do not save recipes, do not have a primary recipe website, do not modify recipes, etc. with users who use various platforms like Pinterest, blogs, videos, and online magazines to browse and discuss recipes. Basically users who do not often interact with online recipe content are negatively weighted and users who do frequently interact with recipes on various platforms are positively weighted. 
 
 Dimension 2 contrasts users who use Reddit to discuss and search recipes, often discuss recipes, and speak to their family and friends when browsing with users who use various platforms like Pinterest, blogs, videos, and online magazines to browse and discuss recipes, and who do not modify recipes. In other words, users who enjoy a more personal community/discussion based experience are negatively weighted, and users who prefer to use professionally developed recipes as written.
+
 ```{r diet no all}
 cleaned.Diet.No<-filter(search.data, Dietary.Restriction == "No")
 cleaned.Diet.No<-cleaned.Diet.No%>%select(-c(Dietary.Restriction))
@@ -465,9 +492,11 @@ Using the elbow rule, I will be looking at the first two components of this MCA 
 
 #### Variables
 
-Recipe discussion frequency, modification frequency, ingredients listed above vs. ingredients pinned left while scrolling, review frequency, save frequency, and reading discussion frequency are all well represented in dimension 1.
+Recipe discussion frequency, modification frequency, ingredients listed above vs. ingredients pinned left while scrolling, review frequency, save frequency, and seeking review frequency are all well represented in both dimensions.
 
-Not enjoying video for searching or browsing is well represented in dimension 2.
+Save frequency, ingredients step by step vs pinned left while scrolling, useing reviews frequency, ingredients listed left vs. listed above, and ingredients step by step vs. listed above are associated with dimension 1.
+
+Not enjoying video for searching or browsing and not enjoying Reddit for browsing are well represented in dimension 2.
 
 #### Variable Categories
 
@@ -507,7 +536,7 @@ The red point in the top left is all the questions answered with NA.
 Dimension 1 contrasts users who left questions blank with users who answered survey questions. 
 
 
-Dimension 2 contrasts users who frequently discuss recipes, use Facebook to search, and use pinterest to browse with users who do not regularly interact with recipes online.
+Dimension 2 contrasts users who frequently discuss recipes and read recipe discussions, use Facebook to search, and use pinterest to browse with users who do not regularly interact with recipes online or do not have a primary website for the different types of recipe interaction discussed in the survey.
 
 
 ```{r adult all}
@@ -524,8 +553,6 @@ This strata only has 6 sample units, so I will skip it in my further analysis. T
 primary.cook<-filter(search.data, Meal.Prepper == "Respondent")
 primary.cook<-primary.cook%>%select(-c(Meal.Prepper))
 cleaned.data<-mca.plot(primary.cook)
-fviz_mca_ind(cleaned.data, label="none", habillage = primary.cook$Ing.Above.V.Scroll.L, addEllipses = TRUE, ellipse.level=0.95)
-
 ```
 
 #### Scree Plot
@@ -537,7 +564,7 @@ Using the elbow rule, I will be looking at the first two components of this MCA 
 
 Using review frequency are very well represented in dimension 1.
 
-Not enjoying Reddit for searching or browsing, discussion frequency, and using digital recipes are well represented in dimension 2.
+Not enjoying Reddit for searching or browsing, discussion frequency, note taking potential, and note method satisfaction, and using digital recipes are well represented in dimension 2.
 
 Seeking review review frequency is well represented in both dimension.
 
@@ -545,7 +572,9 @@ Seeking review review frequency is well represented in both dimension.
 Dimension 1 contrasts users who do not frequently interact with recipes with users who frequently discuss recipes, take notes and use  pinterest to discuss recipes.
 
 Dimension 2 contrasts users that enjoy Instagram for browsing and searching, with users who enjoy Facebook and Reddit.
-```{r primary cook other}
+
+```{r primary cook Other}
+
 primary.cook.o<-filter(search.data, Meal.Prepper == "Other")
 primary.cook.o<-primary.cook.o%>%select(-c(Meal.Prepper))
 cleaned.data<-mca.plot(primary.cook.o)
@@ -557,23 +586,41 @@ Using the elbow rule, I will be looking at the first two components of this MCA 
 
 #### Variables
 
-Using review frequency, discussion frequency, save frequency, modification note frequency, ingrediens above vs. pinned left while scrolling, and ingredients listed step by step vs. ingredients pinned left while scrolling are very well represented in dimension 1.
+Using review frequency, save frequency, modification note frequency, ingredients above vs. pinned left while scrolling, and ingredients listed step by step vs. ingredients pinned left while scrolling are very well represented in dimension 1.
 
-Not enjoying Reddit, video, and Instagam for searching or browsing, discussion frequency, and trusting influencer reviews are well represented in dimension 2.
+Not enjoying Reddit and video for searching or browsing, and trusting influencers' reviews are well represented in dimension 2.
 
 Seeking review review frequency and discussion frequency is well represented in both dimension.
 
 #### Variable Categories
-Dimension 1 contrasts users who do not frequently interact with recipes with users who frequently discuss recipes, take notes and use  pinterest to discuss recipes.
+Dimension 1 contrasts users cook weekly and do not enjoy online magazines for searching and browsing with users who enjoy blogs for searching and browsing.
 
-Dimension 2 contrasts users that enjoy Instagram for browsing and searching, with users who enjoy Facebook and Reddit.
+Dimension 2 contrasts users enjoy blogs for searching and browsing, discuss recipes on Google, and have a low level of satisfaction with available note taking methods with users who enjoy discussion groups for recipes and enjoy discussing on Facebook.
 
-```{r primary cook other}
-primary.cook.o<-filter(search.data, Meal.Prepper == "Other")
+```{r primary cook Respondent}
+primary.cook.o<-filter(search.data, Meal.Prepper == "Respondent")
 primary.cook.o<-primary.cook.o%>%select(-c(Meal.Prepper))
 cleaned.data<-mca.plot(primary.cook.o)
 ```
 
+#### Scree Plot
+
+Using the elbow rule, I will be looking at the first two components of this MCA analysis. Therefore this plot will only capture 13% of the variability in the data. Slightly less variance is captured in the components when we stratify by who cooks.
+
+
+#### Variables
+
+Using review frequency and primary use of blogs are well represented in dimension one.
+
+Not enjoying Reddit for searching or browsing, discussion frequency, and note taking potential are well represented in dimension 2.
+
+Seeking review review frequency is well represented in both dimension.
+
+#### Variable Categories
+
+Dimension one contrasts users who never seek recipe reviews and never search for a recipe they have made before with users who always read recipe discussions and sometimes take note of recipe modifications.
+
+Dimension two contrasts users who use, enjoy, and are influenced by Facebook with users who use end enjoy Instagram for searching and browsing.
 ## Stratify By Cooking Frequency
 
 ### Overview
@@ -583,11 +630,47 @@ daily.cooks<-filter(search.data, Home.Cook.Rate == "Daily")
 daily.cooks<-daily.cooks%>%select(-c(Home.Cook.Rate))
 cleaned.data<-mca.plot(daily.cooks)
 ```
-Only 11.8% of the variance is explained by the components using the elbow rule, therefore this analysis is not as significant as the others I am considering.
+
+#### Scree Plot
+
+Using the elbow rule, I will be looking at the first two components of this MCA analysis. Therefore this plot will only capture 11.8% of the variability in the data. Slightly less variance is captured in the components when we look at daily cooks.
+
+#### Variables
+
+Primary use of blogs, seeking review frequency, and reading discussion frequency are well represented in dimension one.
+
+Not enjoying video for searching or browsing, primary digital format, being influenced by online influencers are well represented in dimension 2.
+
+#### Variable Categories
+
+Dimension one contrasts users who enjoy Reddit for browsing, discuss on Pinterest,and other community based sites, with users who never seek or use reviews, but frequently leave reviews.
+
+Dimension two contrasts users who discuss on Facebook, and are influenced by influencers with users who are influenced by recipe magazines.
+
 ```{r weekly/monlthly cooks all}
+
 weekly.cooks<-filter(search.data, !(Home.Cook.Rate == "Daily") )
 weekly.cooks<-weekly.cooks%>%select(-c(Home.Cook.Rate))
 cleaned.data<-mca.plot(weekly.cooks)
 ```
 
-Looking at the Biplot, none of the variable categories have a high cos2 value, so they are not well represented by the components. Therefore, further analysis will not be significant and should be interpreted with caution.
+#### Scree Plot
+
+Using the elbow rule, I will be looking at the first two components of this MCA analysis. Therefore this plot will only capture 32.7% of the variability in the data. More of the variance is captured in the components when we look at weekly cooks.
+
+#### Variables
+
+repeate search frequency, ingredients listed left vs. above, and ingredients step by step vs. pinned left while scrolling are well represented in dimension one.
+
+No platform for modification notes and browsing while searching frequency are well represented in dimension 2.
+
+Saving review frequency, modification frequency, seking review frequency and reading discussion frequencyare well represented in both dimensions
+
+#### Variable Categories
+The red point in the top right shows that unanswered questions have similar column profiles because it represents all the NA answers
+
+Dimension one contrasts users who left NA answers or answered none with users who frequently interact with recipes.
+
+Dimension two contrasts users who left blank answers with users who never seek reviews or save recipes
+
+Dimension two contrasts users who discuss on Facebook, and are influenced by influencers with users who are influenced by recipe magazines.
