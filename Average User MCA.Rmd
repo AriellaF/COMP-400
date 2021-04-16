@@ -21,7 +21,7 @@ library(splitstackshape)
 
 ```
 
-## Loading Data and Update Header
+## Loading Data From CSV and Update Header
 
 ```{r load data}
 my.data=read.csv("Online Recipe Sharing.csv", header=TRUE)
@@ -54,13 +54,14 @@ colnames(my.data)<-c("Timestamp", "Age", "Primary.Meal.Prepper", "Household.Diet
 "Ingredients.L.Comments.Inline.V.Below", "Ingredients.Above.Comments.Below.V.Inline", "Ingredients.By.Step.V.Above", 
 "Ingredients.By.Step.V.Scroll.L", 
 "Ingredients.Above.V.Scroll.L")
+
 ```
 
-### Re-Factor Data
+## Re-Factor Data
 
 If Respondent indicated that they search and browse on the same websites, populate the empty cells with the same data. This assumes that the user's searching behavior is exactly the same as the browsing behavior if the user selected yes for searching and browsing on the same websites.
 
-```{r}
+```{r fill in browsing blanks}
 for (i in 1:nrow(my.data)){
   if (my.data$Search.Browse.Same.Websites[i]=="No"){
     my.data$Primary.Browsing.Website[i]<-my.data$Primary.Search.Website[i]
@@ -76,6 +77,7 @@ Since the data set is small, I am consolidating some of the categories.
 - Dietary restriction will become a yes or no question
 
 - Home Cooking Rate will become Daily if the respondents cooks at home most days, weekly if the respondent cooks several times a week, and monthly is the respondent cooks a couple times a month.
+
 ```{r factoring}
 my.data.factored<-my.data
 my.data.factored$Age<-as.factor(my.data$Age)
@@ -85,15 +87,48 @@ my.data.factored$Primary.Meal.Prepper<-as.factor(my.data.factored$Primary.Meal.P
 my.data.factored$Household.Dietary.Restriction<-as.factor(my.data.factored$Household.Dietary.Restriction)
 
 my.data.factored$Home.Cooking.Rate<-as.factor(my.data.factored$Home.Cooking.Rate)
-my.data.factored<- mutate(my.data.factored,Primary.Meal.Prepper = fct_collapse(Primary.Meal.Prepper,
+
+my.data.factored$Ingredients.L.V.Above<-as.factor(my.data.factored$Ingredients.L.V.Above)
+my.data.factored$Ingredients.By.Step.V.Above<-as.factor(my.data.factored$Ingredients.By.Step.V.Above)
+my.data.factored$Ingredients.Above.V.Scroll.L<-as.factor(my.data.factored$Ingredients.Above.V.Scroll.L)
+my.data.factored$Ingredients.L.Comments.Inline.V.Below<-as.factor(my.data.factored$Ingredients.L.Comments.Inline.V.Below)
+my.data.factored$Ingredients.By.Step.V.Scroll.L<-
+  as.factor(my.data.factored$Ingredients.By.Step.V.Scroll.L)
+my.data.factored$Ingredients.Above.Comments.Below.V.Inline<-
+  as.factor(my.data.factored$Ingredients.Above.Comments.Below.V.Inline)
+my.data.factored<- mutate(my.data.factored, 
+                          Age = fct_collapse(Age, 
+                                             YA = c("18 - 24 years old","25 - 34 years old"),
+                                             Adult = c("35 - 44 years old","45 - 54 years old","55 - 64 years old")),
+                          Primary.Meal.Prepper = fct_collapse(Primary.Meal.Prepper,
                                                               Respondent = c("You", "I cook for myself"),
                                                               other_level = "Other"),
                   Household.Dietary.Restriction=fct_collapse(Household.Dietary.Restriction,
                                                              No="None",
                                                               other_level = "Yes"),
-                  Home.Cooking.Rate=fct_collapse(Home.Cooking.Rate,Daily=c("Almost every meal","Daily","Every meal"),
-                                                      Weekly=c("Several times a week","Once or twice a week"),
-                                                      Monthly=c("Once or twice a month")))
+                  Home.Cooking.Rate=fct_collapse(Home.Cooking.Rate,
+                                                 Daily=c("Almost every meal","Daily","Every meal"),
+                                                 Weekly=c("Several times a week","Once or twice a week"),
+                                                 Monthly=c("Once or twice a month")),
+                  Ingredients.L.V.Above=fct_collapse(Ingredients.L.V.Above,
+                                                     Ing.L =c("A"),
+                                                     Ing.Above=("B")),
+                  Ingredients.By.Step.V.Above=fct_collapse(Ingredients.By.Step.V.Above,
+                                                           Ing.By.Step=c("A"),
+                                                           Ing.Abov=c("B")),
+                  Ingredients.Above.V.Scroll.L=fct_collapse(Ingredients.Above.V.Scroll.L,
+                                                            Ing.Above=c("A"),
+                                                            Scroll.L=c("B")),
+                  Ingredients.L.Comments.Inline.V.Below=fct_collapse(Ingredients.L.Comments.Inline.V.Below,
+                                                                     Ing.L.Com.Inline=c("A"),
+                                                                     Ing.L.Com.Below=c("B")),
+                  Ingredients.By.Step.V.Scroll.L=fct_collapse(Ingredients.By.Step.V.Scroll.L,
+                                                              Ing.By.Step=c("A"),
+                                                              Ing.Scroll=("B")),
+                  Ingredients.Above.Comments.Below.V.Inline=fct_collapse(Ingredients.Above.Comments.Below.V.Inline,
+                                                                         Ing.Above.C.Below=c("A"),
+                                                                         Ing.Above.C.Inline=c("B"))
+                  )
 
 ```
 ### Website Recoding:
@@ -113,7 +148,7 @@ Modification influence factors pertaining to diet, or nutrition are grouped toge
 Modification influence factors pertaining to personal preference for food, flavor, or preperation method are grouped together under the category of "Personal Preference.
 
 Modification influence factors pertaining ingredients availability are grouped together under the category of "Ing. Availability"
-```{r searching}
+```{r create cleaning vector}
 unique(separate_rows(my.data.factored[32],1, sep = ";"))
 my.data.selected<-my.data.factored[c(6,7,8,10,17,18,20,22,23,28,37,30,32,38)]
 variables<-c()
@@ -245,199 +280,1223 @@ names(cleaned.variables)<-variables
 
 ## Functions for Cleaning Data
 
-likert.cleaner(.s) turns the integer values of the likert scale into their corresponding categories
 
- 
-```{r}
-likert.cleaner<-function(to.clean){
-  cut((to.clean),c(0, 1.2, 2.5,3.5,4.5,5.5),right=FALSE,labels=c("Never","Rarely","Sometimes", "Often","Always"))
-}
-
-likert.cleaner.S<-function(to.clean){
-  cut((to.clean),c(0, 1.2, 2.5,3.5,4.5,5.5),right=FALSE,
-  labels=c("Dissatisfied","Somewhat Dissatisfied", "Neutral",                               
-           "Somewhat Satisfied","Satisfied"))
-}
+```{r dummies}
 
 dummies<-function(search.data, to.clean){
-  # search.data%>%replace_na(list(to.clean="None"))
   col.names<-c(names(search.data))
   col.names<-col.names[col.names!=to.clean]
   search.data.clean<- search.data%>% separate_rows(all_of(to.clean), sep = ";")
   
   search.data.clean[to.clean]<-
     as.character(cleaned.variables[search.data.clean[[to.clean]]])
-  # var<-to.clean[1]
-  # search.data.dummies<-search.data.clean%>%
-  #   group_by_at(col.names)%>%
-  #   tally()%>%
-  #   pivot_longer(cols=-col.names, names_to = "key", values_to = "value")%>%
-  #   # spread(var, n, fill = 0)
-  #   spread(key, value, fill = 0)
+  search.data.clean[to.clean]<-lapply(search.data.clean[to.clean],function(x) replace(x,is.na(x),"Empty"))
   
-  # search.data.dummies<-search.data.clean%>%
-  #   select((to.clean))%>%
-  #   dummy()%>%
-  #   bind_cols(search.data.clean)%>%
-  #   select(-(to.clean))%>%
-  #   pivot_longer(cols=-col.names, names_to = "key", values_to = "value")%>%
-  #   filter(value!=0)%>%
-  #   unique()%>%
-  #   spread(key, value, fill = 0)
-    
   search.data.dummies<-search.data.clean%>%
     select((to.clean))%>%
     dummy()%>%
     bind_cols(search.data.clean)%>%
     select(-(to.clean))%>%
-    pivot_longer(cols=-col.names, names_to = "key", values_to = "value")#%>%
-    group_by_at(col.names)
-  # new.names<-unique(search.data.dummies$key)
-  # %>%
-  #   filter(value!=0)%>%
-  #   unique()%>%
-    # spread(key, value, fill = 0)
+    pivot_longer(cols=-col.names, names_to = "key", values_to = "value")%>%
+    filter(value!=0)
+  
+  search.data.dummies<-search.data.dummies%>%
+    unique()
+  
+  search.data.dummies<-search.data.dummies%>%
+    spread(key, value, fill = 0)
+    
 }
 
 ```
 
-```{r}
-# search.data<-my.data.factored[c("Age", "Primary.Meal.Prepper" , "Household.Dietary.Restriction", "Home.Cooking.Rate" ,"Primary.Search.Website",
-#                                 "Enjoyed.Website.Searching", "NOT.Enjoyed.Website.Searching" , "Recipe.Search.Bar.Frequency", 
-#                                 "Previous.Recipe.Search.Frequency", "Click.Rate")]
-# search.data<-data.frame(search.data)
-# colnames(search.data)<-c("Age", "Meal.Prepper","Dietary.Restriction","Home.Cook.Rate","Primary.C",
-#                          "Enjoyed.C","NOT.Enjoyed.C","Repeat.Search.F","Browse.Search.F","Click.Rate")
-# search.data<-tibble::rowid_to_column(search.data, "ID")
-# cleaned<-search.data
-# to.dummy<-select(cleaned, ends_with(".C"))
-# to.dummy.cols<-c(colnames(to.dummy))
-# for (col in to.dummy.cols){
-#   cleaned<-dummies(cleaned,c(col))
-# }
-# cleaned.likhert<-apply(select(cleaned,ends_with(".F")),2,likert.cleaner)
-# 
-# cleaned[, colnames(cleaned) %in% colnames(cleaned.likhert)] <- cleaned.likhert
-# rm(cleaned.likhert)
-# cols<-names(cleaned)
-```
 
-
-
-## Load Data
-```{r}
+## Load Factored Data
+```{r load factored data and clean}
 search.data<-my.data.factored[-c(1,9,11,19,21)]
 search.data<-data.frame(search.data)
 new.names=c("Age", "Meal.Prepper","Dietary.Restriction","Home.Cook.Rate","Primary.Format.C","Primary.S.C",
             "Enjoyed.S.C","NOT.Enjoyed.S.C","Recipe.Search.F","Repeat.S.F","Browse.Search.F","Click.Rate",
-            "Search.Browse.Same","Primary.B.C","Enjoyed.B.C","NOT.Enjoyed.B.C", "Primary.R.C", "Influential.R.C", 
-            "Use.R.F","Seek.R.F", "R.F","Save.F","Save.C","Mod.F","Why.Mod.C", "Mod.Note.F", "Mod.Note.C", 
-            "Note.Method.S","Potential.Note.Taker","Disc.F","Read.Disc.F","Disc.C","Enjoy.Disc.C", "Ing.L.V.Above", 
+            "Search.Browse.Same","Primary.B.C","Enjoyed.B.C","NOT.Enjoyed.B.C", "Primary.R.C", "Influential.R.C",
+            "Use.R.F","Seek.R.F", "R.F","Save.F","Save.C","Mod.F","Why.Mod.C", "Mod.Note.F", "Mod.Note.C",
+            "Note.Method.S","Potential.Note.Taker","Disc.F","Read.Disc.F","Disc.C","Enjoy.Disc.C", "Ing.L.V.Above",
             "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
-            "Ing.Above.V.Scroll.L")
-
+            "Ing.Above.V.Scroll.L"
+            )
 colnames(search.data)<-new.names
+
 search.data<-tibble::rowid_to_column(search.data, "ID")
+
+for (col in colnames(select(search.data,ends_with(".S")))){
+  search.data[[col]]<-factor(search.data[[col]], levels=c(NA,"1","2","3","4","5"))
+  levels(search.data[[col]])<- c("Dissatisfied","Somewhat Dissatisfied", "Neutral",
+           "Somewhat Satisfied","Satisfied")
+}
+
+for (col in colnames(select(search.data,ends_with(".F")))){
+  search.data[[col]]<-factor(search.data[[col]], levels=c(NA,"1","2","3","4","5"))
+  levels(search.data[[col]])<- c("Never","Rarely","Sometimes", "Often","Always")
+}
+
 ```
 
-<!-- ##Perform Naive MCA -->
-<!-- ```{r} -->
-
-<!-- cleaned.search.data<-data.frame(search.data[-c(1)]) -->
-<!-- cols<-names(cleaned.search.data) -->
-<!-- cleaned.search.data<-lapply(cleaned.search.data[cols], as.factor) -->
-<!-- char.cols<-select(data.frame(cleaned.search.data), ends_with(".C")) -->
-<!-- cleaned.search.data<-data.frame(cleaned.search.data) -->
-
-<!-- search.MCA=MCA(cleaned.search.data,graph=FALSE) -->
-<!-- fviz_screeplot(search.MCA,addlabels=T) -->
-<!-- fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE, -->
-<!--              ggtheme = theme_minimal()) -->
-<!-- ``` -->
 The categories that are farther from the origin explain more of the variance in the data set, and are well represented by the factor map. Furthermore, the categories that are closer together have similar profiles.
 
 From this data we can see that frequency of discussion, seeking reviews, reading discussion, reviewing, and saving recipes have similar profiles. Additionally, neither the first nor the second component have negativly correlated variable categories.
 
 
-```{r}
+
+## Improved MCA
+```{r MCA with dummies}
+cleaned<-search.data
+to.dummy<-select(cleaned, ends_with(".C"))
+to.dummy.cols<-c(colnames(to.dummy))
+
+for (col in to.dummy.cols){
+   cleaned<-dummies(cleaned,c(col))
+  
+}
+
+
+cols<-names(cleaned)
+cleaned.factored<-lapply(cleaned[cols], as.factor)
+
+```
+
+```{r Cleaner func}
+cleaner.S<-function(df){
+  to.dummy<-select(df, ends_with(".C"))
+  to.dummy.cols<-c(colnames(to.dummy))
+  
+  
+  for (col in to.dummy.cols){
+    df<-dummies(df,c(col))
+  }
+  
+ 
+  cols<-names(df)
+  cleaned.factored<-lapply(df[cols], as.factor)
+  cleaned.table<-data.frame(cleaned.factored[-c(1)])
+}
+```
+
+```{r mca all search data}
+# cleaned.search.data<-data.frame(cleaned.factored[-c(1)])
+# search.MCA=MCA(cleaned.search.data,graph=FALSE)
+# fviz_screeplot(search.MCA,addlabels=T)
+# fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+#              ggtheme = theme_minimal())
+# 
 # fviz_mca_var(search.MCA, col.var = "cos2",
 #              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
 #              repel = TRUE, ggtheme = theme_minimal())
-# fviz_mca_biplot(search.MCA, repel = TRUE, ggtheme= theme_minimal())
 ```
 
-### Improved MCA
-```{r}
-cleaned<-search.data
-head(cleaned)
-to.dummy<-select(cleaned, ends_with(".C"))
-to.dummy.cols<-c(colnames(to.dummy))
-to.dummy.cols[[3]]
-cleaned<-dummies(cleaned,c("Enjoyed.S.C"))
-#  for (col in to.dummy.cols){
-#    cleaned<-dummies(cleaned,c(col))
-#    print(col)
-#    print(length(unique(cleaned$ID)))
-# #   # cleaned<-cSplit_e(cleaned, split.col=col,sep=";", type="character",
-# #                     # mode="binary", drop=T, fill = 0)
-#  }
-length(unique(cleaned$ID))
-cleaned
-# cleaned.likert<-apply(select(cleaned,ends_with(".F")),2,likert.cleaner)
-# cleaned[, colnames(cleaned) %in% colnames(cleaned.likert)] <- cleaned.likert
-# 
-# cleaned.likert.s<-apply(select(cleaned,ends_with(".S")),2,likert.cleaner.S)
-# cleaned[, colnames(cleaned) %in% colnames(cleaned.likert.s)] <- cleaned.likert.s
+## What Do Users Enjoy?
 
-cols<-names(cleaned)
-cleaned.factored<-lapply(cleaned[cols], as.factor)
-```
-```{r}
-cleaner<-function(df){
-to.dummy<-select(cleaned, ends_with(".C"))
-to.dummy.cols<-c(colnames(to.dummy))
+```{r mca enjoyed all}
+enjoyed.data<-search.data[c("Age", "Meal.Prepper","Dietary.Restriction","Home.Cook.Rate","Primary.Format.C","Primary.S.C",
+            "Enjoyed.S.C","NOT.Enjoyed.S.C","Primary.B.C","Enjoyed.B.C","Influential.R.C", 
+            "Mod.Note.C", 
+            "Note.Method.S","Potential.Note.Taker","Disc.C","Enjoy.Disc.C", "Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
 
-
-for (col in to.dummy.cols){
-  #cleaned<-dummies(cleaned,c(col))
-  cleaned<-cSplit_e(cleaned, split.col=col,sep=";", type="character",
-                    mode="binary", drop=T, fill = 0)
-}
-
-dim(cleaned)
-cleaned.likert<-apply(select(cleaned,ends_with(".F")),2,likert.cleaner)
-cleaned[, colnames(cleaned) %in% colnames(cleaned.likert)] <- cleaned.likert
-
-cleaned.likert.s<-apply(select(cleaned,ends_with(".S")),2,likert.cleaner.S)
-cleaned[, colnames(cleaned) %in% colnames(cleaned.likert.s)] <- cleaned.likert.s
-
-cols<-names(cleaned)
-cleaned.factored<-lapply(cleaned[cols], as.factor)
-}
-```
-
-```{r}
-cleaned.search.data<-data.frame(cleaned.factored[-c(1)])
-dim(cleaned.search.data)
-search.MCA=MCA(cleaned.search.data,graph=FALSE)
+enjoyed.data.clean<-cleaner.S(enjoyed.data)
+search.MCA=MCA(enjoyed.data.clean,graph=FALSE)
 fviz_screeplot(search.MCA,addlabels=T)
 fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
              ggtheme = theme_minimal())
-fviz_contrib(search.MCA, choice = "var", axes = 1, top = 15)
-fviz_contrib(search.MCA, choice = "var", axes = 2, top = 15)
 
 fviz_mca_var(search.MCA, col.var = "cos2",
              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
              repel = TRUE, ggtheme = theme_minimal())
 ```
 
-### What Do Users Enjoy?
+## What Do Users NOT Enjoy?
 
-```{r}
-enjoyed.data<-search.data[c("Age", "Meal.Prepper","Dietary.Restriction","Home.Cook.Rate","Primary.Format.C","Primary.S.C",
-            "Enjoyed.S.C","NOT.Enjoyed.S.C","Primary.B.C","Enjoyed.B.C","Influential.R.C", 
-            "Use.R.F", "Mod.Note.C", 
-            "Note.Method.S","Potential.Note.Taker","Disc.C","Enjoy.Disc.C", "Ing.L.V.Above",
+```{r mca not enjoyed all}
+NOT.enjoyed.data<-search.data[c("Age", "Meal.Prepper","Dietary.Restriction","Home.Cook.Rate","Primary.Format.C","Primary.S.C",
+            "NOT.Enjoyed.S.C","Primary.B.C","NOT.Enjoyed.B.C","Ing.L.V.Above",
             "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
             "Ing.Above.V.Scroll.L")]
+
+NOT.enjoyed.data.clean<-cleaner.S(NOT.enjoyed.data)
+search.MCA=MCA(NOT.enjoyed.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
 ```
+
+## Searching?
+
+```{r mca searching all}
+searching.data<-search.data[c("Age", "Meal.Prepper","Dietary.Restriction","Home.Cook.Rate","Primary.Format.C","Primary.S.C",
+            "Enjoyed.S.C","NOT.Enjoyed.S.C","Recipe.Search.F","Repeat.S.F","Browse.Search.F","Click.Rate",
+            "Search.Browse.Same", "Influential.R.C","Seek.R.F", "Save.F","Save.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+
+searching.data.clean<-cleaner.S(searching.data)
+search.MCA=MCA(searching.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+## Browsing?
+
+```{r mca browsing all}
+searching.data<-search.data[c("Age", "Meal.Prepper","Dietary.Restriction","Home.Cook.Rate","Primary.Format.C","Browse.Search.F",
+            "Search.Browse.Same","Primary.B.C","Enjoyed.B.C","NOT.Enjoyed.B.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+
+searching.data.clean<-cleaner.S(searching.data)
+search.MCA=MCA(searching.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+## Review & Discuss?
+
+```{r mca social all}
+discussion.data<-search.data[c("Age", "Meal.Prepper","Dietary.Restriction","Home.Cook.Rate","Primary.Format.C","Primary.R.C", "Influential.R.C", 
+            "Use.R.F","Seek.R.F", "R.F","Disc.F","Read.Disc.F","Disc.C","Enjoy.Disc.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+discussion.data.clean<-cleaner.S(discussion.data)
+search.MCA=MCA(discussion.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+### Frequency
+
+```{r freq }
+freq<- search.data[c("Meal.Prepper", "Age","Home.Cook.Rate","Recipe.Search.F","Repeat.S.F","Browse.Search.F","Click.Rate",
+            "Use.R.F","Seek.R.F", "R.F","Save.F","Mod.F", "Mod.Note.F","Disc.F","Read.Disc.F","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+cols<-names(freq)
+freq<-lapply(freq[cols], as.factor)
+freq<-data.frame(freq)
+search.MCA=MCA(freq,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+# Stratify By Diet
+
+## Overview
+Slightly More variance is captured in the components when we stratify by diet.
+
+```{r diet yes all}
+cleaned.Diet.Yes<-filter(search.data, Dietary.Restriction == "Yes")
+cleaned.Diet.Yes<-cleaned.Diet.Yes%>%select(-c(Dietary.Restriction))
+# data.clean.Diet.Yes<-cleaner.S(cleaned.Diet.Yes)
+# search.MCA=MCA(data.clean.Diet.Yes,graph=FALSE)
+# fviz_screeplot(search.MCA,addlabels=T)
+# fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+#              ggtheme = theme_minimal())
+# 
+# fviz_mca_var(search.MCA, col.var = "cos2",
+#              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+#              repel = TRUE, ggtheme = theme_minimal())
+```
+
+```{r diet no all}
+cleaned.Diet.No<-filter(search.data, Dietary.Restriction == "No")
+cleaned.Diet.No<-cleaned.Diet.No%>%select(-c(Dietary.Restriction))
+# data.clean.Diet.No<-cleaner.S(cleaned.Diet.No)
+# search.MCA=MCA(data.clean.Diet.No,graph=FALSE)
+# fviz_screeplot(search.MCA,addlabels=T)
+# fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+#              ggtheme = theme_minimal())
+# 
+# fviz_mca_var(search.MCA, col.var = "cos2",
+#              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+#              repel = TRUE, ggtheme = theme_minimal())
+```
+
+### What Do Users Enjoy?
+```{r diet yes enjoy}
+enjoyed.data.diet<-cleaned.Diet.Yes[c("Age", "Meal.Prepper","Home.Cook.Rate","Primary.Format.C","Primary.S.C",
+            "Enjoyed.S.C","NOT.Enjoyed.S.C","Primary.B.C","Enjoyed.B.C","Influential.R.C", 
+            "Mod.Note.C", 
+            "Note.Method.S","Potential.Note.Taker","Disc.C","Enjoy.Disc.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+
+enjoyed.data.clean<-cleaner.S(enjoyed.data.diet)
+search.MCA=MCA(enjoyed.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+```{r diet no enjoy}
+enjoyed.data.diet<-cleaned.Diet.No[c("Age","Meal.Prepper","Home.Cook.Rate",
+                                     "Primary.Format.C","Primary.S.C",
+                               "Enjoyed.S.C","NOT.Enjoyed.S.C","Primary.B.C",
+                               "Enjoyed.B.C","Influential.R.C", "Mod.Note.C",
+                               "Note.Method.S","Potential.Note.Taker","Disc.C","Enjoy.Disc.C")]
+
+enjoyed.data.clean<-cleaner.S(enjoyed.data.diet)
+search.MCA=MCA(enjoyed.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+### What Do Users NOT Enjoy?
+
+```{r diet yes not enjoy}
+NOT.enjoyed.data<-cleaned.Diet.Yes[c("Age", "Meal.Prepper","Home.Cook.Rate","Primary.Format.C","Primary.S.C",
+            "NOT.Enjoyed.S.C","Primary.B.C","NOT.Enjoyed.B.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+
+NOT.enjoyed.data.clean<-cleaner.S(NOT.enjoyed.data)
+search.MCA=MCA(NOT.enjoyed.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+```{r diet no not enjoyed}
+NOT.enjoyed.data<-cleaned.Diet.No[c("Age", "Meal.Prepper","Home.Cook.Rate","Primary.Format.C","Primary.S.C",
+            "NOT.Enjoyed.S.C","Primary.B.C","NOT.Enjoyed.B.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+
+NOT.enjoyed.data.clean<-cleaner.S(NOT.enjoyed.data)
+search.MCA=MCA(NOT.enjoyed.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+
+### Searching?
+```{r diet yes search}
+searching.data<-cleaned.Diet.Yes[c("Age", "Meal.Prepper","Home.Cook.Rate","Primary.Format.C","Primary.S.C",
+            "Enjoyed.S.C","NOT.Enjoyed.S.C","Recipe.Search.F","Repeat.S.F","Browse.Search.F","Click.Rate",
+            "Search.Browse.Same", "Influential.R.C","Seek.R.F", "Save.F","Save.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+
+searching.data.clean<-cleaner.S(searching.data)
+search.MCA=MCA(searching.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+```{r diet no search}
+searching.data<-cleaned.Diet.No[c("Age", "Meal.Prepper","Home.Cook.Rate","Primary.Format.C","Primary.S.C",
+            "Enjoyed.S.C","NOT.Enjoyed.S.C","Recipe.Search.F","Repeat.S.F","Browse.Search.F","Click.Rate",
+            "Search.Browse.Same", "Influential.R.C","Seek.R.F", "Save.F","Save.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+
+searching.data.clean<-cleaner.S(searching.data)
+search.MCA=MCA(searching.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+### Browsing?
+```{r diet yes browse}
+searching.data<-cleaned.Diet.Yes[c("Age", "Meal.Prepper","Home.Cook.Rate","Primary.Format.C","Browse.Search.F",
+            "Search.Browse.Same","Primary.B.C","Enjoyed.B.C","NOT.Enjoyed.B.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+
+searching.data.clean<-cleaner.S(searching.data)
+search.MCA=MCA(searching.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+```{r diet no browse}
+searching.data<-cleaned.Diet.No[c("Age", "Meal.Prepper","Home.Cook.Rate","Primary.Format.C","Browse.Search.F",
+            "Search.Browse.Same","Primary.B.C","Enjoyed.B.C","NOT.Enjoyed.B.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+
+searching.data.clean<-cleaner.S(searching.data)
+search.MCA=MCA(searching.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+### Review & Discuss?
+```{r diet yes social}
+discussion.data<-cleaned.Diet.Yes[c("Age", "Meal.Prepper","Home.Cook.Rate","Primary.Format.C","Primary.R.C", "Influential.R.C", 
+            "Use.R.F","Seek.R.F", "R.F","Disc.F","Read.Disc.F","Disc.C","Enjoy.Disc.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+
+discussion.data.clean<-cleaner.S(discussion.data)
+search.MCA=MCA(discussion.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+```{r diet no social}
+discussion.data<-cleaned.Diet.No[c("Age", "Meal.Prepper","Home.Cook.Rate","Primary.Format.C","Primary.R.C", "Influential.R.C", 
+            "Use.R.F","Seek.R.F", "R.F","Disc.F","Read.Disc.F","Disc.C","Enjoy.Disc.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+
+discussion.data.clean<-cleaner.S(discussion.data)
+search.MCA=MCA(discussion.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+### Frequency
+
+```{r freq diet yes}
+freq<- cleaned.Diet.Yes[c("Meal.Prepper", "Age","Home.Cook.Rate","Recipe.Search.F","Repeat.S.F","Browse.Search.F","Click.Rate",
+            "Use.R.F","Seek.R.F", "R.F","Save.F","Mod.F", "Mod.Note.F","Disc.F","Read.Disc.F","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+cols<-names(freq)
+freq<-lapply(freq[cols], as.factor)
+freq<-data.frame(freq)
+search.MCA=MCA(freq,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+```{r freq diet no}
+freq<- cleaned.Diet.No[c("Meal.Prepper", "Age","Home.Cook.Rate","Recipe.Search.F","Repeat.S.F","Browse.Search.F","Click.Rate",
+            "Use.R.F","Seek.R.F", "R.F","Save.F","Mod.F", "Mod.Note.F","Disc.F","Read.Disc.F","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+cols<-names(freq)
+freq<-lapply(freq[cols], as.factor)
+freq<-data.frame(freq)
+search.MCA=MCA(freq,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+## Stratify by Age
+
+
+```{r ya all}
+cleaned.YA<-filter(search.data, Age == "YA")
+cleaned.YA<-cleaned.YA%>%select(-c(Age))
+
+# data.cleaned.YA<-cleaner.S(cleaned.YA)
+# search.MCA=MCA(data.cleaned.YA,graph=FALSE)
+# fviz_screeplot(search.MCA,addlabels=T)
+# fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+#              ggtheme = theme_minimal())
+# 
+# fviz_mca_var(search.MCA, col.var = "cos2",
+#              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+#              repel = TRUE, ggtheme = theme_minimal())
+```
+
+```{r adult all}
+cleaned.adult<-filter(search.data, Age == "Adult")
+cleaned.adult<-cleaned.adult%>%select(-c(Age))
+
+# data.cleaned.Adult<-cleaner.S(cleaned.adult)
+# search.MCA=MCA(data.cleaned.Adult,graph=FALSE)
+# fviz_screeplot(search.MCA,addlabels=T)
+# fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+#              ggtheme = theme_minimal())
+# fviz_mca_var(search.MCA, col.var = "cos2",
+#              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+#              repel = TRUE, ggtheme = theme_minimal())
+```
+### What Do Users Enjoy?
+```{r YA enjoy}
+enjoyed.data.YA<-cleaned.YA[c("Dietary.Restriction", "Meal.Prepper","Home.Cook.Rate","Primary.Format.C","Primary.S.C",
+            "Enjoyed.S.C","NOT.Enjoyed.S.C","Primary.B.C","Enjoyed.B.C","Influential.R.C", 
+            "Mod.Note.C", 
+            "Note.Method.S","Potential.Note.Taker","Disc.C","Enjoy.Disc.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+
+enjoyed.data.clean<-cleaner.S(enjoyed.data.YA)
+search.MCA=MCA(enjoyed.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+```{r adult enjoy}
+enjoyed.data.diet<-cleaned.adult[c("Dietary.Restriction", "Meal.Prepper","Home.Cook.Rate","Primary.Format.C","Primary.S.C",
+            "Enjoyed.S.C","NOT.Enjoyed.S.C","Primary.B.C","Enjoyed.B.C","Influential.R.C", 
+            "Mod.Note.C", 
+            "Note.Method.S","Potential.Note.Taker","Disc.C","Enjoy.Disc.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+
+enjoyed.data.clean<-cleaner.S(enjoyed.data.diet)
+search.MCA=MCA(enjoyed.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+### What Do Users NOT Enjoy?
+
+```{r YA not enjoy}
+NOT.enjoyed.data<-cleaned.YA[c("Dietary.Restriction", "Meal.Prepper","Home.Cook.Rate","Primary.Format.C","Primary.S.C",
+            "NOT.Enjoyed.S.C","Primary.B.C","NOT.Enjoyed.B.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+
+NOT.enjoyed.data.clean<-cleaner.S(NOT.enjoyed.data)
+search.MCA=MCA(NOT.enjoyed.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+```{r adult not enjoyed}
+NOT.enjoyed.data<-cleaned.adult[c("Dietary.Restriction", "Meal.Prepper","Home.Cook.Rate","Primary.Format.C","Primary.S.C",
+            "NOT.Enjoyed.S.C","Primary.B.C","NOT.Enjoyed.B.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+
+NOT.enjoyed.data.clean<-cleaner.S(NOT.enjoyed.data)
+search.MCA=MCA(NOT.enjoyed.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+
+### Searching?
+```{r YA search}
+searching.data<-cleaned.YA[c("Dietary.Restriction", "Meal.Prepper","Home.Cook.Rate","Primary.Format.C","Primary.S.C",
+            "Enjoyed.S.C","NOT.Enjoyed.S.C","Recipe.Search.F","Repeat.S.F","Browse.Search.F","Click.Rate",
+            "Search.Browse.Same", "Influential.R.C","Seek.R.F", "Save.F","Save.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+
+searching.data.clean<-cleaner.S(searching.data)
+search.MCA=MCA(searching.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+```{r adult search}
+searching.data<-cleaned.adult[c("Dietary.Restriction", "Meal.Prepper","Home.Cook.Rate","Primary.Format.C","Primary.S.C",
+            "Enjoyed.S.C","NOT.Enjoyed.S.C","Recipe.Search.F","Repeat.S.F","Browse.Search.F","Click.Rate",
+            "Search.Browse.Same", "Influential.R.C","Seek.R.F", "Save.F","Save.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+
+searching.data.clean<-cleaner.S(searching.data)
+search.MCA=MCA(searching.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+### Browsing?
+```{r YA browse}
+searching.data<-cleaned.YA[c("Dietary.Restriction", "Meal.Prepper","Home.Cook.Rate","Primary.Format.C","Browse.Search.F",
+            "Search.Browse.Same","Primary.B.C","Enjoyed.B.C","NOT.Enjoyed.B.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+
+searching.data.clean<-cleaner.S(searching.data)
+search.MCA=MCA(searching.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+```{r adult browse}
+searching.data<-cleaned.adult[c("Dietary.Restriction", "Meal.Prepper","Home.Cook.Rate","Primary.Format.C","Browse.Search.F",
+            "Search.Browse.Same","Primary.B.C","Enjoyed.B.C","NOT.Enjoyed.B.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+
+searching.data.clean<-cleaner.S(searching.data)
+search.MCA=MCA(searching.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+### Review & Discuss?
+```{r YA social}
+discussion.data<-cleaned.YA[c("Dietary.Restriction", "Meal.Prepper","Home.Cook.Rate","Primary.Format.C","Primary.R.C", "Influential.R.C", 
+            "Use.R.F","Seek.R.F", "R.F","Disc.F","Read.Disc.F","Disc.C","Enjoy.Disc.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+
+discussion.data.clean<-cleaner.S(discussion.data)
+search.MCA=MCA(discussion.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+```{r adult social}
+discussion.data<-cleaned.adult[c("Dietary.Restriction", "Meal.Prepper","Home.Cook.Rate","Primary.Format.C","Primary.R.C", "Influential.R.C", 
+            "Use.R.F","Seek.R.F", "R.F","Disc.F","Read.Disc.F","Disc.C","Enjoy.Disc.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+
+discussion.data.clean<-cleaner.S(discussion.data)
+search.MCA=MCA(discussion.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+### Frequency
+
+```{r ya frequency}
+freq<- cleaned.YA[c("Meal.Prepper", "Dietary.Restriction","Home.Cook.Rate","Recipe.Search.F","Repeat.S.F","Browse.Search.F","Click.Rate",
+            "Use.R.F","Seek.R.F", "R.F","Save.F","Mod.F", "Mod.Note.F","Disc.F","Read.Disc.F","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+cols<-names(freq)
+freq<-lapply(freq[cols], as.factor)
+freq<-data.frame(freq)
+search.MCA=MCA(freq,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+```{r adult frequency}
+freq<- cleaned.adult[c("Meal.Prepper", "Dietary.Restriction","Home.Cook.Rate","Recipe.Search.F","Repeat.S.F","Browse.Search.F","Click.Rate",
+            "Use.R.F","Seek.R.F", "R.F","Save.F","Mod.F", "Mod.Note.F","Disc.F","Read.Disc.F","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+cols<-names(freq)
+freq<-lapply(freq[cols], as.factor)
+freq<-data.frame(freq)
+search.MCA=MCA(freq,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+## Primary Cook
+
+
+```{r primary cook repsondent all}
+primary.cook<-filter(search.data, Meal.Prepper == "Respondent")
+primary.cook<-primary.cook%>%select(-c(Meal.Prepper))
+
+# data.cook.cleaned<-cleaner.S(primary.cook)
+# search.MCA=MCA(data.cook.cleaned,graph=FALSE)
+# fviz_screeplot(search.MCA,addlabels=T)
+# fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+#              ggtheme = theme_minimal())
+# 
+# fviz_mca_var(search.MCA, col.var = "cos2",
+#              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+#              repel = TRUE, ggtheme = theme_minimal())
+```
+
+```{r primary cook other}
+primary.cook.o<-filter(search.data, Meal.Prepper == "Other")
+primary.cook.o<-primary.cook.o%>%select(-c(Meal.Prepper))
+
+# data.cleaned.cook.o<-cleaner.S(primary.cook.o)
+# search.MCA=MCA(data.cleaned.cook.o,graph=FALSE)
+# fviz_screeplot(search.MCA,addlabels=T)
+# fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+#              ggtheme = theme_minimal())
+# fviz_mca_var(search.MCA, col.var = "cos2",
+#              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+#              repel = TRUE, ggtheme = theme_minimal())
+```
+### What Do Users Enjoy?
+```{r primary cook repsondent enjoy}
+primary.cook.data<- primary.cook[c("Dietary.Restriction", "Age","Home.Cook.Rate","Primary.Format.C","Primary.S.C",
+            "Enjoyed.S.C","NOT.Enjoyed.S.C","Primary.B.C","Enjoyed.B.C","Influential.R.C", 
+            "Mod.Note.C", 
+            "Note.Method.S","Potential.Note.Taker","Disc.C","Enjoy.Disc.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+enjoyed.data.clean<-cleaner.S(primary.cook.data)
+search.MCA=MCA(enjoyed.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+```{r primary cook other enjoy}
+primary.cook.o.data<- primary.cook.o[c("Dietary.Restriction", "Age","Home.Cook.Rate","Primary.Format.C","Primary.S.C",
+            "Enjoyed.S.C","NOT.Enjoyed.S.C","Primary.B.C","Enjoyed.B.C","Influential.R.C", 
+            "Mod.Note.C", 
+            "Note.Method.S","Potential.Note.Taker","Disc.C","Enjoy.Disc.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+enjoyed.data.clean<-cleaner.S(primary.cook.data)
+search.MCA=MCA(enjoyed.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+### What Do Users NOT Enjoy?
+
+```{r primary cook repsondent NOT enjoy}
+primary.cook.data<- primary.cook[c("Dietary.Restriction", "Age","Home.Cook.Rate","Primary.Format.C","Primary.S.C",
+            "NOT.Enjoyed.S.C","Primary.B.C","NOT.Enjoyed.B.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+NOT.enjoyed.data.clean<-cleaner.S(primary.cook.data)
+search.MCA=MCA(NOT.enjoyed.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+```{r primary cook other not enjoyed}
+primary.cook.o.data<- primary.cook.o[c("Dietary.Restriction", "Age","Home.Cook.Rate","Primary.Format.C","Primary.S.C",
+            "NOT.Enjoyed.S.C","Primary.B.C","NOT.Enjoyed.B.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+NOT.enjoyed.data.clean<-cleaner.S(primary.cook.o.data)
+search.MCA=MCA(NOT.enjoyed.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+
+### Searching?
+```{r primary cook respondent search}
+primary.cook.data<- primary.cook[c("Dietary.Restriction", "Age","Home.Cook.Rate","Primary.Format.C","Primary.S.C",
+            "Enjoyed.S.C","NOT.Enjoyed.S.C","Recipe.Search.F","Repeat.S.F","Browse.Search.F","Click.Rate",
+            "Search.Browse.Same", "Influential.R.C","Seek.R.F", "Save.F","Save.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+searching.data.clean<-cleaner.S(primary.cook.data)
+search.MCA=MCA(searching.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+```{r primary cook other search}
+primary.cook.o.data<- primary.cook.o[c("Dietary.Restriction", "Age","Home.Cook.Rate","Primary.Format.C","Primary.S.C",
+            "Enjoyed.S.C","NOT.Enjoyed.S.C","Recipe.Search.F","Repeat.S.F","Browse.Search.F","Click.Rate",
+            "Search.Browse.Same", "Influential.R.C","Seek.R.F", "Save.F","Save.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+searching.data.clean<-cleaner.S(primary.cook.o.data)
+search.MCA=MCA(searching.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+### Browsing?
+```{r primary cook respondent browse}
+primary.cook.data<- primary.cook[c("Dietary.Restriction", "Age","Home.Cook.Rate","Primary.Format.C","Browse.Search.F",
+            "Search.Browse.Same","Primary.B.C","Enjoyed.B.C","NOT.Enjoyed.B.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+searching.data.clean<-cleaner.S(primary.cook.data)
+search.MCA=MCA(searching.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+```{r primary cook other browse}
+primary.cook.o.data<- primary.cook.o[c("Dietary.Restriction", "Age","Home.Cook.Rate","Primary.Format.C","Browse.Search.F",
+            "Search.Browse.Same","Primary.B.C","Enjoyed.B.C","NOT.Enjoyed.B.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+searching.data.clean<-cleaner.S(primary.cook.o.data)
+search.MCA=MCA(searching.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+### Review & Discuss?
+```{r primary cook respondent social}
+primary.cook.data<- primary.cook[c("Dietary.Restriction", "Age","Home.Cook.Rate","Primary.Format.C","Primary.R.C", 
+                                   "Influential.R.C", "Use.R.F","Seek.R.F", "R.F","Disc.F","Read.Disc.F",
+                                   "Disc.C","Enjoy.Disc.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+discussion.data.clean<-cleaner.S(primary.cook.data)
+search.MCA=MCA(discussion.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+```{r primary cook other social}
+primary.cook.o.data<- primary.cook.o[c("Dietary.Restriction", "Age","Home.Cook.Rate","Primary.Format.C","Primary.R.C", "Influential.R.C", 
+            "Use.R.F","Seek.R.F", "R.F","Disc.F","Read.Disc.F","Disc.C","Enjoy.Disc.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+discussion.data.clean<-cleaner.S(primary.cook.o.data)
+search.MCA=MCA(discussion.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+### Frequency
+```{r primary cook respondent freq}
+primary.cook.data<- primary.cook[c("Age", "Dietary.Restriction","Home.Cook.Rate","Recipe.Search.F","Repeat.S.F","Browse.Search.F","Click.Rate",
+            "Use.R.F","Seek.R.F", "R.F","Save.F","Mod.F", "Mod.Note.F","Disc.F","Read.Disc.F","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+cols<-names(primary.cook.data)
+primary.cook.data<-lapply(primary.cook.data[cols], as.factor)
+primary.cook.data<-data.frame(primary.cook.data)
+search.MCA=MCA(primary.cook.data,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+```{r primary cook other freq}
+primary.cook.o.data<- primary.cook.o[c("Age", "Dietary.Restriction","Home.Cook.Rate","Recipe.Search.F","Repeat.S.F","Browse.Search.F","Click.Rate",
+            "Use.R.F","Seek.R.F", "R.F","Save.F","Mod.F", "Mod.Note.F","Disc.F","Read.Disc.F","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+cols<-names(primary.cook.o.data)
+primary.cook.o.data<-lapply(primary.cook.o.data[cols], as.factor)
+primary.cook.o.data<-data.frame(primary.cook.o.data)
+search.MCA=MCA(primary.cook.o.data,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+## Stratify By Cooking Frequency
+
+### Overview
+
+```{r daily cooks all}
+daily.cooks<-filter(search.data, Home.Cook.Rate == "Daily")
+daily.cooks<-daily.cooks%>%select(-c(Home.Cook.Rate))
+# cols<-names(daily.cooks)
+# daily.cook.data<-lapply(daily.cooks[cols], as.factor)
+# daily.cook.data<-data.frame(daily.cook.data)
+# data.cook.cleaned<-cleaner.S(daily.cook.data)
+# search.MCA=MCA(data.cook.cleaned,graph=FALSE)
+# fviz_screeplot(search.MCA,addlabels=T)
+# fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+#              ggtheme = theme_minimal())
+# 
+# fviz_mca_var(search.MCA, col.var = "cos2",
+#              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+#              repel = TRUE, ggtheme = theme_minimal())
+```
+
+```{r weekly/monlthly cooks all}
+weekly.cooks<-filter(search.data, !(Home.Cook.Rate == "Daily") )
+weekly.cooks<-weekly.cooks%>%select(-c(Home.Cook.Rate))
+# cols<-names(weekly.cooks)
+# weekly.cook.data<-lapply(weekly.cooks[cols], as.factor)
+# weekly.cook.data<-data.frame(weekly.cook.data)
+# search.MCA=MCA(weekly.cook.data,graph=FALSE)
+# fviz_screeplot(search.MCA,addlabels=T)
+# fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+#              ggtheme = theme_minimal())
+# fviz_mca_var(search.MCA, col.var = "cos2",
+#              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+#              repel = TRUE, ggtheme = theme_minimal())
+```
+
+
+### What Do Users Enjoy?
+```{r weekly cook enjoy}
+weekly.cooks.data<- weekly.cooks[c("Dietary.Restriction", "Age","Meal.Prepper","Primary.Format.C","Primary.S.C",
+            "Enjoyed.S.C","NOT.Enjoyed.S.C","Primary.B.C","Enjoyed.B.C","Influential.R.C", 
+            "Mod.Note.C", 
+            "Note.Method.S","Potential.Note.Taker","Disc.C","Enjoy.Disc.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+enjoyed.data.clean<-cleaner.S(weekly.cooks.data)
+search.MCA=MCA(enjoyed.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+```{r daily cook enjoy}
+daily.cooks.data<-daily.cooks[c("Dietary.Restriction", "Age","Meal.Prepper","Primary.Format.C","Primary.S.C",
+            "Enjoyed.S.C","NOT.Enjoyed.S.C","Primary.B.C","Enjoyed.B.C","Influential.R.C", 
+            "Mod.Note.C", 
+            "Note.Method.S","Potential.Note.Taker","Disc.C","Enjoy.Disc.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+enjoyed.data.clean<-cleaner.S(daily.cooks.data)
+search.MCA=MCA(enjoyed.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+### What Do Users NOT Enjoy?
+
+```{r weekly cook  enjoy}
+weekly.cooks.data<- weekly.cooks[c("Dietary.Restriction", "Age","Meal.Prepper","Primary.Format.C","Primary.S.C",
+            "NOT.Enjoyed.S.C","Primary.B.C","NOT.Enjoyed.B.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+NOT.enjoyed.data.clean<-cleaner.S(weekly.cooks.data)
+search.MCA=MCA(NOT.enjoyed.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+```{r daily cook  not enjoyed}
+# daily.cooks.data<-daily.cooks[c("Dietary.Restriction", "Age","Meal.Prepper","Primary.Format.C","Primary.S.C",
+#             "NOT.Enjoyed.S.C","Primary.B.C","NOT.Enjoyed.B.C","Ing.L.V.Above",
+#             "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+#             "Ing.Above.V.Scroll.L")]
+# NOT.enjoyed.data.clean<-cleaner.S(daily.cook.data)
+# search.MCA=MCA(NOT.enjoyed.data.clean,graph=FALSE)
+# fviz_screeplot(search.MCA,addlabels=T)
+# fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+#              ggtheme = theme_minimal())
+# 
+# fviz_mca_var(search.MCA, col.var = "cos2",
+#              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+#              repel = TRUE, ggtheme = theme_minimal())
+```
+
+
+### Searching?
+```{r weekly cook  search}
+weekly.cooks.data<- weekly.cooks[c("Dietary.Restriction", "Age","Meal.Prepper","Primary.Format.C","Primary.S.C",
+            "Enjoyed.S.C","NOT.Enjoyed.S.C","Recipe.Search.F","Repeat.S.F","Browse.Search.F","Click.Rate",
+            "Search.Browse.Same", "Influential.R.C","Seek.R.F", "Save.F","Save.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+searching.data.clean<-cleaner.S(weekly.cooks.data)
+search.MCA=MCA(searching.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+```{r daily cook search}
+daily.cooks.data<-daily.cooks[c("Dietary.Restriction", "Age","Meal.Prepper","Primary.Format.C","Primary.S.C",
+            "Enjoyed.S.C","NOT.Enjoyed.S.C","Recipe.Search.F","Repeat.S.F","Browse.Search.F","Click.Rate",
+            "Search.Browse.Same", "Influential.R.C","Seek.R.F", "Save.F","Save.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+searching.data.clean<-cleaner.S(daily.cooks.data)
+search.MCA=MCA(searching.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+### Browsing?
+```{r weekly cook browse}
+weekly.cooks.data<- weekly.cooks[c("Dietary.Restriction", "Age","Meal.Prepper","Primary.Format.C","Browse.Search.F",
+            "Search.Browse.Same","Primary.B.C","Enjoyed.B.C","NOT.Enjoyed.B.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+searching.data.clean<-cleaner.S(weekly.cooks.data)
+search.MCA=MCA(searching.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+```{r daily cook browse}
+daily.cooks.data<-daily.cooks[c("Dietary.Restriction", "Age","Meal.Prepper","Primary.Format.C","Browse.Search.F",
+            "Search.Browse.Same","Primary.B.C","Enjoyed.B.C","NOT.Enjoyed.B.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+searching.data.clean<-cleaner.S(daily.cooks.data)
+search.MCA=MCA(searching.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+### Review & Discuss?
+```{r weekly cook social}
+weekly.cooks.data<- weekly.cooks[c("Dietary.Restriction", "Age","Meal.Prepper","Primary.Format.C","Primary.R.C", 
+                                   "Influential.R.C", "Use.R.F","Seek.R.F", "R.F","Disc.F","Read.Disc.F",
+                                   "Disc.C","Enjoy.Disc.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+discussion.data.clean<-cleaner.S(weekly.cooks.data)
+search.MCA=MCA(discussion.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+```{r daily cook social}
+daily.cooks.data<-daily.cooks[c("Dietary.Restriction", "Age","Meal.Prepper","Primary.Format.C","Primary.R.C", "Influential.R.C", 
+            "Use.R.F","Seek.R.F", "R.F","Disc.F","Read.Disc.F","Disc.C","Enjoy.Disc.C","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+discussion.data.clean<-cleaner.S(daily.cooks.data)
+search.MCA=MCA(discussion.data.clean,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+### Frequency
+```{r weekly cooks  freq}
+weekly.cooks.data<- weekly.cooks[c("Age", "Dietary.Restriction","Meal.Prepper","Recipe.Search.F","Repeat.S.F","Browse.Search.F","Click.Rate",
+            "Use.R.F","Seek.R.F", "R.F","Save.F","Mod.F", "Mod.Note.F","Disc.F","Read.Disc.F","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+cols<-names(weekly.cooks.data)
+weekly.cooks.data<-lapply(weekly.cooks.data[cols], as.factor)
+weekly.cooks.data<-data.frame(weekly.cooks.data)
+search.MCA=MCA(weekly.cooks.data,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+```{r daily cook  freq}
+daily.cooks.data<-daily.cooks[c("Age", "Dietary.Restriction","Meal.Prepper","Recipe.Search.F","Repeat.S.F","Browse.Search.F","Click.Rate",
+            "Use.R.F","Seek.R.F", "R.F","Save.F","Mod.F", "Mod.Note.F","Disc.F","Read.Disc.F","Ing.L.V.Above",
+            "Ing.L.Com.Inline.V.Below","Ing.Above.Com.Below.V.Inline",  "Ing.By.Step.V.Above",  "Ing.By.Step.V.Scroll.L",
+            "Ing.Above.V.Scroll.L")]
+cols<-names(daily.cooks.data)
+daily.cooks.data<-lapply(daily.cooks.data[cols], as.factor)
+daily.cooks.data<-data.frame(daily.cooks.data)
+search.MCA=MCA(daily.cooks.data,graph=FALSE)
+fviz_screeplot(search.MCA,addlabels=T)
+fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
+             ggtheme = theme_minimal())
+
+fviz_mca_var(search.MCA, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, ggtheme = theme_minimal())
+```
+
+ 
