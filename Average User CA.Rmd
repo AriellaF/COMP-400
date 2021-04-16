@@ -179,16 +179,9 @@ variables<-c()
   temp<-separate_rows(temp,1, sep = ";")
   variables<-append(variables,temp[[1]])
   variables<-unique(variables)
-<<<<<<< Updated upstream
-  data.frame(variables)
- }
-
-variables
-=======
  }
 
 
->>>>>>> Stashed changes
 
 cleaned.variables<-c(
   "Mobile",
