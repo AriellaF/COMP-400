@@ -298,6 +298,7 @@ cleaned.variables<-c(
   "Inline Comment")
 
 names(cleaned.variables)<-variables
+
 ```
 ## Functions for Cleaning Data
 
@@ -350,7 +351,7 @@ colnames(search.data)<-new.names
 ```
 
 
-```{r MCA with dummies}
+```{r }
 cleaned<-search.data
 to.dummy<-select(cleaned, ends_with(".C"))
 to.dummy.cols<-c(colnames(to.dummy))
@@ -369,16 +370,16 @@ cleaned[to.num]<-as.integer(unlist(cleaned[to.num]))
 cleaned[names(select(cleaned, ends_with(".F")))][is.na(cleaned[names(select(cleaned, ends_with(".F")))])]<-0
 
 # aggregate(select(cleaned, where(is.numeric)), by=list(cleaned$Age,cleaned$Meal.Prepper,cleaned$Dietary.Restriction,cleaned$Home.Cook.Rate), FUN=sum)%>% select(!ends_with((".F")))
-
 aggregate(select(cleaned, ends_with(".F")), by=list(cleaned$Meal.Prepper,cleaned$Dietary.Restriction,cleaned$Home.Cook.Rate), FUN=mean)
 ```
 
+
 ```{r isolate frequent users}
 #isolate frequent users
-cleaned<- filter(cleaned, Home.Cook.Rate!="Monthly")
-
-#REMOVE USERS WHO DID NOT COMPLETE ab TEST
-cleaned<-filter(cleaned, Ing.L.Com.Inline.V.Below!="EMPTY")
+# cleaned<- filter(cleaned, Home.Cook.Rate!="Monthly")
+# 
+# #REMOVE USERS WHO DID NOT COMPLETE ab TEST
+# cleaned<-filter(cleaned, Ing.L.Com.Inline.V.Below!="EMPTY")
 
 
 ```
@@ -411,14 +412,21 @@ all.complete<-mutate(cleaned.f, cluster=as.factor(all.complete.g))
 
 ```
 
-```{r}
 
-for (f in names(select(all.complete, ends_with(".F")))){
+```{r}
+freq.data<-select(all.complete, cluster|ends_with(".F") )
+freq.data<-mutate(freq.data, avgFreq=apply(freq.data[][2:12], 1, mean))
+ggplot(freq.data, aes(x=cluster, fill=cluster))+
+    geom_boxplot(aes(y=avgFreq))
+
+for (f in names(select(all.complete,ends_with(".F") ))){
   p<-ggplot(all.complete, aes(x=cluster, fill=cluster))+
     geom_boxplot(aes_string(y=f))
   print(p)
 }
 
+ggplot(all.complete)+
+    geom_boxplot(aes(y=Repeat.S.F))
 
 ```
 
@@ -434,6 +442,7 @@ for (f in names(select(all.gower, ends_with(".F")))){
 
 
 ```
+
 
 The Gower distance does not divide the users by recipe interaction frequency.
 
@@ -453,15 +462,16 @@ ggplot(all.complete,aes( x=Potential.Note.Taker))+
     theme(axis.text.x = element_text(angle = 90))
 
 for (i in names(select(all.complete, starts_with("Ing.")))){
-  p<-ggplot(all.complete,aes( x=cluster))+
-    geom_bar(aes_string(fill=i), position = "fill")+
+  p<-ggplot(all.complete,aes_string( x=i, fill =i))+
+    geom_bar()+
+    facet_grid(~cluster)+
     theme(axis.text.x = element_text(angle = 90))
   
   print(p)
 }
 ```
 
-Since cluster two represents a group of users who interacts with recipes more frequentlly than group one, I will weight their responses higher than cluster one.
+Since cluster two represents a group of users who interacts with recipes more frequently than group one, I will weight their responses higher than cluster one.
 # Results:
 
 ## Ingredients Listed Left vs. Above:
@@ -491,8 +501,8 @@ The in use recipe view most enjoyed by users is ingredients listed step by step.
 
 ```{r}
 for (i in names(select(cleaned, starts_with("Ing.")))){
-  p<-ggplot(cleaned,aes( fill=Potential.Note.Taker))+
-    geom_bar(aes_string(x=i))+
+  p<-ggplot(cleaned)+
+    geom_bar(aes_string(x=i, fill=i))+
     theme(axis.text.x = element_text(angle = 90))
   
   print(p)
@@ -509,46 +519,127 @@ for (i in names(select(note.takers, starts_with("Ing.")))){
 }
 ```
 
-```{r}
 
-hc.complete =hclust (dist(note.takers), method ="complete")
-hc.average =hclust (dist(note.takers), method ="average")
-gower.dist <- daisy(note.takers, metric = c("gower"))
-
-
-divisive.clust <- diana(as.matrix(gower.dist), 
-                  diss = TRUE, keep.diss = TRUE)
-
-plot(divisive.clust, main = "Divisive")
-rect.hclust(divisive.clust,k=3)
-
-plot(hc.complete ,main =" Complete Linkage ", xlab="", sub ="",
-cex =.9)
-rect.hclust(hc.complete,k=3)
-plot(hc.average , main =" Average Linkage ", xlab="", sub ="",
-cex =.9)
-rect.hclust(hc.average,k=3)
-
-```
 
 ```{r}
 format<-select(cleaned, starts_with("Primary.Format.C_"))%>% 
   gather(Var, Val) %>% 
   count(Var, Val)%>%
   filter(Val == 1)
+
 ggplot(format)+
     geom_col(aes(x=Var, y=n, fill = Var))+
     theme(axis.text.x = element_text(angle = 90))
 filter(all.complete, cluster==2)%>%count()
+
 format.c2<-filter(all.complete, cluster==2)%>%
   select(starts_with("Primary.Format.C_"))%>% 
   gather(Var, Val) %>% 
   count(Var, Val)%>%
   filter(Val == 1)
 format.c2
+
+ggplot(format.c2)+
+    geom_col(aes(x=Var, y=n, fill = Var))+
+    theme(axis.text.x = element_text(angle = 90))
+```
+The primary format used by 40/58 respondents is mobile. When looking at cluster two from complete linkage clustering on all the respondents we find that 21/27 respondents primarily interact with recipes on mobile.
+```{r}
+format.c2<-filter(all.complete, cluster==2)%>%
+  select(starts_with("Save.C"))%>% 
+  gather(Var, Val) %>% 
+  count(Var, Val)%>%
+  filter(Val == 1)
+format.c2
+
+ggplot(format.c2)+
+    geom_col(aes(x=Var, y=n, fill = Var))+
+    theme(axis.text.x = element_text(angle = 90))
+
+```
+
+```{r}
+# "Primary.S.C",
+#             "Enjoyed.S.C","NOT.Enjoyed.S.C","Recipe.Search.F","Repeat.S.F","Browse.Search.F",
+format.c2<-filter(all.complete, cluster==2)%>%
+  select(starts_with("Primary.S.C"))%>% 
+  gather(Var, Val) %>% 
+  count(Var, Val)%>%
+  filter(Val == 1)
+format.c2
+
+ggplot(format.c2)+
+    geom_col(aes(x=Var, y=n, fill = Var))+
+    theme(axis.text.x = element_text(angle = 90))
+
+format.c2<-filter(all.complete, cluster==2)%>%
+  select(starts_with("Enjoyed.S.C"))%>% 
+  gather(Var, Val) %>% 
+  count(Var, Val)%>%
+  filter(Val == 1)
+format.c2
+
+ggplot(format.c2)+
+    geom_col(aes(x=Var, y=n, fill = Var))+
+    theme(axis.text.x = element_text(angle = 90))
+
+format.c2<-filter(all.complete, cluster==2)%>%
+  select(starts_with("NOT.Enjoyed.S.C"))%>% 
+  gather(Var, Val) %>% 
+  count(Var, Val)%>%
+  filter(Val == 1)
+format.c2
+
+ggplot(format.c2)+
+    geom_col(aes(x=Var, y=n, fill = Var))+
+    theme(axis.text.x = element_text(angle = 90))
+
+
+format.c2<-filter(all.complete, cluster==2)%>%
+  select(starts_with("Save.C"))%>% 
+  gather(Var, Val) %>% 
+  count(Var, Val)%>%
+  filter(Val == 1)
+format.c2
+
+ggplot(format.c2)+
+    geom_col(aes(x=Var, y=n, fill = Var))+
+    theme(axis.text.x = element_text(angle = 90))
+
+# "Mod.F","Why.Mod.C", "Mod.Note.F", "Mod.Note.C",
+#             "Note.Method.S","Potential.Note.Taker","Disc.F","Read.Disc.F","Disc.C","Enjoy.Disc.C"
+
+format.c2<-filter(all.complete, cluster==2)%>%
+  select(starts_with("Why.Mod.C"))%>% 
+  gather(Var, Val) %>% 
+  count(Var, Val)%>%
+  filter(Val == 1)
+format.c2
+
+ggplot(format.c2)+
+    geom_col(aes(x=Var, y=n, fill = Var))+
+    theme(axis.text.x = element_text(angle = 90))
+
+format.c2<-filter(all.complete, cluster==2)%>%
+  select(starts_with("Disc.C"))%>% 
+  gather(Var, Val) %>% 
+  count(Var, Val)%>%
+  filter(Val == 1)
+format.c2
+
+ggplot(format.c2)+
+    geom_col(aes(x=Var, y=n, fill = Var))+
+    theme(axis.text.x = element_text(angle = 90))
+
+format.c2<-filter(all.complete, cluster==2)%>%
+  select(starts_with("Enjoy.Disc.C"))%>% 
+  gather(Var, Val) %>% 
+  count(Var, Val)%>%
+  filter(Val == 1)
+format.c2
+
 ggplot(format.c2)+
     geom_col(aes(x=Var, y=n, fill = Var))+
     theme(axis.text.x = element_text(angle = 90))
 ```
 
-The primary format used by 40/58 respondents is mobile. When looking at cluster two from complete linkage clustering on all the respondents we find that 21/27 respondents primarily interact with recipes on mobile.
