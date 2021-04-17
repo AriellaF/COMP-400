@@ -160,12 +160,18 @@ variables<-c()
   variables<-append(variables,temp[[1]])
   variables<-unique(variables)
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   data.frame(variables)
 =======
+=======
+>>>>>>> Stashed changes
 <<<<<<< HEAD
 =======
   data.frame(variables)
 >>>>>>> 3ce39c42843eed946c21406286fc12a84b2477b3
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
  }
 
@@ -280,12 +286,18 @@ cleaned.variables<-c(
   "Comment Thread",
   "Inline Comment")
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 <<<<<<< HEAD
 variable.rename<-data.frame(variables,cleaned.variables)
 write.csv(variable.rename,"variable_rename_legend.csv")
 =======
 >>>>>>> 3ce39c42843eed946c21406286fc12a84b2477b3
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 names(cleaned.variables)<-variables
@@ -414,15 +426,21 @@ search.MCA=MCA(cleaned.search.data,graph=FALSE)
 fviz_screeplot(search.MCA,addlabels=T)
 fviz_mca_var(search.MCA, choice = "mca.cor", repel = TRUE,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
              ggtheme = theme_minimal())
 
 =======
+=======
+>>>>>>> Stashed changes
 <<<<<<< HEAD
 ggtheme = theme_minimal())
 =======
              ggtheme = theme_minimal())
 
 >>>>>>> 3ce39c42843eed946c21406286fc12a84b2477b3
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 fviz_mca_var(search.MCA, col.var = "cos2",
              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
