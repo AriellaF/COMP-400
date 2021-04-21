@@ -258,7 +258,7 @@ dummies<-function(search.data, to.clean){
   
 }
 
-search.data<-my.data.clean[c(2,3,4,5,7,8,9,11,12,13)]
+search.data<-my.data.factored[c(2,3,4,5,7,8,9,11,12,13)]
 search.data<-data.frame(search.data)
 colnames(search.data)<-c("Age", "Meal.Prepper","Dietary.Restriction","Home.Cook.Freq","Primary.C",
                          "Enjoyed.C","NOT.Enjoyed.C","Repeat.Search.F","Browse.Search.F","Click.Rate")
@@ -277,7 +277,7 @@ for (col in to.dummy.cols){
  # cleaned<-dummies(cleaned, c("NOT.Enjoyed"))
 
 
-cleaned.likhart<-apply(select(cleaned,ends_with(".F")),2,likert.clean)
+# cleaned.likhart<-apply(select(cleaned,ends_with(".F")),2,likert.clean)
 
 cleaned[, colnames(cleaned) %in% colnames(cleaned.likhart)] <- cleaned.likhart
 cols<-names(cleaned)

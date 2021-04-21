@@ -407,22 +407,3 @@ var.names[]<-"NOT.Enjoyed_Blogs"
 
 
 
-
-```{r}
-
-set.seed(6933)
-
-fruit_words <- c("apple", "orange", "banana", "pappels", "orong", "bernaner")
-
-dat <- data.frame(fruit = sample(fruit_words, size=10, replace=TRUE), 
-                  stringsAsFactors=FALSE)
-
-fruit_lkup <- c(apple="appl", orange="orng", banana="bnna", 
-                pappels="appl", orong="orng", bernaner="bnna")
-str(dat)
-str(dat$fruit)
-
-dat$fruit_clean <- as.character(fruit_lkup[dat$fruit])
-dat
-
-```

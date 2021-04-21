@@ -366,7 +366,7 @@ cleaned[to.num]<-as.integer(unlist(cleaned[to.num]))
 ```
 
 ```{r}
-cleaned[names(select(cleaned, ends_with(".F")))][is.na(cleaned[names(select(cleaned, ends_with(".F")))])]<-0
+# cleaned[names(select(cleaned, ends_with(".F")))][is.na(cleaned[names(select(cleaned, ends_with(".F")))])]<-3
 
 # aggregate(select(cleaned, where(is.numeric)), by=list(cleaned$Age,cleaned$Meal.Prepper,cleaned$Dietary.Restriction,cleaned$Home.Cook.Rate), FUN=sum)%>% select(!ends_with((".F")))
 aggregate(select(cleaned, ends_with(".F")), by=list(cleaned$Meal.Prepper,cleaned$Dietary.Restriction,cleaned$Home.Cook.Rate), FUN=mean)
