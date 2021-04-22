@@ -366,7 +366,11 @@ cleaned[to.num]<-as.integer(unlist(cleaned[to.num]))
 ```
 
 ```{r}
+<<<<<<< HEAD
 cleaned[names(select(cleaned, ends_with(".F")))][is.na(cleaned[names(select(cleaned, ends_with(".F")))])] 
+=======
+cleaned[names(select(cleaned, ends_with(".F")))][is.na(cleaned[names(select(cleaned, ends_with(".F")))])]<-0
+>>>>>>> parent of dc2cefc (final report)
 
 aggregate(select(cleaned, where(is.numeric)), by=list(cleaned$Age,cleaned$Meal.Prepper,cleaned$Dietary.Restriction,cleaned$Home.Cook.Rate), FUN=sum)%>% select(!ends_with((".F")))
 aggregate(select(cleaned, ends_with(".F")), by=list(cleaned$Age,cleaned$Meal.Prepper,cleaned$Dietary.Restriction,cleaned$Home.Cook.Rate), FUN=mean)
